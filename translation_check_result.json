@@ -1,0 +1,1775 @@
+{
+  "missingInZhCN": [
+    {
+      "key": "agent_that_is_designed_for_llms_that_are_good_for_reasoningwriting_xml_eg_anthropic_claude",
+      "description": "Agent that is designed for LLMs that are good for reasoning/writing XML (e.g: Anthropic Claude)"
+    },
+    {
+      "key": "large_context_cache_for_google_gemini_large_language_models",
+      "description": "Large context cache for Google Gemini large language models"
+    },
+    {
+      "key": "cache_llm_response_in_memory_will_be_cleared_once_app_restarted",
+      "description": "Cache LLM response in memory, will be cleared once app restarted"
+    },
+    {
+      "key": "cache_generated_embeddings_in_memory_to_avoid_needing_to_recompute_them",
+      "description": "Cache generated Embeddings in memory to avoid needing to recompute them."
+    },
+    {
+      "key": "cache_llm_response_using_momento_a_distributed_serverless_cache",
+      "description": "Cache LLM response using Momento, a distributed, serverless cache"
+    },
+    {
+      "key": "cache_llm_response_in_redis_useful_for_sharing_cache_across_multiple_processes_or_servers",
+      "description": "Cache LLM response in Redis, useful for sharing cache across multiple processes or servers"
+    },
+    {
+      "key": "cache_generated_embeddings_in_redis_to_avoid_needing_to_recompute_them",
+      "description": "Cache generated Embeddings in Redis to avoid needing to recompute them."
+    },
+    {
+      "key": "cache_llm_response_in_upstash_redis_serverless_data_for_redis_and_kafka",
+      "description": "Cache LLM response in Upstash Redis, serverless data for Redis and Kafka"
+    },
+    {
+      "key": "document_qa___built_on_retrievalqachain_to_provide_a_chat_history_component",
+      "description": "Document QA - built on RetrievalQAChain to provide a chat history component"
+    },
+    {
+      "key": "wrapper_around_aws_bedrock_large_language_models_that_use_the_converse_api",
+      "description": "Wrapper around AWS Bedrock large language models that use the Converse API"
+    },
+    {
+      "key": "wrapper_around_azure_openai_large_language_models_that_use_the_chat_endpoint",
+      "description": "Wrapper around Azure OpenAI large language models that use the Chat endpoint"
+    },
+    {
+      "key": "wrapper_around_azure_openai_chat_llm_specific_for_llamaindex",
+      "description": "Wrapper around Azure OpenAI Chat LLM specific for LlamaIndex"
+    },
+    {
+      "key": "wrapper_around_alibaba_tongyi_chat_endpoints",
+      "description": "Wrapper around Alibaba Tongyi Chat Endpoints"
+    },
+    {
+      "key": "wrapper_around_chatanthropic_large_language_models_that_use_the_chat_endpoint",
+      "description": "Wrapper around ChatAnthropic large language models that use the Chat endpoint"
+    },
+    {
+      "key": "wrapper_around_chatanthropic_llm_specific_for_llamaindex",
+      "description": "Wrapper around ChatAnthropic LLM specific for LlamaIndex"
+    },
+    {
+      "key": "wrapper_around_baiduwenxin_chat_endpoints",
+      "description": "Wrapper around BaiduWenxin Chat Endpoints"
+    },
+    {
+      "key": "wrapper_around_cerebras_inference_api",
+      "description": "Wrapper around Cerebras Inference API"
+    },
+    {
+      "key": "wrapper_around_cohere_chat_endpoints",
+      "description": "Wrapper around Cohere Chat Endpoints"
+    },
+    {
+      "key": "wrapper_around_fireworks_chat_endpoints",
+      "description": "Wrapper around Fireworks Chat Endpoints"
+    },
+    {
+      "key": "wrapper_around_google_gemini_large_language_models_that_use_the_chat_endpoint",
+      "description": "Wrapper around Google Gemini large language models that use the Chat endpoint"
+    },
+    {
+      "key": "wrapper_around_vertexai_large_language_models_that_use_the_chat_endpoint",
+      "description": "Wrapper around VertexAI large language models that use the Chat endpoint"
+    },
+    {
+      "key": "wrapper_around_huggingface_large_language_models",
+      "description": "Wrapper around HuggingFace large language models"
+    },
+    {
+      "key": "wrapper_around_ibm_watsonxai_foundation_models",
+      "description": "Wrapper around IBM watsonx.ai foundation models"
+    },
+    {
+      "key": "use_local_llms_like_llamacpp_gpt4all_using_localai",
+      "description": "Use local LLMs like llama.cpp, gpt4all using LocalAI"
+    },
+    {
+      "key": "wrapper_around_mistral_large_language_models_that_use_the_chat_endpoint",
+      "description": "Wrapper around Mistral large language models that use the Chat endpoint"
+    },
+    {
+      "key": "wrapper_around_chatmistral_llm_specific_for_llamaindex",
+      "description": "Wrapper around ChatMistral LLM specific for LlamaIndex"
+    },
+    {
+      "key": "access_models_through_the_nemo_guardrails_api",
+      "description": "Access models through the Nemo Guardrails API"
+    },
+    {
+      "key": "wrapper_around_nvidia_nim_inference_api",
+      "description": "Wrapper around NVIDIA NIM Inference API"
+    },
+    {
+      "key": "chat_completion_using_open_source_llm_on_ollama",
+      "description": "Chat completion using open-source LLM on Ollama"
+    },
+    {
+      "key": "wrapper_around_chatollama_llm_specific_for_llamaindex",
+      "description": "Wrapper around ChatOllama LLM specific for LlamaIndex"
+    },
+    {
+      "key": "wrapper_around_openai_large_language_models_that_use_the_chat_endpoint",
+      "description": "Wrapper around OpenAI large language models that use the Chat endpoint"
+    },
+    {
+      "key": "wrapper_around_openai_chat_llm_specific_for_llamaindex",
+      "description": "Wrapper around OpenAI Chat LLM specific for LlamaIndex"
+    },
+    {
+      "key": "customfinetuned_model_using_openai_chat_compatible_api",
+      "description": "Custom/FineTuned model using OpenAI Chat compatible API"
+    },
+    {
+      "key": "wrapper_around_open_router_inference_api",
+      "description": "Wrapper around Open Router Inference API"
+    },
+    {
+      "key": "wrapper_around_togetherai_large_language_models",
+      "description": "Wrapper around TogetherAI large language models"
+    },
+    {
+      "key": "wrapper_around_chattogetherai_llm_specific_for_llamaindex",
+      "description": "Wrapper around ChatTogetherAI LLM specific for LlamaIndex"
+    },
+    {
+      "key": "wrapper_around_grok_from_xai",
+      "description": "Wrapper around Grok from XAI"
+    },
+    {
+      "key": "wrapper_around_deepseek_large_language_models_that_use_the_chat_endpoint",
+      "description": "Wrapper around Deepseek large language models that use the Chat endpoint"
+    },
+    {
+      "key": "wrapper_around_groq_llm_specific_for_llamaindex",
+      "description": "Wrapper around Groq LLM specific for LlamaIndex"
+    },
+    {
+      "key": "wrapper_around_groq_api_with_lpu_inference_engine",
+      "description": "Wrapper around Groq API with LPU Inference Engine"
+    },
+    {
+      "key": "load_data_from_an_api",
+      "description": "Load data from an API"
+    },
+    {
+      "key": "load_data_from_airtable_table",
+      "description": "Load data from Airtable table"
+    },
+    {
+      "key": "load_data_from_apify_website_content_crawler",
+      "description": "Load data from Apify Website Content Crawler"
+    },
+    {
+      "key": "load_and_process_data_from_bravesearch_results",
+      "description": "Load and process data from BraveSearch results"
+    },
+    {
+      "key": "load_data_from_webpages",
+      "description": "Load data from webpages"
+    },
+    {
+      "key": "load_data_from_a_confluence_document",
+      "description": "Load data from a Confluence Document"
+    },
+    {
+      "key": "load_data_from_csv_files",
+      "description": "Load data from CSV files"
+    },
+    {
+      "key": "custom_function_for_loading_documents",
+      "description": "Custom function for loading documents"
+    },
+    {
+      "key": "load_data_from_pre_configured_document_stores",
+      "description": "Load data from pre-configured document stores"
+    },
+    {
+      "key": "load_data_from_docx_files",
+      "description": "Load data from DOCX files"
+    },
+    {
+      "key": "load_data_from_epub_files",
+      "description": "Load data from EPUB files"
+    },
+    {
+      "key": "load_data_from_a_figma_file",
+      "description": "Load data from a Figma file"
+    },
+    {
+      "key": "a_generic_file_loader_that_can_load_txt_json_csv_docx_pdf_and_other_files",
+      "description": "A generic file loader that can load txt, json, csv, docx, pdf, and other files"
+    },
+    {
+      "key": "load_data_from_url_using_firecrawl",
+      "description": "Load data from URL using FireCrawl"
+    },
+    {
+      "key": "load_data_from_folder_with_multiple_files",
+      "description": "Load data from folder with multiple files"
+    },
+    {
+      "key": "load_data_from_gitbook",
+      "description": "Load data from GitBook"
+    },
+    {
+      "key": "load_data_from_a_github_repository",
+      "description": "Load data from a GitHub repository"
+    },
+    {
+      "key": "load_data_from_json_files",
+      "description": "Load data from JSON files"
+    },
+    {
+      "key": "load_data_from_json_lines_files",
+      "description": "Load data from JSON Lines files"
+    },
+    {
+      "key": "load_data_from_notion_database_each_row_is_a_separate_document_with_all_properties_as_metadata",
+      "description": "Load data from Notion Database (each row is a separate document with all properties as metadata)"
+    },
+    {
+      "key": "load_data_from_the_exported_and_unzipped_notion_folder",
+      "description": "Load data from the exported and unzipped Notion folder"
+    },
+    {
+      "key": "load_data_from_notion_page_including_child_pages_all_as_separate_documents",
+      "description": "Load data from Notion Page (including child pages all as separate documents)"
+    },
+    {
+      "key": "load_data_from_pdf_files",
+      "description": "Load data from PDF files"
+    },
+    {
+      "key": "load_data_from_plain_text",
+      "description": "Load data from plain text"
+    },
+    {
+      "key": "load_data_from_webpages",
+      "description": "Load data from webpages"
+    },
+    {
+      "key": "load_data_from_webpages",
+      "description": "Load data from webpages"
+    },
+    {
+      "key": "load_data_from_s3_buckets",
+      "description": "Load Data from S3 Buckets"
+    },
+    {
+      "key": "load_data_from_s3_buckets",
+      "description": "Load Data from S3 Buckets"
+    },
+    {
+      "key": "load_data_from_real_time_search_results",
+      "description": "Load data from real-time search results"
+    },
+    {
+      "key": "load_and_process_data_from_web_search_results",
+      "description": "Load and process data from web search results"
+    },
+    {
+      "key": "scrape_crawl_the_web_with_spider",
+      "description": "Scrape & Crawl the web with Spider"
+    },
+    {
+      "key": "load_data_from_text_files",
+      "description": "Load data from text files"
+    },
+    {
+      "key": "use_unstructuredio_to_load_data_from_a_file_path",
+      "description": "Use Unstructured.io to load data from a file path"
+    },
+    {
+      "key": "use_unstructuredio_to_load_data_from_a_folder_note_currently_doesn",
+      "description": "Use Unstructured.io to load data from a folder. Note: Currently doesn"
+    },
+    {
+      "key": "search_documents_with_scores_from_vector_store",
+      "description": "Search documents with scores from vector store"
+    },
+    {
+      "key": "awsbedrock_embedding_models_to_generate_embeddings_for_a_given_text",
+      "description": "AWSBedrock embedding models to generate embeddings for a given text"
+    },
+    {
+      "key": "azure_openai_api_to_generate_embeddings_for_a_given_text",
+      "description": "Azure OpenAI API to generate embeddings for a given text"
+    },
+    {
+      "key": "azure_openai_api_embeddings_specific_for_llamaindex",
+      "description": "Azure OpenAI API embeddings specific for LlamaIndex"
+    },
+    {
+      "key": "cohere_api_to_generate_embeddings_for_a_given_text",
+      "description": "Cohere API to generate embeddings for a given text"
+    },
+    {
+      "key": "google_generative_api_to_generate_embeddings_for_a_given_text",
+      "description": "Google Generative API to generate embeddings for a given text"
+    },
+    {
+      "key": "google_vertexai_api_to_generate_embeddings_for_a_given_text",
+      "description": "Google vertexAI API to generate embeddings for a given text"
+    },
+    {
+      "key": "huggingface_inference_api_to_generate_embeddings_for_a_given_text",
+      "description": "HuggingFace Inference API to generate embeddings for a given text"
+    },
+    {
+      "key": "generate_embeddings_for_a_given_text_using_open_source_model_on_ibm_watsonx",
+      "description": "Generate embeddings for a given text using open source model on IBM Watsonx"
+    },
+    {
+      "key": "jinaai_api_to_generate_embeddings_for_a_given_text",
+      "description": "JinaAI API to generate embeddings for a given text"
+    },
+    {
+      "key": "use_local_embeddings_models_like_llamacpp",
+      "description": "Use local embeddings models like llama.cpp"
+    },
+    {
+      "key": "mistralai_api_to_generate_embeddings_for_a_given_text",
+      "description": "MistralAI API to generate embeddings for a given text"
+    },
+    {
+      "key": "generate_embeddings_for_a_given_text_using_open_source_model_on_ollama",
+      "description": "Generate embeddings for a given text using open source model on Ollama"
+    },
+    {
+      "key": "openai_api_to_generate_embeddings_for_a_given_text",
+      "description": "OpenAI API to generate embeddings for a given text"
+    },
+    {
+      "key": "openai_embedding_specific_for_llamaindex",
+      "description": "OpenAI Embedding specific for LlamaIndex"
+    },
+    {
+      "key": "openai_api_to_generate_embeddings_for_a_given_text",
+      "description": "OpenAI API to generate embeddings for a given text"
+    },
+    {
+      "key": "togetherai_embedding_models_to_generate_embeddings_for_a_given_text",
+      "description": "TogetherAI Embedding models to generate embeddings for a given text"
+    },
+    {
+      "key": "voyage_ai_api_to_generate_embeddings_for_a_given_text",
+      "description": "Voyage AI API to generate embeddings for a given text"
+    },
+    {
+      "key": "answer_question_based_on_retrieved_documents_context_with_built_in_memory_to_remember_conversation",
+      "description": "Answer question based on retrieved documents (context) with built-in memory to remember conversation"
+    },
+    {
+      "key": "simple_engine_to_handle_back_and_forth_conversations",
+      "description": "Simple engine to handle back and forth conversations"
+    },
+    {
+      "key": "simple_query_engine_built_to_answer_question_over_your_data_without_memory",
+      "description": "Simple query engine built to answer question over your data, without memory"
+    },
+    {
+      "key": "breaks_complex_query_into_sub_questions_for_each_relevant_data_source_then_gather_all_the_intermediate_reponses_and_synthesizes_a_final_response",
+      "description": "Breaks complex query into sub questions for each relevant data source, then gather all the intermediate reponses and synthesizes a final response"
+    },
+    {
+      "key": "connect_with_neo4j_graph_database",
+      "description": "Connect with Neo4j graph database"
+    },
+    {
+      "key": "wrapper_around_aws_bedrock_large_language_models",
+      "description": "Wrapper around AWS Bedrock large language models"
+    },
+    {
+      "key": "wrapper_around_azure_openai_large_language_models",
+      "description": "Wrapper around Azure OpenAI large language models"
+    },
+    {
+      "key": "wrapper_around_cohere_large_language_models",
+      "description": "Wrapper around Cohere large language models"
+    },
+    {
+      "key": "wrapper_around_fireworks_api_for_large_language_models",
+      "description": "Wrapper around Fireworks API for large language models"
+    },
+    {
+      "key": "wrapper_around_googlevertexai_large_language_models",
+      "description": "Wrapper around GoogleVertexAI large language models"
+    },
+    {
+      "key": "wrapper_around_huggingface_large_language_models",
+      "description": "Wrapper around HuggingFace large language models"
+    },
+    {
+      "key": "wrapper_around_ibm_watsonxai_foundation_models",
+      "description": "Wrapper around IBM watsonx.ai foundation models"
+    },
+    {
+      "key": "wrapper_around_open_source_large_language_models_on_ollama",
+      "description": "Wrapper around open source large language models on Ollama"
+    },
+    {
+      "key": "wrapper_around_openai_large_language_models",
+      "description": "Wrapper around OpenAI large language models"
+    },
+    {
+      "key": "use_replicate_to_run_open_source_models_on_cloud",
+      "description": "Use Replicate to run open source models on cloud"
+    },
+    {
+      "key": "wrapper_around_togetherai_large_language_models",
+      "description": "Wrapper around TogetherAI large language models"
+    },
+    {
+      "key": "memory_for_agentflow_to_remember_the_state_of_the_conversation",
+      "description": "Memory for agentflow to remember the state of the conversation"
+    },
+    {
+      "key": "memory_for_agentflow_to_remember_the_state_of_the_conversation_using_mysql_database",
+      "description": "Memory for agentflow to remember the state of the conversation using MySQL database"
+    },
+    {
+      "key": "memory_for_agentflow_to_remember_the_state_of_the_conversation_using_postgres_database",
+      "description": "Memory for agentflow to remember the state of the conversation using Postgres database"
+    },
+    {
+      "key": "memory_for_agentflow_to_remember_the_state_of_the_conversation_using_sqlite_database",
+      "description": "Memory for agentflow to remember the state of the conversation using SQLite database"
+    },
+    {
+      "key": "retrieve_chat_messages_stored_in_database",
+      "description": "Retrieve chat messages stored in database"
+    },
+    {
+      "key": "uses_a_window_of_size_k_to_surface_the_last_k_back_and_forth_to_use_as_memory",
+      "description": "Uses a window of size k to surface the last k back-and-forth to use as memory"
+    },
+    {
+      "key": "uses_token_length_to_decide_when_to_summarize_conversations",
+      "description": "Uses token length to decide when to summarize conversations"
+    },
+    {
+      "key": "summarizes_the_conversation_and_stores_the_current_summary_in_memory",
+      "description": "Summarizes the conversation and stores the current summary in memory"
+    },
+    {
+      "key": "stores_the_conversation_in_dynamo_db_table",
+      "description": "Stores the conversation in dynamo db table"
+    },
+    {
+      "key": "stores_and_manages_chat_memory_using_mem0_service",
+      "description": "Stores and manages chat memory using Mem0 service"
+    },
+    {
+      "key": "stores_the_conversation_in_mongodb_atlas",
+      "description": "Stores the conversation in MongoDB Atlas"
+    },
+    {
+      "key": "summarizes_the_conversation_and_stores_the_memory_in_redis_server",
+      "description": "Summarizes the conversation and stores the memory in Redis server"
+    },
+    {
+      "key": "summarizes_the_conversation_and_stores_the_memory_in_upstash_redis_server",
+      "description": "Summarizes the conversation and stores the memory in Upstash Redis server"
+    },
+    {
+      "key": "summarizes_the_conversation_and_stores_the_memory_in_zep_server",
+      "description": "Summarizes the conversation and stores the memory in zep server"
+    },
+    {
+      "key": "summarizes_the_conversation_and_stores_the_memory_in_zep_server",
+      "description": "Summarizes the conversation and stores the memory in zep server"
+    },
+    {
+      "key": "check_whether_content_complies_with_openai_usage_policies",
+      "description": "Check whether content complies with OpenAI usage policies."
+    },
+    {
+      "key": "check_whether_input_consists_of_any_text_from_deny_list_and_prevent_being_sent_to_llm",
+      "description": "Check whether input consists of any text from Deny list, and prevent being sent to LLM"
+    },
+    {
+      "key": "parse_the_output_of_an_llm_call_as_a_comma_separated_list_of_values",
+      "description": "Parse the output of an LLM call as a comma-separated list of values"
+    },
+    {
+      "key": "parse_the_output_of_an_llm_call_as_a_list_of_values",
+      "description": "Parse the output of an LLM call as a list of values."
+    },
+    {
+      "key": "parse_the_output_of_an_llm_call_into_a_given_json_structure",
+      "description": "Parse the output of an LLM call into a given (JSON) structure."
+    },
+    {
+      "key": "parse_the_output_of_an_llm_call_into_a_given_structure_by_providing_a_zod_schema",
+      "description": "Parse the output of an LLM call into a given structure by providing a Zod schema."
+    },
+    {
+      "key": "schema_to_represent_a_chat_prompt",
+      "description": "Schema to represent a chat prompt"
+    },
+    {
+      "key": "prompt_template_you_can_build_with_examples",
+      "description": "Prompt template you can build with examples"
+    },
+    {
+      "key": "fetch_schema_from_langfuse_to_represent_a_prompt_for_an_llm",
+      "description": "Fetch schema from LangFuse to represent a prompt for an LLM"
+    },
+    {
+      "key": "schema_to_represent_a_basic_prompt_for_an_llm",
+      "description": "Schema to represent a basic prompt for an LLM"
+    },
+    {
+      "key": "use_mysql_to_keep_track_of_document_writes_into_the_vector_databases",
+      "description": "Use MySQL to keep track of document writes into the vector databases"
+    },
+    {
+      "key": "use_postgres_to_keep_track_of_document_writes_into_the_vector_databases",
+      "description": "Use Postgres to keep track of document writes into the vector databases"
+    },
+    {
+      "key": "use_sqlite_to_keep_track_of_document_writes_into_the_vector_databases",
+      "description": "Use SQLite to keep track of document writes into the vector databases"
+    },
+    {
+      "key": "compactrefine_is_a_slight_variation_of_refine_that_first_compacts_the_text_chunks_into_the_smallest_possible_number_of_chunks",
+      "description": "CompactRefine is a slight variation of Refine that first compacts the text chunks into the smallest possible number of chunks."
+    },
+    {
+      "key": "create_and_refine_an_answer_by_sequentially_going_through_each_retrieved_text_chunk_this_makes_a_separate_llm_call_per_node_good_for_more_detailed_answers",
+      "description": "Create and refine an answer by sequentially going through each retrieved text chunk. This makes a separate LLM call per Node. Good for more detailed answers."
+    },
+    {
+      "key": "apply_a_query_to_a_collection_of_text_chunks_gathering_the_responses_in_an_array_and_return_a_combined_string_of_all_responses_useful_for_individual_queries_on_each_text_chunk",
+      "description": "Apply a query to a collection of text chunks, gathering the responses in an array, and return a combined string of all responses. Useful for individual queries on each text chunk."
+    },
+    {
+      "key": "given_a_set_of_text_chunks_and_the_query_recursively_construct_a_tree_and_return_the_root_node_as_the_response_good_for_summarization_purposes",
+      "description": "Given a set of text chunks and the query, recursively construct a tree and return the root node as the response. Good for summarization purposes."
+    },
+    {
+      "key": "extract_keywordsmetadata_from_the_query_and_use_it_to_filter_documents",
+      "description": "Extract keywords/metadata from the query and use it to filter documents"
+    },
+    {
+      "key": "iterate_over_the_initially_returned_documents_and_extract_from_each_only_the_content_that_is_relevant_to_the_query",
+      "description": "Iterate over the initially returned documents and extract, from each, only the content that is relevant to the query"
+    },
+    {
+      "key": "agent_that_can_execute_tools",
+      "description": "Agent that can execute tools"
+    },
+    {
+      "key": "conditional_function_to_determine_which_route_to_take_next",
+      "description": "Conditional function to determine which route to take next"
+    },
+    {
+      "key": "uses_an_agent_to_determine_which_route_to_take_next",
+      "description": "Uses an agent to determine which route to take next"
+    },
+    {
+      "key": "execute_custom_javascript_function",
+      "description": "Execute custom javascript function"
+    },
+    {
+      "key": "end_conversation",
+      "description": "End conversation"
+    },
+    {
+      "key": "execute_chatflowagentflow_and_return_final_response",
+      "description": "Execute chatflow/agentflow and return final response"
+    },
+    {
+      "key": "run_chat_model_and_return_the_output",
+      "description": "Run Chat Model and return the output"
+    },
+    {
+      "key": "loop_back_to_the_specific_sequential_node",
+      "description": "Loop back to the specific sequential node"
+    },
+    {
+      "key": "starting_point_of_the_conversation",
+      "description": "Starting point of the conversation"
+    },
+    {
+      "key": "a_centralized_state_object_updated_by_nodes_in_the_graph_passing_from_one_node_to_another",
+      "description": "A centralized state object, updated by nodes in the graph, passing from one node to another"
+    },
+    {
+      "key": "execute_tool_and_return_tool",
+      "description": "Execute tool and return tool"
+    },
+    {
+      "key": "splits_only_on_one_type_of_character_defaults_to_",
+      "description": "splits only on one type of character (defaults to "
+    },
+    {
+      "key": "split_documents_based_on_language_specific_syntax",
+      "description": "Split documents based on language-specific syntax"
+    },
+    {
+      "key": "converts_html_to_markdown_and_then_split_your_content_into_documents_based_on_the_markdown_headers",
+      "description": "Converts Html to Markdown and then split your content into documents based on the Markdown headers"
+    },
+    {
+      "key": "split_your_content_into_documents_based_on_the_markdown_headers",
+      "description": "Split your content into documents based on the Markdown headers"
+    },
+    {
+      "key": "split_documents_recursively_by_different_characters___starting_with_",
+      "description": "Split documents recursively by different characters - starting with "
+    },
+    {
+      "key": "splits_a_raw_text_string_by_first_converting_the_text_into_bpe_tokens_then_split_these_tokens_into_chunks_and_convert_the_tokens_within_a_single_chunk_back_into_text",
+      "description": "Splits a raw text string by first converting the text into BPE tokens, then split these tokens into chunks and convert the tokens within a single chunk back into text."
+    },
+    {
+      "key": "wrapper_around_bravesearch_api___a_real_time_api_to_access_brave_search_results",
+      "description": "Wrapper around BraveSearch API - a real-time API to access Brave search results"
+    },
+    {
+      "key": "toolset_with_over_250_apps_for_building_ai_powered_applications",
+      "description": "Toolset with over 250+ Apps for building AI-powered applications"
+    },
+    {
+      "key": "use_custom_tool_you",
+      "description": "Use custom tool you"
+    },
+    {
+      "key": "wrapper_around_exa_search_api___search_engine_fully_designed_for_use_by_llms",
+      "description": "Wrapper around Exa Search API - search engine fully designed for use by LLMs"
+    },
+    {
+      "key": "wrapper_around_google_custom_search_api___a_real_time_api_to_access_google_search_results",
+      "description": "Wrapper around Google Custom Search API - a real-time API to access Google search results"
+    },
+    {
+      "key": "mcp_server_that_integrates_the_brave_search_api___a_real_time_api_to_access_web_search_capabilities",
+      "description": "MCP server that integrates the Brave Search API - a real-time API to access web search capabilities"
+    },
+    {
+      "key": "custom_mcp_config",
+      "description": "Custom MCP Config"
+    },
+    {
+      "key": "mcp_server_that_provides_a_tool_for_dynamic_and_reflective_problem_solving_through_a_structured_thinking_process",
+      "description": "MCP server that provides a tool for dynamic and reflective problem-solving through a structured thinking process"
+    },
+    {
+      "key": "tool_used_to_invoke_query_engine",
+      "description": "Tool used to invoke query engine"
+    },
+    {
+      "key": "wrapper_around_searxng___a_free_internet_metasearch_engine",
+      "description": "Wrapper around SearXNG - a free internet metasearch engine"
+    },
+    {
+      "key": "wrapper_around_serpapi___a_real_time_api_to_access_google_search_results",
+      "description": "Wrapper around SerpAPI - a real-time API to access Google search results"
+    },
+    {
+      "key": "wrapper_around_serperdev___google_search_api",
+      "description": "Wrapper around Serper.dev - Google Search API"
+    },
+    {
+      "key": "wrapper_around_tavilyapi___a_real_time_api_to_access_google_search_results",
+      "description": "Wrapper around TavilyAPI - a real-time API to access Google search results"
+    },
+    {
+      "key": "wrapper_around_wolframalpha___a_powerful_computational_knowledge_engine",
+      "description": "Wrapper around WolframAlpha - a powerful computational knowledge engine"
+    },
+    {
+      "key": "execute_custom_javascript_function",
+      "description": "Execute custom javascript function"
+    },
+    {
+      "key": "get_variable_that_was_saved_using_set_variable_node",
+      "description": "Get variable that was saved using Set Variable node"
+    },
+    {
+      "key": "split_flows_based_on_if_else_javascript_functions",
+      "description": "Split flows based on If Else javascript functions"
+    },
+    {
+      "key": "set_variable_which_can_be_retrieved_at_a_later_stage_variable_is_only_available_during_runtime",
+      "description": "Set variable which can be retrieved at a later stage. Variable is only available during runtime."
+    },
+    {
+      "key": "add_a_sticky_note",
+      "description": "Add a sticky note"
+    },
+    {
+      "key": "upsert_embedded_data_and_perform_similarity_or_mmr_search_upon_query_using_datastax_astra_db_a_serverless_vector_database_thats_perfect_for_managing_mission_critical_ai_workloads",
+      "description": "Upsert embedded data and perform similarity or mmr search upon query using DataStax Astra DB, a serverless vector database that’s perfect for managing mission-critical AI workloads"
+    },
+    {
+      "key": "upsert_embedded_data_and_perform_similarity_search_upon_query_using_elasticsearch_a_distributed_search_and_analytics_engine",
+      "description": "Upsert embedded data and perform similarity search upon query using Elasticsearch, a distributed search and analytics engine"
+    },
+    {
+      "key": "upsert_embedded_data_and_perform_similarity_search_upon_query_using_milvus_world",
+      "description": "Upsert embedded data and perform similarity search upon query using Milvus, world"
+    },
+    {
+      "key": "upsert_embedded_data_and_perform_similarity_search_upon_query_using_pinecone_a_leading_fully_managed_hosted_vector_database",
+      "description": "Upsert embedded data and perform similarity search upon query using Pinecone, a leading fully managed hosted vector database"
+    },
+    {
+      "key": "upsert_embedded_data_and_perform_similarity_search_upon_query_using_qdrant_a_scalable_open_source_vector_database_written_in_rust",
+      "description": "Upsert embedded data and perform similarity search upon query using Qdrant, a scalable open source vector database written in Rust"
+    },
+    {
+      "key": "upsert_embedded_data_and_perform_similarity_search_upon_query_using_redis_an_open_source_in_memory_data_structure_store",
+      "description": "Upsert embedded data and perform similarity search upon query using Redis, an open source, in-memory data structure store"
+    },
+    {
+      "key": "upsert_embedded_data_and_perform_similarity_search_upon_query_using_singlestore_a_fast_and_distributed_cloud_relational_database",
+      "description": "Upsert embedded data and perform similarity search upon query using SingleStore, a fast and distributed cloud relational database"
+    },
+    {
+      "key": "upsert_data_as_embedding_or_string_and_perform_similarity_search_with_upstash_the_leading_serverless_data_platform",
+      "description": "Upsert data as embedding or string and perform similarity search with Upstash, the leading serverless data platform"
+    },
+    {
+      "key": "upsert_embedded_data_and_perform_similarity_or_mmr_search_using_weaviate_a_scalable_open_source_vector_database",
+      "description": "Upsert embedded data and perform similarity or mmr search using Weaviate, a scalable open-source vector database"
+    },
+    {
+      "key": "upsert_embedded_data_and_perform_similarity_or_mmr_search_upon_query_using_zep_a_fast_and_scalable_building_block_for_llm_apps",
+      "description": "Upsert embedded data and perform similarity or mmr search upon query using Zep, a fast and scalable building block for LLM apps"
+    },
+    {
+      "key": "upsert_embedded_data_and_perform_similarity_or_mmr_search_upon_query_using_zep_a_fast_and_scalable_building_block_for_llm_apps",
+      "description": "Upsert embedded data and perform similarity or mmr search upon query using Zep, a fast and scalable building block for LLM apps"
+    }
+  ],
+  "missingInEn": [
+    {
+      "key": "agent_used_to_answer_queries_on_airtable_table",
+      "description": "Agent used to answer queries on Airtable table"
+    },
+    {
+      "key": "task_driven_autonomous_agent_which_creates_new_task_and_reprioritizes_task_list_based_on_objective",
+      "description": "Task Driven Autonomous Agent which creates new task and reprioritizes task list based on objective"
+    },
+    {
+      "key": "agent_used_to_answer_queries_on_csv_data",
+      "description": "Agent used to answer queries on CSV data"
+    },
+    {
+      "key": "agent_that_calls_a_vector_store_retrieval_and_uses_function_calling_to_pick_the_tools_and_args_to_call",
+      "description": "Agent that calls a vector store retrieval and uses Function Calling to pick the tools and args to call"
+    },
+    {
+      "key": "agent_that_uses_anthropic_claude_function_calling_to_pick_the_tools_and_args_to_call_using_llamaindex",
+      "description": "Agent that uses Anthropic Claude Function Calling to pick the tools and args to call using LlamaIndex"
+    },
+    {
+      "key": "agent_that_uses_openai_function_calling_to_pick_the_tools_and_args_to_call_using_llamaindex",
+      "description": "Agent that uses OpenAI Function Calling to pick the tools and args to call using LlamaIndex"
+    },
+    {
+      "key": "an_agent_that_uses_openai_assistant_api_to_pick_the_tool_and_args_to_call",
+      "description": "An agent that uses OpenAI Assistant API to pick the tool and args to call"
+    },
+    {
+      "key": "agent_that_uses_the_react_logic_to_decide_what_action_to_take_optimized_to_be_used_with_chat_models",
+      "description": "Agent that uses the ReAct logic to decide what action to take, optimized to be used with Chat Models"
+    },
+    {
+      "key": "agent_that_uses_the_react_logic_to_decide_what_action_to_take_optimized_to_be_used_with_llms",
+      "description": "Agent that uses the ReAct logic to decide what action to take, optimized to be used with LLMs"
+    },
+    {
+      "key": "agent_that_uses_function_calling_to_pick_the_tools_and_args_to_call",
+      "description": "Agent that uses Function Calling to pick the tools and args to call"
+    },
+    {
+      "key": "agent_that_is_designed_for_llms_that_are_good_for_reasoningwriting_xml_eg_anthropic_claude",
+      "description": "Agent that is designed for LLMs that are good for reasoning/writing XML (e.g: Anthropic Claude)"
+    },
+    {
+      "key": "large_context_cache_for_google_gemini_large_language_models",
+      "description": "Large context cache for Google Gemini large language models"
+    },
+    {
+      "key": "cache_llm_response_in_memory_will_be_cleared_once_app_restarted",
+      "description": "Cache LLM response in memory, will be cleared once app restarted"
+    },
+    {
+      "key": "cache_generated_embeddings_in_memory_to_avoid_needing_to_recompute_them",
+      "description": "Cache generated Embeddings in memory to avoid needing to recompute them."
+    },
+    {
+      "key": "cache_llm_response_using_momento_a_distributed_serverless_cache",
+      "description": "Cache LLM response using Momento, a distributed, serverless cache"
+    },
+    {
+      "key": "cache_llm_response_in_redis_useful_for_sharing_cache_across_multiple_processes_or_servers",
+      "description": "Cache LLM response in Redis, useful for sharing cache across multiple processes or servers"
+    },
+    {
+      "key": "cache_generated_embeddings_in_redis_to_avoid_needing_to_recompute_them",
+      "description": "Cache generated Embeddings in Redis to avoid needing to recompute them."
+    },
+    {
+      "key": "cache_llm_response_in_upstash_redis_serverless_data_for_redis_and_kafka",
+      "description": "Cache LLM response in Upstash Redis, serverless data for Redis and Kafka"
+    },
+    {
+      "key": "chain_to_run_queries_against_get_api",
+      "description": "Chain to run queries against GET API"
+    },
+    {
+      "key": "chain_that_automatically_select_and_call_apis_based_only_on_an_openapi_spec",
+      "description": "Chain that automatically select and call APIs based only on an OpenAPI spec"
+    },
+    {
+      "key": "chain_to_run_queries_against_post_api",
+      "description": "Chain to run queries against POST API"
+    },
+    {
+      "key": "chat_models_specific_conversational_chain_with_memory",
+      "description": "Chat models specific conversational chain with memory"
+    },
+    {
+      "key": "document_qa___built_on_retrievalqachain_to_provide_a_chat_history_component",
+      "description": "Document QA - built on RetrievalQAChain to provide a chat history component"
+    },
+    {
+      "key": "advanced_chain_for_question_answering_against_a_neo4j_graph_by_generating_cypher_statements",
+      "description": "Advanced chain for question-answering against a Neo4j graph by generating Cypher statements"
+    },
+    {
+      "key": "chain_to_run_queries_against_llms",
+      "description": "Chain to run queries against LLMs"
+    },
+    {
+      "key": "chain_automatically_picks_an_appropriate_prompt_from_multiple_prompt_templates",
+      "description": "Chain automatically picks an appropriate prompt from multiple prompt templates"
+    },
+    {
+      "key": "qa_chain_that_automatically_picks_an_appropriate_vector_store_from_multiple_retrievers",
+      "description": "QA Chain that automatically picks an appropriate vector store from multiple retrievers"
+    },
+    {
+      "key": "qa_chain_to_answer_a_question_based_on_the_retrieved_documents",
+      "description": "QA chain to answer a question based on the retrieved documents"
+    },
+    {
+      "key": "answer_questions_over_a_sql_database",
+      "description": "Answer questions over a SQL database"
+    },
+    {
+      "key": "qa_chain_for_vectara",
+      "description": "QA chain for Vectara"
+    },
+    {
+      "key": "qa_chain_for_vector_databases",
+      "description": "QA chain for vector databases"
+    },
+    {
+      "key": "wrapper_around_aws_bedrock_large_language_models_that_use_the_converse_api",
+      "description": "Wrapper around AWS Bedrock large language models that use the Converse API"
+    },
+    {
+      "key": "wrapper_around_azure_openai_large_language_models_that_use_the_chat_endpoint",
+      "description": "Wrapper around Azure OpenAI large language models that use the Chat endpoint"
+    },
+    {
+      "key": "wrapper_around_azure_openai_chat_llm_specific_for_llamaindex",
+      "description": "Wrapper around Azure OpenAI Chat LLM specific for LlamaIndex"
+    },
+    {
+      "key": "wrapper_around_alibaba_tongyi_chat_endpoints",
+      "description": "Wrapper around Alibaba Tongyi Chat Endpoints"
+    },
+    {
+      "key": "wrapper_around_chatanthropic_large_language_models_that_use_the_chat_endpoint",
+      "description": "Wrapper around ChatAnthropic large language models that use the Chat endpoint"
+    },
+    {
+      "key": "wrapper_around_chatanthropic_llm_specific_for_llamaindex",
+      "description": "Wrapper around ChatAnthropic LLM specific for LlamaIndex"
+    },
+    {
+      "key": "wrapper_around_baiduwenxin_chat_endpoints",
+      "description": "Wrapper around BaiduWenxin Chat Endpoints"
+    },
+    {
+      "key": "wrapper_around_cerebras_inference_api",
+      "description": "Wrapper around Cerebras Inference API"
+    },
+    {
+      "key": "wrapper_around_cohere_chat_endpoints",
+      "description": "Wrapper around Cohere Chat Endpoints"
+    },
+    {
+      "key": "wrapper_around_fireworks_chat_endpoints",
+      "description": "Wrapper around Fireworks Chat Endpoints"
+    },
+    {
+      "key": "wrapper_around_google_gemini_large_language_models_that_use_the_chat_endpoint",
+      "description": "Wrapper around Google Gemini large language models that use the Chat endpoint"
+    },
+    {
+      "key": "wrapper_around_vertexai_large_language_models_that_use_the_chat_endpoint",
+      "description": "Wrapper around VertexAI large language models that use the Chat endpoint"
+    },
+    {
+      "key": "wrapper_around_huggingface_large_language_models",
+      "description": "Wrapper around HuggingFace large language models"
+    },
+    {
+      "key": "wrapper_around_ibm_watsonxai_foundation_models",
+      "description": "Wrapper around IBM watsonx.ai foundation models"
+    },
+    {
+      "key": "use_local_llms_like_llamacpp_gpt4all_using_localai",
+      "description": "Use local LLMs like llama.cpp, gpt4all using LocalAI"
+    },
+    {
+      "key": "wrapper_around_mistral_large_language_models_that_use_the_chat_endpoint",
+      "description": "Wrapper around Mistral large language models that use the Chat endpoint"
+    },
+    {
+      "key": "wrapper_around_chatmistral_llm_specific_for_llamaindex",
+      "description": "Wrapper around ChatMistral LLM specific for LlamaIndex"
+    },
+    {
+      "key": "access_models_through_the_nemo_guardrails_api",
+      "description": "Access models through the Nemo Guardrails API"
+    },
+    {
+      "key": "wrapper_around_nvidia_nim_inference_api",
+      "description": "Wrapper around NVIDIA NIM Inference API"
+    },
+    {
+      "key": "chat_completion_using_open_source_llm_on_ollama",
+      "description": "Chat completion using open-source LLM on Ollama"
+    },
+    {
+      "key": "wrapper_around_chatollama_llm_specific_for_llamaindex",
+      "description": "Wrapper around ChatOllama LLM specific for LlamaIndex"
+    },
+    {
+      "key": "wrapper_around_openai_large_language_models_that_use_the_chat_endpoint",
+      "description": "Wrapper around OpenAI large language models that use the Chat endpoint"
+    },
+    {
+      "key": "wrapper_around_openai_chat_llm_specific_for_llamaindex",
+      "description": "Wrapper around OpenAI Chat LLM specific for LlamaIndex"
+    },
+    {
+      "key": "customfinetuned_model_using_openai_chat_compatible_api",
+      "description": "Custom/FineTuned model using OpenAI Chat compatible API"
+    },
+    {
+      "key": "wrapper_around_open_router_inference_api",
+      "description": "Wrapper around Open Router Inference API"
+    },
+    {
+      "key": "wrapper_around_togetherai_large_language_models",
+      "description": "Wrapper around TogetherAI large language models"
+    },
+    {
+      "key": "wrapper_around_chattogetherai_llm_specific_for_llamaindex",
+      "description": "Wrapper around ChatTogetherAI LLM specific for LlamaIndex"
+    },
+    {
+      "key": "wrapper_around_grok_from_xai",
+      "description": "Wrapper around Grok from XAI"
+    },
+    {
+      "key": "wrapper_around_deepseek_large_language_models_that_use_the_chat_endpoint",
+      "description": "Wrapper around Deepseek large language models that use the Chat endpoint"
+    },
+    {
+      "key": "wrapper_around_groq_llm_specific_for_llamaindex",
+      "description": "Wrapper around Groq LLM specific for LlamaIndex"
+    },
+    {
+      "key": "wrapper_around_groq_api_with_lpu_inference_engine",
+      "description": "Wrapper around Groq API with LPU Inference Engine"
+    },
+    {
+      "key": "load_data_from_an_api",
+      "description": "Load data from an API"
+    },
+    {
+      "key": "load_data_from_airtable_table",
+      "description": "Load data from Airtable table"
+    },
+    {
+      "key": "load_data_from_apify_website_content_crawler",
+      "description": "Load data from Apify Website Content Crawler"
+    },
+    {
+      "key": "load_and_process_data_from_bravesearch_results",
+      "description": "Load and process data from BraveSearch results"
+    },
+    {
+      "key": "load_data_from_webpages",
+      "description": "Load data from webpages"
+    },
+    {
+      "key": "load_data_from_a_confluence_document",
+      "description": "Load data from a Confluence Document"
+    },
+    {
+      "key": "load_data_from_csv_files",
+      "description": "Load data from CSV files"
+    },
+    {
+      "key": "custom_function_for_loading_documents",
+      "description": "Custom function for loading documents"
+    },
+    {
+      "key": "load_data_from_pre_configured_document_stores",
+      "description": "Load data from pre-configured document stores"
+    },
+    {
+      "key": "load_data_from_docx_files",
+      "description": "Load data from DOCX files"
+    },
+    {
+      "key": "load_data_from_epub_files",
+      "description": "Load data from EPUB files"
+    },
+    {
+      "key": "load_data_from_a_figma_file",
+      "description": "Load data from a Figma file"
+    },
+    {
+      "key": "a_generic_file_loader_that_can_load_txt_json_csv_docx_pdf_and_other_files",
+      "description": "A generic file loader that can load txt, json, csv, docx, pdf, and other files"
+    },
+    {
+      "key": "load_data_from_url_using_firecrawl",
+      "description": "Load data from URL using FireCrawl"
+    },
+    {
+      "key": "load_data_from_folder_with_multiple_files",
+      "description": "Load data from folder with multiple files"
+    },
+    {
+      "key": "load_data_from_gitbook",
+      "description": "Load data from GitBook"
+    },
+    {
+      "key": "load_data_from_a_github_repository",
+      "description": "Load data from a GitHub repository"
+    },
+    {
+      "key": "load_data_from_json_files",
+      "description": "Load data from JSON files"
+    },
+    {
+      "key": "load_data_from_json_lines_files",
+      "description": "Load data from JSON Lines files"
+    },
+    {
+      "key": "load_data_from_notion_database_each_row_is_a_separate_document_with_all_properties_as_metadata",
+      "description": "Load data from Notion Database (each row is a separate document with all properties as metadata)"
+    },
+    {
+      "key": "load_data_from_the_exported_and_unzipped_notion_folder",
+      "description": "Load data from the exported and unzipped Notion folder"
+    },
+    {
+      "key": "load_data_from_notion_page_including_child_pages_all_as_separate_documents",
+      "description": "Load data from Notion Page (including child pages all as separate documents)"
+    },
+    {
+      "key": "load_data_from_pdf_files",
+      "description": "Load data from PDF files"
+    },
+    {
+      "key": "load_data_from_plain_text",
+      "description": "Load data from plain text"
+    },
+    {
+      "key": "load_data_from_webpages",
+      "description": "Load data from webpages"
+    },
+    {
+      "key": "load_data_from_webpages",
+      "description": "Load data from webpages"
+    },
+    {
+      "key": "load_data_from_s3_buckets",
+      "description": "Load Data from S3 Buckets"
+    },
+    {
+      "key": "load_data_from_s3_buckets",
+      "description": "Load Data from S3 Buckets"
+    },
+    {
+      "key": "load_data_from_real_time_search_results",
+      "description": "Load data from real-time search results"
+    },
+    {
+      "key": "load_and_process_data_from_web_search_results",
+      "description": "Load and process data from web search results"
+    },
+    {
+      "key": "scrape_crawl_the_web_with_spider",
+      "description": "Scrape & Crawl the web with Spider"
+    },
+    {
+      "key": "load_data_from_text_files",
+      "description": "Load data from text files"
+    },
+    {
+      "key": "use_unstructuredio_to_load_data_from_a_file_path",
+      "description": "Use Unstructured.io to load data from a file path"
+    },
+    {
+      "key": "use_unstructuredio_to_load_data_from_a_folder_note_currently_doesn",
+      "description": "Use Unstructured.io to load data from a folder. Note: Currently doesn"
+    },
+    {
+      "key": "search_documents_with_scores_from_vector_store",
+      "description": "Search documents with scores from vector store"
+    },
+    {
+      "key": "awsbedrock_embedding_models_to_generate_embeddings_for_a_given_text",
+      "description": "AWSBedrock embedding models to generate embeddings for a given text"
+    },
+    {
+      "key": "azure_openai_api_to_generate_embeddings_for_a_given_text",
+      "description": "Azure OpenAI API to generate embeddings for a given text"
+    },
+    {
+      "key": "azure_openai_api_embeddings_specific_for_llamaindex",
+      "description": "Azure OpenAI API embeddings specific for LlamaIndex"
+    },
+    {
+      "key": "cohere_api_to_generate_embeddings_for_a_given_text",
+      "description": "Cohere API to generate embeddings for a given text"
+    },
+    {
+      "key": "google_generative_api_to_generate_embeddings_for_a_given_text",
+      "description": "Google Generative API to generate embeddings for a given text"
+    },
+    {
+      "key": "google_vertexai_api_to_generate_embeddings_for_a_given_text",
+      "description": "Google vertexAI API to generate embeddings for a given text"
+    },
+    {
+      "key": "huggingface_inference_api_to_generate_embeddings_for_a_given_text",
+      "description": "HuggingFace Inference API to generate embeddings for a given text"
+    },
+    {
+      "key": "generate_embeddings_for_a_given_text_using_open_source_model_on_ibm_watsonx",
+      "description": "Generate embeddings for a given text using open source model on IBM Watsonx"
+    },
+    {
+      "key": "jinaai_api_to_generate_embeddings_for_a_given_text",
+      "description": "JinaAI API to generate embeddings for a given text"
+    },
+    {
+      "key": "use_local_embeddings_models_like_llamacpp",
+      "description": "Use local embeddings models like llama.cpp"
+    },
+    {
+      "key": "mistralai_api_to_generate_embeddings_for_a_given_text",
+      "description": "MistralAI API to generate embeddings for a given text"
+    },
+    {
+      "key": "generate_embeddings_for_a_given_text_using_open_source_model_on_ollama",
+      "description": "Generate embeddings for a given text using open source model on Ollama"
+    },
+    {
+      "key": "openai_api_to_generate_embeddings_for_a_given_text",
+      "description": "OpenAI API to generate embeddings for a given text"
+    },
+    {
+      "key": "openai_embedding_specific_for_llamaindex",
+      "description": "OpenAI Embedding specific for LlamaIndex"
+    },
+    {
+      "key": "openai_api_to_generate_embeddings_for_a_given_text",
+      "description": "OpenAI API to generate embeddings for a given text"
+    },
+    {
+      "key": "togetherai_embedding_models_to_generate_embeddings_for_a_given_text",
+      "description": "TogetherAI Embedding models to generate embeddings for a given text"
+    },
+    {
+      "key": "voyage_ai_api_to_generate_embeddings_for_a_given_text",
+      "description": "Voyage AI API to generate embeddings for a given text"
+    },
+    {
+      "key": "answer_question_based_on_retrieved_documents_context_with_built_in_memory_to_remember_conversation",
+      "description": "Answer question based on retrieved documents (context) with built-in memory to remember conversation"
+    },
+    {
+      "key": "simple_engine_to_handle_back_and_forth_conversations",
+      "description": "Simple engine to handle back and forth conversations"
+    },
+    {
+      "key": "simple_query_engine_built_to_answer_question_over_your_data_without_memory",
+      "description": "Simple query engine built to answer question over your data, without memory"
+    },
+    {
+      "key": "breaks_complex_query_into_sub_questions_for_each_relevant_data_source_then_gather_all_the_intermediate_reponses_and_synthesizes_a_final_response",
+      "description": "Breaks complex query into sub questions for each relevant data source, then gather all the intermediate reponses and synthesizes a final response"
+    },
+    {
+      "key": "connect_with_neo4j_graph_database",
+      "description": "Connect with Neo4j graph database"
+    },
+    {
+      "key": "wrapper_around_aws_bedrock_large_language_models",
+      "description": "Wrapper around AWS Bedrock large language models"
+    },
+    {
+      "key": "wrapper_around_azure_openai_large_language_models",
+      "description": "Wrapper around Azure OpenAI large language models"
+    },
+    {
+      "key": "wrapper_around_cohere_large_language_models",
+      "description": "Wrapper around Cohere large language models"
+    },
+    {
+      "key": "wrapper_around_fireworks_api_for_large_language_models",
+      "description": "Wrapper around Fireworks API for large language models"
+    },
+    {
+      "key": "wrapper_around_googlevertexai_large_language_models",
+      "description": "Wrapper around GoogleVertexAI large language models"
+    },
+    {
+      "key": "wrapper_around_huggingface_large_language_models",
+      "description": "Wrapper around HuggingFace large language models"
+    },
+    {
+      "key": "wrapper_around_ibm_watsonxai_foundation_models",
+      "description": "Wrapper around IBM watsonx.ai foundation models"
+    },
+    {
+      "key": "wrapper_around_open_source_large_language_models_on_ollama",
+      "description": "Wrapper around open source large language models on Ollama"
+    },
+    {
+      "key": "wrapper_around_openai_large_language_models",
+      "description": "Wrapper around OpenAI large language models"
+    },
+    {
+      "key": "use_replicate_to_run_open_source_models_on_cloud",
+      "description": "Use Replicate to run open source models on cloud"
+    },
+    {
+      "key": "wrapper_around_togetherai_large_language_models",
+      "description": "Wrapper around TogetherAI large language models"
+    },
+    {
+      "key": "memory_for_agentflow_to_remember_the_state_of_the_conversation",
+      "description": "Memory for agentflow to remember the state of the conversation"
+    },
+    {
+      "key": "memory_for_agentflow_to_remember_the_state_of_the_conversation_using_mysql_database",
+      "description": "Memory for agentflow to remember the state of the conversation using MySQL database"
+    },
+    {
+      "key": "memory_for_agentflow_to_remember_the_state_of_the_conversation_using_postgres_database",
+      "description": "Memory for agentflow to remember the state of the conversation using Postgres database"
+    },
+    {
+      "key": "memory_for_agentflow_to_remember_the_state_of_the_conversation_using_sqlite_database",
+      "description": "Memory for agentflow to remember the state of the conversation using SQLite database"
+    },
+    {
+      "key": "retrieve_chat_messages_stored_in_database",
+      "description": "Retrieve chat messages stored in database"
+    },
+    {
+      "key": "uses_a_window_of_size_k_to_surface_the_last_k_back_and_forth_to_use_as_memory",
+      "description": "Uses a window of size k to surface the last k back-and-forth to use as memory"
+    },
+    {
+      "key": "uses_token_length_to_decide_when_to_summarize_conversations",
+      "description": "Uses token length to decide when to summarize conversations"
+    },
+    {
+      "key": "summarizes_the_conversation_and_stores_the_current_summary_in_memory",
+      "description": "Summarizes the conversation and stores the current summary in memory"
+    },
+    {
+      "key": "stores_the_conversation_in_dynamo_db_table",
+      "description": "Stores the conversation in dynamo db table"
+    },
+    {
+      "key": "stores_and_manages_chat_memory_using_mem0_service",
+      "description": "Stores and manages chat memory using Mem0 service"
+    },
+    {
+      "key": "stores_the_conversation_in_mongodb_atlas",
+      "description": "Stores the conversation in MongoDB Atlas"
+    },
+    {
+      "key": "summarizes_the_conversation_and_stores_the_memory_in_redis_server",
+      "description": "Summarizes the conversation and stores the memory in Redis server"
+    },
+    {
+      "key": "summarizes_the_conversation_and_stores_the_memory_in_upstash_redis_server",
+      "description": "Summarizes the conversation and stores the memory in Upstash Redis server"
+    },
+    {
+      "key": "summarizes_the_conversation_and_stores_the_memory_in_zep_server",
+      "description": "Summarizes the conversation and stores the memory in zep server"
+    },
+    {
+      "key": "summarizes_the_conversation_and_stores_the_memory_in_zep_server",
+      "description": "Summarizes the conversation and stores the memory in zep server"
+    },
+    {
+      "key": "check_whether_content_complies_with_openai_usage_policies",
+      "description": "Check whether content complies with OpenAI usage policies."
+    },
+    {
+      "key": "check_whether_input_consists_of_any_text_from_deny_list_and_prevent_being_sent_to_llm",
+      "description": "Check whether input consists of any text from Deny list, and prevent being sent to LLM"
+    },
+    {
+      "key": "parse_the_output_of_an_llm_call_as_a_comma_separated_list_of_values",
+      "description": "Parse the output of an LLM call as a comma-separated list of values"
+    },
+    {
+      "key": "parse_the_output_of_an_llm_call_as_a_list_of_values",
+      "description": "Parse the output of an LLM call as a list of values."
+    },
+    {
+      "key": "parse_the_output_of_an_llm_call_into_a_given_json_structure",
+      "description": "Parse the output of an LLM call into a given (JSON) structure."
+    },
+    {
+      "key": "parse_the_output_of_an_llm_call_into_a_given_structure_by_providing_a_zod_schema",
+      "description": "Parse the output of an LLM call into a given structure by providing a Zod schema."
+    },
+    {
+      "key": "schema_to_represent_a_chat_prompt",
+      "description": "Schema to represent a chat prompt"
+    },
+    {
+      "key": "prompt_template_you_can_build_with_examples",
+      "description": "Prompt template you can build with examples"
+    },
+    {
+      "key": "fetch_schema_from_langfuse_to_represent_a_prompt_for_an_llm",
+      "description": "Fetch schema from LangFuse to represent a prompt for an LLM"
+    },
+    {
+      "key": "schema_to_represent_a_basic_prompt_for_an_llm",
+      "description": "Schema to represent a basic prompt for an LLM"
+    },
+    {
+      "key": "use_mysql_to_keep_track_of_document_writes_into_the_vector_databases",
+      "description": "Use MySQL to keep track of document writes into the vector databases"
+    },
+    {
+      "key": "use_postgres_to_keep_track_of_document_writes_into_the_vector_databases",
+      "description": "Use Postgres to keep track of document writes into the vector databases"
+    },
+    {
+      "key": "use_sqlite_to_keep_track_of_document_writes_into_the_vector_databases",
+      "description": "Use SQLite to keep track of document writes into the vector databases"
+    },
+    {
+      "key": "compactrefine_is_a_slight_variation_of_refine_that_first_compacts_the_text_chunks_into_the_smallest_possible_number_of_chunks",
+      "description": "CompactRefine is a slight variation of Refine that first compacts the text chunks into the smallest possible number of chunks."
+    },
+    {
+      "key": "create_and_refine_an_answer_by_sequentially_going_through_each_retrieved_text_chunk_this_makes_a_separate_llm_call_per_node_good_for_more_detailed_answers",
+      "description": "Create and refine an answer by sequentially going through each retrieved text chunk. This makes a separate LLM call per Node. Good for more detailed answers."
+    },
+    {
+      "key": "apply_a_query_to_a_collection_of_text_chunks_gathering_the_responses_in_an_array_and_return_a_combined_string_of_all_responses_useful_for_individual_queries_on_each_text_chunk",
+      "description": "Apply a query to a collection of text chunks, gathering the responses in an array, and return a combined string of all responses. Useful for individual queries on each text chunk."
+    },
+    {
+      "key": "given_a_set_of_text_chunks_and_the_query_recursively_construct_a_tree_and_return_the_root_node_as_the_response_good_for_summarization_purposes",
+      "description": "Given a set of text chunks and the query, recursively construct a tree and return the root node as the response. Good for summarization purposes."
+    },
+    {
+      "key": "connect_to_aws_bedrock_knowledge_base_api_and_retrieve_relevant_chunks",
+      "description": "Connect to AWS Bedrock Knowledge Base API and retrieve relevant chunks"
+    },
+    {
+      "key": "cohere_rerank_indexes_the_documents_from_most_to_least_semantically_relevant_to_the_query",
+      "description": "Cohere Rerank indexes the documents from most to least semantically relevant to the query."
+    },
+    {
+      "key": "return_results_based_on_predefined_format",
+      "description": "Return results based on predefined format"
+    },
+    {
+      "key": "a_document_compressor_that_uses_embeddings_to_drop_documents_unrelated_to_the_query",
+      "description": "A document compressor that uses embeddings to drop documents unrelated to the query"
+    },
+    {
+      "key": "extract_keywordsmetadata_from_the_query_and_use_it_to_filter_documents",
+      "description": "Extract keywords/metadata from the query and use it to filter documents"
+    },
+    {
+      "key": "use_hyde_retriever_to_retrieve_from_a_vector_store",
+      "description": "Use HyDE retriever to retrieve from a vector store"
+    },
+    {
+      "key": "jina_ai_rerank_indexes_the_documents_from_most_to_least_semantically_relevant_to_the_query",
+      "description": "Jina AI Rerank indexes the documents from most to least semantically relevant to the query."
+    },
+    {
+      "key": "iterate_over_the_initially_returned_documents_and_extract_from_each_only_the_content_that_is_relevant_to_the_query",
+      "description": "Iterate over the initially returned documents and extract, from each, only the content that is relevant to the query"
+    },
+    {
+      "key": "generate_multiple_queries_from_different_perspectives_for_a_given_user_input_query",
+      "description": "Generate multiple queries from different perspectives for a given user input query"
+    },
+    {
+      "key": "store_prompt_template_with_name_description_to_be_later_queried_by_multipromptchain",
+      "description": "Store prompt template with name & description to be later queried by MultiPromptChain"
+    },
+    {
+      "key": "reciprocal_rank_fusion_to_re_rank_search_results_by_multiple_query_generation",
+      "description": "Reciprocal Rank Fusion to re-rank search results by multiple query generation."
+    },
+    {
+      "key": "return_results_based_on_the_minimum_similarity_percentage",
+      "description": "Return results based on the minimum similarity percentage"
+    },
+    {
+      "key": "store_vector_store_as_retriever_to_be_later_queried_by_multiretrievalqachain",
+      "description": "Store vector store as retriever to be later queried by MultiRetrievalQAChain"
+    },
+    {
+      "key": "voyage_ai_rerank_indexes_the_documents_from_most_to_least_semantically_relevant_to_the_query",
+      "description": "Voyage AI Rerank indexes the documents from most to least semantically relevant to the query."
+    },
+    {
+      "key": "agent_that_can_execute_tools",
+      "description": "Agent that can execute tools"
+    },
+    {
+      "key": "conditional_function_to_determine_which_route_to_take_next",
+      "description": "Conditional function to determine which route to take next"
+    },
+    {
+      "key": "uses_an_agent_to_determine_which_route_to_take_next",
+      "description": "Uses an agent to determine which route to take next"
+    },
+    {
+      "key": "execute_custom_javascript_function",
+      "description": "Execute custom javascript function"
+    },
+    {
+      "key": "end_conversation",
+      "description": "End conversation"
+    },
+    {
+      "key": "execute_chatflowagentflow_and_return_final_response",
+      "description": "Execute chatflow/agentflow and return final response"
+    },
+    {
+      "key": "run_chat_model_and_return_the_output",
+      "description": "Run Chat Model and return the output"
+    },
+    {
+      "key": "loop_back_to_the_specific_sequential_node",
+      "description": "Loop back to the specific sequential node"
+    },
+    {
+      "key": "starting_point_of_the_conversation",
+      "description": "Starting point of the conversation"
+    },
+    {
+      "key": "a_centralized_state_object_updated_by_nodes_in_the_graph_passing_from_one_node_to_another",
+      "description": "A centralized state object, updated by nodes in the graph, passing from one node to another"
+    },
+    {
+      "key": "execute_tool_and_return_tool",
+      "description": "Execute tool and return tool"
+    },
+    {
+      "key": "splits_only_on_one_type_of_character_defaults_to_",
+      "description": "splits only on one type of character (defaults to "
+    },
+    {
+      "key": "split_documents_based_on_language_specific_syntax",
+      "description": "Split documents based on language-specific syntax"
+    },
+    {
+      "key": "converts_html_to_markdown_and_then_split_your_content_into_documents_based_on_the_markdown_headers",
+      "description": "Converts Html to Markdown and then split your content into documents based on the Markdown headers"
+    },
+    {
+      "key": "split_your_content_into_documents_based_on_the_markdown_headers",
+      "description": "Split your content into documents based on the Markdown headers"
+    },
+    {
+      "key": "split_documents_recursively_by_different_characters___starting_with_",
+      "description": "Split documents recursively by different characters - starting with "
+    },
+    {
+      "key": "splits_a_raw_text_string_by_first_converting_the_text_into_bpe_tokens_then_split_these_tokens_into_chunks_and_convert_the_tokens_within_a_single_chunk_back_into_text",
+      "description": "Splits a raw text string by first converting the text into BPE tokens, then split these tokens into chunks and convert the tokens within a single chunk back into text."
+    },
+    {
+      "key": "wrapper_around_bravesearch_api___a_real_time_api_to_access_brave_search_results",
+      "description": "Wrapper around BraveSearch API - a real-time API to access Brave search results"
+    },
+    {
+      "key": "perform_calculations_on_response",
+      "description": "Perform calculations on response"
+    },
+    {
+      "key": "use_a_chain_as_allowed_tool_for_agent",
+      "description": "Use a chain as allowed tool for agent"
+    },
+    {
+      "key": "use_as_a_tool_to_execute_another_chatflow",
+      "description": "Use as a tool to execute another chatflow"
+    },
+    {
+      "key": "execute_code_in_a_sandbox_environment",
+      "description": "Execute code in a sandbox environment"
+    },
+    {
+      "key": "toolset_with_over_250_apps_for_building_ai_powered_applications",
+      "description": "Toolset with over 250+ Apps for building AI-powered applications"
+    },
+    {
+      "key": "get_todays_day_date_and_time",
+      "description": "Get todays day, date and time."
+    },
+    {
+      "key": "use_custom_tool_you",
+      "description": "Use custom tool you"
+    },
+    {
+      "key": "wrapper_around_exa_search_api___search_engine_fully_designed_for_use_by_llms",
+      "description": "Wrapper around Exa Search API - search engine fully designed for use by LLMs"
+    },
+    {
+      "key": "wrapper_around_google_custom_search_api___a_real_time_api_to_access_google_search_results",
+      "description": "Wrapper around Google Custom Search API - a real-time API to access Google search results"
+    },
+    {
+      "key": "mcp_server_that_integrates_the_brave_search_api___a_real_time_api_to_access_web_search_capabilities",
+      "description": "MCP server that integrates the Brave Search API - a real-time API to access web search capabilities"
+    },
+    {
+      "key": "custom_mcp_config",
+      "description": "Custom MCP Config"
+    },
+    {
+      "key": "mcp_server_for_the_github_api",
+      "description": "MCP Server for the GitHub API"
+    },
+    {
+      "key": "mcp_server_that_provides_read_only_access_to_postgresql_databases",
+      "description": "MCP server that provides read-only access to PostgreSQL databases"
+    },
+    {
+      "key": "mcp_server_that_provides_a_tool_for_dynamic_and_reflective_problem_solving_through_a_structured_thinking_process",
+      "description": "MCP server that provides a tool for dynamic and reflective problem-solving through a structured thinking process"
+    },
+    {
+      "key": "mcp_server_for_the_slack_api",
+      "description": "MCP Server for the Slack API"
+    },
+    {
+      "key": "load_openapi_specification_and_converts_each_api_endpoint_to_a_tool",
+      "description": "Load OpenAPI specification, and converts each API endpoint to a tool"
+    },
+    {
+      "key": "tool_used_to_invoke_query_engine",
+      "description": "Tool used to invoke query engine"
+    },
+    {
+      "key": "read_file_from_disk",
+      "description": "Read file from disk"
+    },
+    {
+      "key": "execute_http_get_requests",
+      "description": "Execute HTTP GET requests"
+    },
+    {
+      "key": "execute_http_post_requests",
+      "description": "Execute HTTP POST requests"
+    },
+    {
+      "key": "use_a_retriever_as_allowed_tool_for_agent",
+      "description": "Use a retriever as allowed tool for agent"
+    },
+    {
+      "key": "real_time_api_for_accessing_google_search_data",
+      "description": "Real-time API for accessing Google Search data"
+    },
+    {
+      "key": "wrapper_around_searxng___a_free_internet_metasearch_engine",
+      "description": "Wrapper around SearXNG - a free internet metasearch engine"
+    },
+    {
+      "key": "wrapper_around_serpapi___a_real_time_api_to_access_google_search_results",
+      "description": "Wrapper around SerpAPI - a real-time API to access Google search results"
+    },
+    {
+      "key": "wrapper_around_serperdev___google_search_api",
+      "description": "Wrapper around Serper.dev - Google Search API"
+    },
+    {
+      "key": "use_stripe_agent_function_calling_for_financial_transactions",
+      "description": "Use Stripe Agent function calling for financial transactions"
+    },
+    {
+      "key": "wrapper_around_tavilyapi___a_real_time_api_to_access_google_search_results",
+      "description": "Wrapper around TavilyAPI - a real-time API to access Google search results"
+    },
+    {
+      "key": "gives_agent_the_ability_to_visit_a_website_and_extract_information",
+      "description": "Gives agent the ability to visit a website and extract information"
+    },
+    {
+      "key": "wrapper_around_wolframalpha___a_powerful_computational_knowledge_engine",
+      "description": "Wrapper around WolframAlpha - a powerful computational knowledge engine"
+    },
+    {
+      "key": "write_file_to_disk",
+      "description": "Write file to disk"
+    },
+    {
+      "key": "execute_custom_javascript_function",
+      "description": "Execute custom javascript function"
+    },
+    {
+      "key": "get_variable_that_was_saved_using_set_variable_node",
+      "description": "Get variable that was saved using Set Variable node"
+    },
+    {
+      "key": "split_flows_based_on_if_else_javascript_functions",
+      "description": "Split flows based on If Else javascript functions"
+    },
+    {
+      "key": "set_variable_which_can_be_retrieved_at_a_later_stage_variable_is_only_available_during_runtime",
+      "description": "Set variable which can be retrieved at a later stage. Variable is only available during runtime."
+    },
+    {
+      "key": "add_a_sticky_note",
+      "description": "Add a sticky note"
+    },
+    {
+      "key": "upsert_embedded_data_and_perform_similarity_or_mmr_search_upon_query_using_datastax_astra_db_a_serverless_vector_database_thats_perfect_for_managing_mission_critical_ai_workloads",
+      "description": "Upsert embedded data and perform similarity or mmr search upon query using DataStax Astra DB, a serverless vector database that’s perfect for managing mission-critical AI workloads"
+    },
+    {
+      "key": "upsert_embedded_data_and_perform_similarity_search_upon_query_using_chroma_an_open_source_embedding_database",
+      "description": "Upsert embedded data and perform similarity search upon query using Chroma, an open-source embedding database"
+    },
+    {
+      "key": "upsert_embedded_data_and_load_existing_index_using_couchbase_a_award_winning_distributed_nosql_database",
+      "description": "Upsert embedded data and load existing index using Couchbase, a award-winning distributed NoSQL database"
+    },
+    {
+      "key": "search_and_retrieve_documents_from_document_store",
+      "description": "Search and retrieve documents from Document Store"
+    },
+    {
+      "key": "upsert_embedded_data_and_perform_similarity_search_upon_query_using_elasticsearch_a_distributed_search_and_analytics_engine",
+      "description": "Upsert embedded data and perform similarity search upon query using Elasticsearch, a distributed search and analytics engine"
+    },
+    {
+      "key": "upsert_embedded_data_and_perform_similarity_search_upon_query_using_faiss_library_from_meta",
+      "description": "Upsert embedded data and perform similarity search upon query using Faiss library from Meta"
+    },
+    {
+      "key": "in_memory_vectorstore_that_stores_embeddings_and_does_an_exact_linear_search_for_the_most_similar_embeddings",
+      "description": "In-memory vectorstore that stores embeddings and does an exact, linear search for the most similar embeddings."
+    },
+    {
+      "key": "upsert_embedded_data_and_perform_similarity_search_upon_query_using_meilisearch_hybrid_search_functionality",
+      "description": "Upsert embedded data and perform similarity search upon query using Meilisearch hybrid search functionality"
+    },
+    {
+      "key": "upsert_embedded_data_and_perform_similarity_search_upon_query_using_milvus_world",
+      "description": "Upsert embedded data and perform similarity search upon query using Milvus, world"
+    },
+    {
+      "key": "upsert_embedded_data_and_perform_similarity_or_mmr_search_upon_query_using_mongodb_atlas_a_managed_cloud_mongodb_database",
+      "description": "Upsert embedded data and perform similarity or mmr search upon query using MongoDB Atlas, a managed cloud mongodb database"
+    },
+    {
+      "key": "upsert_embedded_data_and_perform_similarity_search_upon_query_using_opensearch_an_open_source_all_in_one_vector_database",
+      "description": "Upsert embedded data and perform similarity search upon query using OpenSearch, an open-source, all-in-one vector database"
+    },
+    {
+      "key": "upsert_embedded_data_and_perform_similarity_or_mmr_search_using_pinecone_a_leading_fully_managed_hosted_vector_database",
+      "description": "Upsert embedded data and perform similarity or mmr search using Pinecone, a leading fully managed hosted vector database"
+    },
+    {
+      "key": "upsert_embedded_data_and_perform_similarity_search_upon_query_using_pinecone_a_leading_fully_managed_hosted_vector_database",
+      "description": "Upsert embedded data and perform similarity search upon query using Pinecone, a leading fully managed hosted vector database"
+    },
+    {
+      "key": "upsert_embedded_data_and_perform_similarity_search_upon_query_using_pgvector_on_postgres",
+      "description": "Upsert embedded data and perform similarity search upon query using pgvector on Postgres"
+    },
+    {
+      "key": "upsert_embedded_data_and_perform_similarity_search_upon_query_using_qdrant_a_scalable_open_source_vector_database_written_in_rust",
+      "description": "Upsert embedded data and perform similarity search upon query using Qdrant, a scalable open source vector database written in Rust"
+    },
+    {
+      "key": "upsert_embedded_data_and_perform_similarity_search_upon_query_using_redis_an_open_source_in_memory_data_structure_store",
+      "description": "Upsert embedded data and perform similarity search upon query using Redis, an open source, in-memory data structure store"
+    },
+    {
+      "key": "upsert_embedded_data_to_local_path_and_perform_similarity_search",
+      "description": "Upsert embedded data to local path and perform similarity search"
+    },
+    {
+      "key": "upsert_embedded_data_and_perform_similarity_search_upon_query_using_singlestore_a_fast_and_distributed_cloud_relational_database",
+      "description": "Upsert embedded data and perform similarity search upon query using SingleStore, a fast and distributed cloud relational database"
+    },
+    {
+      "key": "upsert_embedded_data_and_perform_similarity_or_mmr_search_upon_query_using_supabase_via_pgvector_extension",
+      "description": "Upsert embedded data and perform similarity or mmr search upon query using Supabase via pgvector extension"
+    },
+    {
+      "key": "upsert_data_as_embedding_or_string_and_perform_similarity_search_with_upstash_the_leading_serverless_data_platform",
+      "description": "Upsert data as embedding or string and perform similarity search with Upstash, the leading serverless data platform"
+    },
+    {
+      "key": "upsert_embedded_data_and_perform_similarity_search_upon_query_using_vectara_a_llm_powered_search_as_a_service",
+      "description": "Upsert embedded data and perform similarity search upon query using Vectara, a LLM-powered search-as-a-service"
+    },
+    {
+      "key": "upsert_embedded_data_and_perform_similarity_or_mmr_search_using_weaviate_a_scalable_open_source_vector_database",
+      "description": "Upsert embedded data and perform similarity or mmr search using Weaviate, a scalable open-source vector database"
+    },
+    {
+      "key": "upsert_embedded_data_and_perform_similarity_or_mmr_search_upon_query_using_zep_a_fast_and_scalable_building_block_for_llm_apps",
+      "description": "Upsert embedded data and perform similarity or mmr search upon query using Zep, a fast and scalable building block for LLM apps"
+    },
+    {
+      "key": "upsert_embedded_data_and_perform_similarity_or_mmr_search_upon_query_using_zep_a_fast_and_scalable_building_block_for_llm_apps",
+      "description": "Upsert embedded data and perform similarity or mmr search upon query using Zep, a fast and scalable building block for LLM apps"
+    }
+  ],
+  "mismatchedKeys": []
+}
