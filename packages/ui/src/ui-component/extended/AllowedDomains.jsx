@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux'
 import { useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
 import { enqueueSnackbar as enqueueSnackbarAction, closeSnackbar as closeSnackbarAction, SET_CHATFLOW } from '@/store/actions'
 
@@ -19,6 +20,7 @@ import chatflowsApi from '@/api/chatflows'
 
 const AllowedDomains = ({ dialogProps }) => {
     const dispatch = useDispatch()
+    const { t } = useTranslation()
 
     useNotifier()
 
@@ -60,7 +62,7 @@ const AllowedDomains = ({ dialogProps }) => {
             })
             if (saveResp.data) {
                 enqueueSnackbar({
-                    message: 'Allowed Origins Saved',
+                    message: t('allowedDomains.configurationSaved'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -75,7 +77,7 @@ const AllowedDomains = ({ dialogProps }) => {
             }
         } catch (error) {
             enqueueSnackbar({
-                message: `Failed to save Allowed Origins: ${
+                message: `${t('allowedDomains.failedToSaveConfiguration')}: ${
                     typeof error.response.data === 'object' ? error.response.data.message : error.response.data
                 }`,
                 options: {
@@ -120,15 +122,15 @@ const AllowedDomains = ({ dialogProps }) => {
     return (
         <Stack direction='column' spacing={2} sx={{ alignItems: 'start' }}>
             <Typography variant='h3'>
-                Allowed Domains
+                {t('allowedDomains.title')}
                 <TooltipWithParser
                     style={{ mb: 1, mt: 2, marginLeft: 10 }}
-                    title={'Your chatbot will only work when used from the following domains.'}
+                    title={t('allowedDomains.tooltip')}
                 />
             </Typography>
             <Stack direction='column' spacing={2} sx={{ width: '100%' }}>
                 <Stack direction='column' spacing={2}>
-                    <Typography>Domains</Typography>
+                    <Typography>{t('allowedDomains.domains')}</Typography>
                     {inputFields.map((origin, index) => {
                         return (
                             <div key={index} style={{ display: 'flex', width: '100%' }}>
@@ -141,7 +143,7 @@ const AllowedDomains = ({ dialogProps }) => {
                                         size='small'
                                         value={origin}
                                         name='origin'
-                                        placeholder='https://example.com'
+                                        placeholder={t('allowedDomains.exampleDomain')}
                                         endAdornment={
                                             <InputAdornment position='end' sx={{ padding: '2px' }}>
                                                 {inputFields.length > 1 && (
@@ -173,10 +175,10 @@ const AllowedDomains = ({ dialogProps }) => {
                 </Stack>
                 <Stack direction='column' spacing={1}>
                     <Typography>
-                        Error Message
+                        {t('allowedDomains.errorMessage')}
                         <TooltipWithParser
                             style={{ mb: 1, mt: 2, marginLeft: 10 }}
-                            title={'Custom error message that will be shown when for unauthorized domain'}
+                            title={t('allowedDomains.errorMessageTooltip')}
                         />
                     </Typography>
                     <OutlinedInput
@@ -184,7 +186,7 @@ const AllowedDomains = ({ dialogProps }) => {
                         type='text'
                         size='small'
                         fullWidth
-                        placeholder='Unauthorized domain!'
+                        placeholder={t('allowedDomains.unauthorizedDomainMessage')}
                         value={errorMessage}
                         onChange={(e) => {
                             setErrorMessage(e.target.value)

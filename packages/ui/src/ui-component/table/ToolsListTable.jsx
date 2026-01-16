@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import { useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 import { styled } from '@mui/material/styles'
 import { tableCellClasses } from '@mui/material/TableCell'
 import {
@@ -38,6 +39,7 @@ const StyledTableRow = styled(TableRow)(() => ({
 export const ToolsTable = ({ data, isLoading, onSelect }) => {
     const theme = useTheme()
     const customization = useSelector((state) => state.customization)
+    const { t } = useTranslation()
 
     return (
         <>
@@ -51,9 +53,9 @@ export const ToolsTable = ({ data, isLoading, onSelect }) => {
                     >
                         <TableRow>
                             <StyledTableCell component='th' scope='row' key='0'>
-                                Name
+                                {t('tools.name')}
                             </StyledTableCell>
-                            <StyledTableCell key='1'>Description</StyledTableCell>
+                            <StyledTableCell key='1'>{t('tools.description')}</StyledTableCell>
                             <StyledTableCell component='th' scope='row' key='3'>
                                 &nbsp;
                             </StyledTableCell>

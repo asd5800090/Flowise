@@ -12,9 +12,11 @@ import { TableViewOnly } from '@/ui-component/table/Table'
 import documentstoreApi from '@/api/documentstore'
 import useApi from '@/hooks/useApi'
 import { useTheme } from '@mui/material/styles'
+import { useTranslation } from 'react-i18next'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
 const DocStoreAPIDialog = ({ show, dialogProps, onCancel }) => {
+    const { t } = useTranslation()
     const [nodeConfig, setNodeConfig] = useState({})
     const [values, setValues] = useState('')
     const theme = useTheme()
@@ -23,6 +25,11 @@ const DocStoreAPIDialog = ({ show, dialogProps, onCancel }) => {
     const getConfigApi = useApi(documentstoreApi.getDocumentStoreConfig)
 
     const formDataRequest = () => {
+        const replaceExistingText = t('codeExample.replaceExisting');
+        const createNewDocStoreText = t('codeExample.createNewDocStore');
+        const addAdditionalMetadataText = t('codeExample.addAdditionalMetadata');
+        const overrideExistingConfigurationText = t('codeExample.overrideExistingConfiguration');
+        
         return `With the Upsert API, you can choose an existing document and reuse the same configuration for upserting.
 
 \`\`\`python
@@ -39,10 +46,10 @@ form_data = {
 
 body_data = {
     "docId": "${dialogProps.loaderId}",
-    "metadata": {}, # Add additional metadata to the document chunks
-    "replaceExisting": True, # Replace existing document with the new upserted chunks
-    "createNewDocStore": False, # Create a new document store
-    "splitter": json.dumps({"config":{"chunkSize":20000}}) # Override existing configuration
+    "metadata": {}, # ${addAdditionalMetadataText}
+    "replaceExisting": True, # ${replaceExistingText}
+    "createNewDocStore": False, # ${createNewDocStoreText}
+    "splitter": json.dumps({"config":{"chunkSize":20000}}) # ${overrideExistingConfigurationText}
     # "loader": "",
     # "vectorStore": "",
     # "embedding": "",
@@ -69,13 +76,13 @@ let formData = new FormData();
 formData.append("files", input.files[0]);
 formData.append("docId", "${dialogProps.loaderId}");
 formData.append("splitter", JSON.stringify({"config":{"chunkSize":20000}}));
-// Add additional metadata to the document chunks
+// ${addAdditionalMetadataText}
 formData.append("metadata", "{}");
-// Replace existing document with the new upserted chunks
+// ${replaceExistingText}
 formData.append("replaceExisting", "true");
-// Create a new document store
+// ${createNewDocStoreText}
 formData.append("createNewDocStore", "false");
-// Override existing configuration
+// ${overrideExistingConfigurationText}
 // formData.append("loader", "");
 // formData.append("embedding", "");
 // formData.append("vectorStore", "");
@@ -111,7 +118,7 @@ curl -X POST http://localhost:3000/api/v1/document-store/upsert/${dialogProps.st
   -F "metadata={}" \\
   -F "replaceExisting=true" \\
   -F "createNewDocStore=false" \\
-  # Override existing configuration:
+  # ${overrideExistingConfigurationText}:
   # -F "loader=" \\
   # -F "embedding=" \\
   # -F "vectorStore=" \\
@@ -122,6 +129,12 @@ curl -X POST http://localhost:3000/api/v1/document-store/upsert/${dialogProps.st
     }
 
     const jsonDataRequest = () => {
+        const replaceExistingText = t('codeExample.replaceExisting');
+        const createNewDocStoreText = t('codeExample.createNewDocStore');
+        const addAdditionalMetadataText = t('codeExample.addAdditionalMetadata');
+        const overrideExistingConfigurationText = t('codeExample.overrideExistingConfiguration');
+        const thisIsNewTextText = t('codeExample.thisIsNewText');
+        
         return `With the Upsert API, you can choose an existing document and reuse the same configuration for upserting.
  
 \`\`\`python
@@ -140,13 +153,13 @@ def query(payload):
 
 output = query({
     "docId": "${dialogProps.loaderId}",
-    "metadata": "{}", # Add additional metadata to the document chunks
-    "replaceExisting": True, # Replace existing document with the new upserted chunks
-    "createNewDocStore": False, # Create a new document store
-    # Override existing configuration
+    "metadata": "{}", # ${addAdditionalMetadataText}
+    "replaceExisting": True, # ${replaceExistingText}
+    "createNewDocStore": False, # ${createNewDocStoreText}
+    # ${overrideExistingConfigurationText}
     "loader": {
         "config": {
-            "text": "This is a new text"
+            "text": "${thisIsNewTextText}"
         }
     },
     "splitter": {
@@ -181,13 +194,13 @@ async function query(data) {
 
 query({
     "docId": "${dialogProps.loaderId},
-    "metadata": "{}", // Add additional metadata to the document chunks
-    "replaceExisting": true, // Replace existing document with the new upserted chunks
-    "createNewDocStore": false, // Create a new document store
-    // Override existing configuration
+    "metadata": "{}", // ${addAdditionalMetadataText}
+    "replaceExisting": true, // ${replaceExistingText}
+    "createNewDocStore": false, // ${createNewDocStoreText}
+    // ${overrideExistingConfigurationText}
     "loader": {
         "config": {
-            "text": "This is a new text"
+            "text": "${thisIsNewTextText}"
         }
     },
     "splitter": {
@@ -215,7 +228,7 @@ curl -X POST http://localhost:3000/api/v1/document-store/upsert/${dialogProps.st
         "createNewDocStore": false,
         "loader": {
             "config": {
-                "text": "This is a new text"
+                "text": "${thisIsNewTextText}"
             }
         },
         "splitter": {
@@ -223,7 +236,7 @@ curl -X POST http://localhost:3000/api/v1/document-store/upsert/${dialogProps.st
                 "chunkSize": 20000
             }
         }
-        // Override existing configuration
+        // ${overrideExistingConfigurationText}
         // "embedding": {},
         // "vectorStore": {},
         // "recordManager": {}

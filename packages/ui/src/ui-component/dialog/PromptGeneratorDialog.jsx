@@ -179,7 +179,7 @@ const AssistantPromptGenerator = ({ show, dialogProps, onCancel, onConfirm }) =>
                                 setGeneratedInstruction('')
                             }}
                         >
-                            Back
+                            {t('button.back')}
                         </Button>
                     )}
                     {generatedInstruction && (

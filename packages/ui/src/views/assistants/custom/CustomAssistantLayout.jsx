@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import { Box, Stack, Skeleton } from '@mui/material'
@@ -27,6 +28,7 @@ import { IconPlus } from '@tabler/icons-react'
 
 const CustomAssistantLayout = () => {
     const navigate = useNavigate()
+    const { t } = useTranslation()
 
     const getAllAssistantsApi = useApi(assistantsApi.getAllAssistants)
 
@@ -42,10 +44,10 @@ const CustomAssistantLayout = () => {
 
     const addNew = () => {
         const dialogProp = {
-            title: 'Add New Custom Assistant',
+            title: t('assistants.addNewCustomAssistant'),
             type: 'ADD',
-            cancelButtonName: 'Cancel',
-            confirmButtonName: 'Add'
+            cancelButtonName: t('button.cancel'),
+            confirmButtonName: t('button.add')
         }
         setDialogProps(dialogProp)
         setShowDialog(true)
@@ -92,22 +94,22 @@ const CustomAssistantLayout = () => {
                     <ErrorBoundary error={error} />
                 ) : (
                     <Stack flexDirection='column' sx={{ gap: 3 }}>
-                        <ViewHeader
-                            isBackButton={true}
-                            onSearchChange={onSearchChange}
-                            search={true}
-                            searchPlaceholder='Search Assistants'
-                            title='Custom Assistant'
-                            onBack={() => navigate(-1)}
+        <ViewHeader
+            isBackButton={true}
+            onSearchChange={onSearchChange}
+            search={true}
+            searchPlaceholder={t('assistants.searchPlaceholder')}
+            title={t('assistants.customAssistant')}
+            onBack={() => navigate(-1)}
+        >
+                        <StyledButton
+                            variant='contained'
+                            sx={{ borderRadius: 2, height: 40 }}
+                            onClick={addNew}
+                            startIcon={<IconPlus />}
                         >
-                            <StyledButton
-                                variant='contained'
-                                sx={{ borderRadius: 2, height: 40 }}
-                                onClick={addNew}
-                                startIcon={<IconPlus />}
-                            >
-                                Add
-                            </StyledButton>
+                            {t('button.add')}
+                        </StyledButton>
                         </ViewHeader>
                         {isLoading ? (
                             <Box display='grid' gridTemplateColumns='repeat(3, 1fr)' gap={gridSpacing}>
@@ -140,7 +142,7 @@ const CustomAssistantLayout = () => {
                                         alt='AssistantEmptySVG'
                                     />
                                 </Box>
-                                <div>No Custom Assistants Added Yet</div>
+                                <div>{t('assistants.noCustomAssistants')}</div>
                             </Stack>
                         )}
                     </Stack>

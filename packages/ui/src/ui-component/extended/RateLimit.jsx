@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar as enqueueSnackbarAction, closeSnackbar as closeSnackbarAction, SET_CHATFLOW } from '@/store/actions'
 import PropTypes from 'prop-types'
 
@@ -21,6 +22,7 @@ import useNotifier from '@/utils/useNotifier'
 
 const RateLimit = () => {
     const dispatch = useDispatch()
+    const { t } = useTranslation()
     const chatflow = useSelector((state) => state.canvas.chatflow)
     const chatflowid = chatflow.id
     const apiConfig = chatflow.apiConfig ? JSON.parse(chatflow.apiConfig) : {}
@@ -44,7 +46,7 @@ const RateLimit = () => {
             const rateLimitValuesBoolean = [!limitMax, !limitDuration, !limitMsg]
             const rateLimitFilledValues = rateLimitValuesBoolean.filter((value) => value === false)
             if (rateLimitFilledValues.length >= 1 && rateLimitFilledValues.length <= 2) {
-                throw new Error('Need to fill all rate limit input fields')
+                throw new Error(t('rateLimit.needToFillAllFields'))
             } else if (rateLimitFilledValues.length === 3) {
                 obj.rateLimit = {
                     ...obj.rateLimit,
@@ -78,7 +80,7 @@ const RateLimit = () => {
             })
             if (saveResp.data) {
                 enqueueSnackbar({
-                    message: 'Rate Limit Configuration Saved',
+                    message: t('rateLimit.configurationSaved'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -93,7 +95,7 @@ const RateLimit = () => {
             }
         } catch (error) {
             enqueueSnackbar({
-                message: `Failed to save Rate Limit Configuration: ${
+                message: `${t('rateLimit.failedToSaveConfiguration')}: ${
                     typeof error.response.data === 'object' ? error.response.data.message : error.response.data
                 }`,
                 options: {
@@ -147,16 +149,14 @@ const RateLimit = () => {
     return (
         <Stack direction='column' spacing={2} sx={{ alignItems: 'start' }}>
             <Typography variant='h3'>
-                Rate Limit{' '}
+                {t('rateLimit.title')}{' '}
                 <TooltipWithParser
                     style={{ marginLeft: 10 }}
-                    title={
-                        'Visit <a target="_blank" href="https://docs.flowiseai.com/configuration/rate-limit">Rate Limit Setup Guide</a> to set up Rate Limit correctly in your hosting environment.'
-                    }
+                    title={t('rateLimit.tooltip')}
                 />
             </Typography>
             <Stack direction='column' spacing={2} sx={{ width: '100%' }}>
-                <SwitchInput label='Enable Rate Limit' onChange={handleChange} value={rateLimitStatus} />
+                <SwitchInput label={t('rateLimit.enableRateLimit')} onChange={handleChange} value={rateLimitStatus} />
                 {rateLimitStatus && (
                     <Stack direction='column' spacing={2} sx={{ width: '100%' }}>
                         {textField(limitMax, 'limitMax', 'Message Limit per Duration', 'number', '5')}

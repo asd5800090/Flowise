@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import { Box, Stack, Button, Skeleton } from '@mui/material'
@@ -28,6 +29,7 @@ import { gridSpacing } from '@/store/constant'
 
 const OpenAIAssistantLayout = () => {
     const navigate = useNavigate()
+    const { t } = useTranslation()
 
     const getAllAssistantsApi = useApi(assistantsApi.getAllAssistants)
 
@@ -40,7 +42,7 @@ const OpenAIAssistantLayout = () => {
 
     const loadExisting = () => {
         const dialogProp = {
-            title: 'Load Existing Assistant'
+            title: t('assistants.loadExistingAssistant')
         }
         setLoadDialogProps(dialogProp)
         setShowLoadDialog(true)
@@ -114,30 +116,30 @@ const OpenAIAssistantLayout = () => {
                     <ErrorBoundary error={error} />
                 ) : (
                     <Stack flexDirection='column' sx={{ gap: 3 }}>
-                        <ViewHeader
-                            isBackButton={true}
-                            onSearchChange={onSearchChange}
-                            search={true}
-                            searchPlaceholder='Search Assistants'
-                            title='OpenAI Assistant'
-                            onBack={() => navigate(-1)}
-                        >
-                            <Button
-                                variant='outlined'
-                                onClick={loadExisting}
-                                startIcon={<IconFileUpload />}
-                                sx={{ borderRadius: 2, height: 40 }}
-                            >
-                                Load
-                            </Button>
-                            <StyledButton
-                                variant='contained'
-                                sx={{ borderRadius: 2, height: 40 }}
-                                onClick={addNew}
-                                startIcon={<IconPlus />}
-                            >
-                                Add
-                            </StyledButton>
+        <ViewHeader
+            isBackButton={true}
+            onSearchChange={onSearchChange}
+            search={true}
+            searchPlaceholder={t('assistants.searchPlaceholder')}
+            title={t('assistants.openAIAssistant')}
+            onBack={() => navigate(-1)}
+        >
+            <Button
+                variant='outlined'
+                onClick={loadExisting}
+                startIcon={<IconFileUpload />}
+                sx={{ borderRadius: 2, height: 40 }}
+            >
+                {t('assistants.load')}
+            </Button>
+            <StyledButton
+                variant='contained'
+                sx={{ borderRadius: 2, height: 40 }}
+                onClick={addNew}
+                startIcon={<IconPlus />}
+            >
+                {t('button.add')}
+            </StyledButton>
                         </ViewHeader>
                         {isLoading ? (
                             <Box display='grid' gridTemplateColumns='repeat(3, 1fr)' gap={gridSpacing}>
@@ -170,7 +172,7 @@ const OpenAIAssistantLayout = () => {
                                         alt='AssistantEmptySVG'
                                     />
                                 </Box>
-                                <div>No OpenAI Assistants Added Yet</div>
+                                <div>{t('assistants.noOpenAIAssistants')}</div>
                             </Stack>
                         )}
                     </Stack>

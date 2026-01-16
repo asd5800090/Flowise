@@ -58,8 +58,18 @@
     },
     "pnpm": {
         "onlyBuiltDependencies": [
+            "bufferutil",
+            "canvas",
+            "couchbase",
+            "cpu-features",
+            "cypress",
+            "esbuild",
             "faiss-node",
-            "sqlite3"
+            "protobufjs",
+            "puppeteer",
+            "sharp",
+            "sqlite3",
+            "utf-8-validate"
         ],
         "overrides": {
             "axios": "1.7.9",
@@ -76,7 +86,17 @@
             "set-value": "4.1.0",
             "unset-value": "2.0.1",
             "webpack-dev-middleware": "7.4.2"
-        }
+        },
+        "ignoredBuiltDependencies": [
+            "@swc/core",
+            "aws-sdk",
+            "core-js",
+            "core-js-pure",
+            "es5-ext",
+            "grpc-tools",
+            "msgpackr-extract",
+            "ssh2"
+        ]
     },
     "engines": {
         "node": ">=18.15.0 <19.0.0 || ^20",

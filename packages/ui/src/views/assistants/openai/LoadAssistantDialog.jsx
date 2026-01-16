@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 import { Stack, Typography, Dialog, DialogContent, DialogTitle, DialogActions, Box } from '@mui/material'
 import CredentialInputHandler from '@/views/canvas/CredentialInputHandler'
 import { Dropdown } from '@/ui-component/dropdown/Dropdown'
@@ -10,6 +11,7 @@ import useApi from '@/hooks/useApi'
 
 const LoadAssistantDialog = ({ show, dialogProps, onCancel, onAssistantSelected, setError }) => {
     const portalElement = document.getElementById('portal')
+    const { t } = useTranslation()
 
     const getAllAvailableAssistantsApi = useApi(assistantsApi.getAllAvailableAssistants)
 
@@ -62,7 +64,7 @@ const LoadAssistantDialog = ({ show, dialogProps, onCancel, onAssistantSelected,
                 <Box sx={{ p: 2 }}>
                     <Stack sx={{ position: 'relative' }} direction='row'>
                         <Typography variant='overline'>
-                            OpenAI Credential
+                            {t('canvasNode.inputs')}
                             <span style={{ color: 'red' }}>&nbsp;*</span>
                         </Typography>
                     </Stack>
@@ -70,7 +72,7 @@ const LoadAssistantDialog = ({ show, dialogProps, onCancel, onAssistantSelected,
                         key={credentialId}
                         data={credentialId ? { credential: credentialId } : {}}
                         inputParam={{
-                            label: 'Connect Credential',
+                            label: t('canvasNode.inputs'),
                             name: 'credential',
                             type: 'credential',
                             credentialNames: ['openAIApi']
@@ -85,7 +87,7 @@ const LoadAssistantDialog = ({ show, dialogProps, onCancel, onAssistantSelected,
                     <Box sx={{ p: 2 }}>
                         <Stack sx={{ position: 'relative' }} direction='row'>
                             <Typography variant='overline'>
-                                Assistants
+                                {t('assistants.openAIAssistant')}
                                 <span style={{ color: 'red' }}>&nbsp;*</span>
                             </Typography>
                         </Stack>
@@ -93,17 +95,17 @@ const LoadAssistantDialog = ({ show, dialogProps, onCancel, onAssistantSelected,
                             name={selectedOpenAIAssistantId}
                             options={availableAssistantsOptions}
                             onSelect={(newValue) => setSelectedOpenAIAssistantId(newValue)}
-                            value={selectedOpenAIAssistantId ?? 'choose an option'}
+                            value={selectedOpenAIAssistantId ?? t('dropdown.defaultOption')}
                         />
                     </Box>
                 )}
             </DialogContent>
             {selectedOpenAIAssistantId && (
-                <DialogActions>
-                    <StyledButton variant='contained' onClick={() => onAssistantSelected(selectedOpenAIAssistantId, credentialId)}>
-                        Load
-                    </StyledButton>
-                </DialogActions>
+                    <DialogActions>
+                        <StyledButton variant='contained' onClick={() => onAssistantSelected(selectedOpenAIAssistantId, credentialId)}>
+                            {t('assistants.load')}
+                        </StyledButton>
+                    </DialogActions>
             )}
         </Dialog>
     ) : null

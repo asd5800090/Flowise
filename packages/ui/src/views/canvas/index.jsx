@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useCallback, useContext } from 'react'
 import ReactFlow, { addEdge, Controls, Background, useNodesState, useEdgesState } from 'reactflow'
 import 'reactflow/dist/style.css'
+import { useTranslation } from 'react-i18next'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useLocation } from 'react-router-dom'
@@ -62,6 +63,7 @@ const edgeTypes = { buttonedge: ButtonEdge }
 const Canvas = () => {
     const theme = useTheme()
     const navigate = useNavigate()
+    const { t } = useTranslation()
 
     const { state } = useLocation()
     const templateFlowData = state ? state.templateFlowData : ''
@@ -70,7 +72,7 @@ const Canvas = () => {
     const chatflowId =
         URLpath[URLpath.length - 1] === 'canvas' || URLpath[URLpath.length - 1] === 'agentcanvas' ? '' : URLpath[URLpath.length - 1]
     const isAgentCanvas = URLpath.includes('agentcanvas') ? true : false
-    const canvasTitle = URLpath.includes('agentcanvas') ? 'Agent' : 'Chatflow'
+    const canvasTitle = URLpath.includes('agentcanvas') ? t('canvas.agent') : t('canvas.chatflow')
 
     const { confirm } = useConfirm()
 
@@ -168,10 +170,10 @@ const Canvas = () => {
 
     const handleDeleteFlow = async () => {
         const confirmPayload = {
-            title: `Delete`,
-            description: `Delete ${canvasTitle} ${chatflow.name}?`,
-            confirmButtonName: 'Delete',
-            cancelButtonName: 'Cancel'
+            title: t('canvas.delete'),
+            description: t('canvas.deleteConfirm', { title: canvasTitle, name: chatflow.name }),
+            confirmButtonName: t('button.delete'),
+            cancelButtonName: t('button.cancel')
         }
         const isConfirmed = await confirm(confirmPayload)
 
@@ -341,7 +343,7 @@ const Canvas = () => {
     const saveChatflowSuccess = () => {
         dispatch({ type: REMOVE_DIRTY })
         enqueueSnackbar({
-            message: `${canvasTitle} saved`,
+            message: t('canvas.saved', { title: canvasTitle }),
             options: {
                 key: new Date().getTime() + Math.random(),
                 variant: 'success',
@@ -406,7 +408,7 @@ const Canvas = () => {
             setEdges(initialFlow.edges || [])
             dispatch({ type: SET_CHATFLOW, chatflow })
         } else if (getSpecificChatflowApi.error) {
-            errorFailed(`Failed to retrieve ${canvasTitle}: ${getSpecificChatflowApi.error.response.data.message}`)
+            errorFailed(t('canvas.failedToRetrieve', { title: canvasTitle, error: getSpecificChatflowApi.error.response.data.message }))
         }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps

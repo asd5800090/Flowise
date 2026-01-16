@@ -30,10 +30,14 @@ import { initializeDefaultNodeData } from '@/utils/genericHelper'
 import { baseURL, REDACTED_CREDENTIAL_VALUE } from '@/store/constant'
 import { HIDE_CANVAS_DIALOG, SHOW_CANVAS_DIALOG } from '@/store/actions'
 
+// i18n
+import { useTranslation } from 'react-i18next'
+
 const AddEditCredentialDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) => {
     const portalElement = document.getElementById('portal')
 
     const dispatch = useDispatch()
+    const { t } = useTranslation()
 
     // ==============================|| Snackbar ||============================== //
 
@@ -120,7 +124,7 @@ const AddEditCredentialDialog = ({ show, dialogProps, onCancel, onConfirm, setEr
             const createResp = await credentialsApi.createCredential(obj)
             if (createResp.data) {
                 enqueueSnackbar({
-                    message: 'New Credential added',
+                    message: t('message.newCredentialAdded'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -135,10 +139,9 @@ const AddEditCredentialDialog = ({ show, dialogProps, onCancel, onConfirm, setEr
             }
         } catch (error) {
             if (setError) setError(error)
+            const errorMessage = typeof error.response.data === 'object' ? error.response.data.message : error.response.data
             enqueueSnackbar({
-                message: `Failed to add new Credential: ${
-                    typeof error.response.data === 'object' ? error.response.data.message : error.response.data
-                }`,
+                message: t('message.failedToAddCredential', { error: errorMessage }),
                 options: {
                     key: new Date().getTime() + Math.random(),
                     variant: 'error',
@@ -187,10 +190,9 @@ const AddEditCredentialDialog = ({ show, dialogProps, onCancel, onConfirm, setEr
             }
         } catch (error) {
             if (setError) setError(error)
+            const errorMessage = typeof error.response.data === 'object' ? error.response.data.message : error.response.data
             enqueueSnackbar({
-                message: `Failed to save Credential: ${
-                    typeof error.response.data === 'object' ? error.response.data.message : error.response.data
-                }`,
+                message: t('message.failedToSaveCredential', { error: errorMessage }),
                 options: {
                     key: new Date().getTime() + Math.random(),
                     variant: 'error',
@@ -265,7 +267,7 @@ const AddEditCredentialDialog = ({ show, dialogProps, onCancel, onConfirm, setEr
                     <Box sx={{ p: 2 }}>
                         <Stack sx={{ position: 'relative' }} direction='row'>
                             <Typography variant='overline'>
-                                Credential Name
+                                {t('credentials.name')}
                                 <span style={{ color: 'red' }}>&nbsp;*</span>
                             </Typography>
                         </Stack>

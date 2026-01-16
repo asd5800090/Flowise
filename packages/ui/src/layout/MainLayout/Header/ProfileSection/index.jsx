@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import {
@@ -53,20 +54,21 @@ import { getErrorMessage } from '@/utils/errorHandler'
 import { useNavigate } from 'react-router-dom'
 
 const dataToExport = [
-    'Agentflows',
-    'Assistants Custom',
-    'Assistants OpenAI',
-    'Assistants Azure',
-    'Chatflows',
-    'Chat Messages',
-    'Chat Feedbacks',
-    'Custom Templates',
-    'Document Stores',
-    'Tools',
-    'Variables'
+    'agentflows',
+    'assistantsCustom',
+    'assistantsOpenAI',
+    'assistantsAzure',
+    'chatflows',
+    'chatMessages',
+    'chatFeedbacks',
+    'customTemplates',
+    'documentStores',
+    'tools',
+    'variables'
 ]
 
 const ExportDialog = ({ show, onCancel, onExport }) => {
+    const { t } = useTranslation()
     const portalElement = document.getElementById('portal')
 
     const [selectedData, setSelectedData] = useState(dataToExport)
@@ -92,29 +94,29 @@ const ExportDialog = ({ show, onCancel, onExport }) => {
             aria-describedby='export-dialog-description'
         >
             <DialogTitle sx={{ fontSize: '1rem' }} id='export-dialog-title'>
-                {!isExporting ? 'Select Data to Export' : 'Exporting..'}
+                {!isExporting ? t('exportDialog.title') : t('exportDialog.exporting')}
             </DialogTitle>
             <DialogContent>
                 {!isExporting && (
                     <Stack direction='row' sx={{ gap: 1, flexWrap: 'wrap' }}>
-                        {dataToExport.map((data, index) => (
+                        {dataToExport.map((dataKey, index) => (
                             <FormControlLabel
                                 key={index}
                                 size='small'
                                 control={
                                     <Checkbox
                                         color='success'
-                                        checked={selectedData.includes(data)}
+                                        checked={selectedData.includes(dataKey)}
                                         onChange={(event) => {
                                             setSelectedData(
                                                 event.target.checked
-                                                    ? [...selectedData, data]
-                                                    : selectedData.filter((item) => item !== data)
+                                                    ? [...selectedData, dataKey]
+                                                    : selectedData.filter((item) => item !== dataKey)
                                             )
                                         }}
                                     />
                                 }
-                                label={data}
+                                label={t(`dataTypes.${dataKey}`)}
                             />
                         ))}
                     </Stack>
@@ -131,14 +133,14 @@ const ExportDialog = ({ show, onCancel, onExport }) => {
                                 src={ExportingGIF}
                                 alt='ExportingGIF'
                             />
-                            <span>Exporting data might takes a while</span>
+                            <span>{t('exportDialog.exportingDataTakesTime')}</span>
                         </div>
                     </Box>
                 )}
             </DialogContent>
             {!isExporting && (
                 <DialogActions>
-                    <Button onClick={onCancel}>Cancel</Button>
+                    <Button onClick={onCancel}>{t('button.cancel')}</Button>
                     <Button
                         disabled={selectedData.length === 0}
                         variant='contained'
@@ -147,7 +149,7 @@ const ExportDialog = ({ show, onCancel, onExport }) => {
                             onExport(selectedData)
                         }}
                     >
-                        Export
+                        {t('exportDialog.export')}
                     </Button>
                 </DialogActions>
             )}
@@ -167,6 +169,7 @@ ExportDialog.propTypes = {
 
 const ProfileSection = ({ username, handleLogout }) => {
     const theme = useTheme()
+    const { t } = useTranslation()
 
     const customization = useSelector((state) => state.customization)
 
@@ -236,7 +239,7 @@ const ProfileSection = ({ username, handleLogout }) => {
     const importAllSuccess = () => {
         dispatch({ type: REMOVE_DIRTY })
         enqueueSnackbar({
-            message: `Import All successful`,
+            message: t('message.importSuccess'),
             options: {
                 key: new Date().getTime() + Math.random(),
                 variant: 'success',
@@ -255,17 +258,17 @@ const ProfileSection = ({ username, handleLogout }) => {
 
     const onExport = (data) => {
         const body = {}
-        if (data.includes('Agentflows')) body.agentflow = true
-        if (data.includes('Assistants Custom')) body.assistantCustom = true
-        if (data.includes('Assistants OpenAI')) body.assistantOpenAI = true
-        if (data.includes('Assistants Azure')) body.assistantAzure = true
-        if (data.includes('Chatflows')) body.chatflow = true
-        if (data.includes('Chat Messages')) body.chat_message = true
-        if (data.includes('Chat Feedbacks')) body.chat_feedback = true
-        if (data.includes('Custom Templates')) body.custom_template = true
-        if (data.includes('Document Stores')) body.document_store = true
-        if (data.includes('Tools')) body.tool = true
-        if (data.includes('Variables')) body.variable = true
+        if (data.includes('agentflows')) body.agentflow = true
+        if (data.includes('assistantsCustom')) body.assistantCustom = true
+        if (data.includes('assistantsOpenAI')) body.assistantOpenAI = true
+        if (data.includes('assistantsAzure')) body.assistantAzure = true
+        if (data.includes('chatflows')) body.chatflow = true
+        if (data.includes('chatMessages')) body.chat_message = true
+        if (data.includes('chatFeedbacks')) body.chat_feedback = true
+        if (data.includes('customTemplates')) body.custom_template = true
+        if (data.includes('documentStores')) body.document_store = true
+        if (data.includes('tools')) body.tool = true
+        if (data.includes('variables')) body.variable = true
 
         exportAllApi.request(body)
     }
@@ -280,12 +283,12 @@ const ProfileSection = ({ username, handleLogout }) => {
 
     useEffect(() => {
         if (importAllApi.error) {
-            let errMsg = 'Invalid Imported File'
+            let errMsg = t('message.invalidImportedFile')
             let error = importAllApi.error
             if (error?.response?.data) {
                 errMsg = typeof error.response.data === 'object' ? error.response.data.message : error.response.data
             }
-            errorFailed(`Failed to import: ${errMsg}`)
+            errorFailed(`${t('message.failedToImport')}: ${errMsg}`)
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [importAllApi.error])
@@ -313,12 +316,12 @@ const ProfileSection = ({ username, handleLogout }) => {
     useEffect(() => {
         if (exportAllApi.error) {
             setExportDialogOpen(false)
-            let errMsg = 'Internal Server Error'
+            let errMsg = t('message.internalServerError')
             let error = exportAllApi.error
             if (error?.response?.data) {
                 errMsg = typeof error.response.data === 'object' ? error.response.data.message : error.response.data
             }
-            errorFailed(`Failed to export: ${errMsg}`)
+            errorFailed(`${t('message.failedToExport')}: ${errMsg}`)
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [exportAllApi.error])
@@ -411,7 +414,7 @@ const ProfileSection = ({ username, handleLogout }) => {
                                                     <ListItemIcon>
                                                         <IconFileExport stroke={1.5} size='1.3rem' />
                                                     </ListItemIcon>
-                                                    <ListItemText primary={<Typography variant='body2'>Export</Typography>} />
+                                                    <ListItemText primary={<Typography variant='body2'>{t('profile.export')}</Typography>} />
                                                 </ListItemButton>
                                                 <ListItemButton
                                                     sx={{ borderRadius: `${customization.borderRadius}px` }}
@@ -422,7 +425,7 @@ const ProfileSection = ({ username, handleLogout }) => {
                                                     <ListItemIcon>
                                                         <IconFileUpload stroke={1.5} size='1.3rem' />
                                                     </ListItemIcon>
-                                                    <ListItemText primary={<Typography variant='body2'>Import</Typography>} />
+                                                    <ListItemText primary={<Typography variant='body2'>{t('profile.import')}</Typography>} />
                                                 </ListItemButton>
                                                 <input ref={inputRef} type='file' hidden onChange={fileChange} accept='.json' />
                                                 <ListItemButton
@@ -435,7 +438,7 @@ const ProfileSection = ({ username, handleLogout }) => {
                                                     <ListItemIcon>
                                                         <IconInfoCircle stroke={1.5} size='1.3rem' />
                                                     </ListItemIcon>
-                                                    <ListItemText primary={<Typography variant='body2'>About Flowise</Typography>} />
+                                                    <ListItemText primary={<Typography variant='body2'>{t('profile.about')}</Typography>} />
                                                 </ListItemButton>
                                                 {localStorage.getItem('username') && localStorage.getItem('password') && (
                                                     <ListItemButton
@@ -445,7 +448,7 @@ const ProfileSection = ({ username, handleLogout }) => {
                                                         <ListItemIcon>
                                                             <IconLogout stroke={1.5} size='1.3rem' />
                                                         </ListItemIcon>
-                                                        <ListItemText primary={<Typography variant='body2'>Logout</Typography>} />
+                                                        <ListItemText primary={<Typography variant='body2'>{t('profile.logout')}</Typography>} />
                                                     </ListItemButton>
                                                 )}
                                             </List>

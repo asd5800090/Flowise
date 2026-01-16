@@ -2,6 +2,7 @@ import * as React from 'react'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import {
@@ -50,9 +51,7 @@ import { baseURL } from '@/store/constant'
 import { gridSpacing } from '@/store/constant'
 import useNotifier from '@/utils/useNotifier'
 
-const badges = ['POPULAR', 'NEW']
-const types = ['Chatflow', 'Agentflow', 'Tool']
-const framework = ['Langchain', 'LlamaIndex']
+
 const MenuProps = {
     PaperProps: {
         style: {
@@ -70,9 +69,14 @@ const SelectStyles = {
 const Marketplace = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const { t } = useTranslation()
     useNotifier()
 
     const theme = useTheme()
+
+    const badges = [t('marketplaces.popular'), t('marketplaces.new')]
+    const types = [t('marketplaces.chatflow'), t('marketplaces.agentflow'), t('marketplaces.tool')]
+    const framework = [t('marketplaces.langchain'), t('marketplaces.llamaIndex')]
 
     const [isLoading, setLoading] = useState(true)
     const [error, setError] = useState(null)
@@ -180,10 +184,10 @@ const Marketplace = () => {
 
     const onDeleteCustomTemplate = async (template) => {
         const confirmPayload = {
-            title: `Delete`,
-            description: `Delete Custom Template ${template.name}?`,
-            confirmButtonName: 'Delete',
-            cancelButtonName: 'Cancel'
+            title: t('marketplaces.delete'),
+            description: t('marketplaces.deleteCustomTemplate', { name: template.name }),
+            confirmButtonName: t('marketplaces.delete'),
+            cancelButtonName: t('marketplaces.cancel')
         }
         const isConfirmed = await confirm(confirmPayload)
 
@@ -192,7 +196,7 @@ const Marketplace = () => {
                 const deleteResp = await marketplacesApi.deleteCustomTemplate(template.id)
                 if (deleteResp.data) {
                     enqueueSnackbar({
-                        message: 'Custom Template deleted successfully!',
+                        message: t('marketplaces.customTemplateDeleteSuccess'),
                         options: {
                             key: new Date().getTime() + Math.random(),
                             variant: 'success',
@@ -207,9 +211,9 @@ const Marketplace = () => {
                 }
             } catch (error) {
                 enqueueSnackbar({
-                    message: `Failed to delete custom template: ${
-                        typeof error.response.data === 'object' ? error.response.data.message : error.response.data
-                    }`,
+                    message: t('marketplaces.customTemplateDeleteFailed', {
+                        error: typeof error.response.data === 'object' ? error.response.data.message : error.response.data
+                    }),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'error',
@@ -283,10 +287,10 @@ const Marketplace = () => {
 
     const onUseTemplate = (selectedTool) => {
         const dialogProp = {
-            title: 'Add New Tool',
+            title: t('marketplaces.addNewTool'),
             type: 'IMPORT',
-            cancelButtonName: 'Cancel',
-            confirmButtonName: 'Add',
+            cancelButtonName: t('marketplaces.cancel'),
+            confirmButtonName: t('marketplaces.add'),
             data: selectedTool
         }
         setToolDialogProps(dialogProp)
@@ -417,7 +421,7 @@ const Marketplace = () => {
                                         }}
                                     >
                                         <InputLabel size='small' id='filter-badge-label'>
-                                            Tag
+                                            {t('marketplaces.tag')}
                                         </InputLabel>
                                         <Select
                                             labelId='filter-badge-label'
@@ -426,7 +430,7 @@ const Marketplace = () => {
                                             multiple
                                             value={badgeFilter}
                                             onChange={handleBadgeFilterChange}
-                                            input={<OutlinedInput label='Badge' />}
+                                            input={<OutlinedInput label={t('marketplaces.badge')} />}
                                             renderValue={(selected) => selected.join(', ')}
                                             MenuProps={MenuProps}
                                             sx={SelectStyles}
@@ -453,7 +457,7 @@ const Marketplace = () => {
                                         }}
                                     >
                                         <InputLabel size='small' id='type-badge-label'>
-                                            Type
+                                            {t('marketplaces.type')}
                                         </InputLabel>
                                         <Select
                                             size='small'
@@ -462,7 +466,7 @@ const Marketplace = () => {
                                             multiple
                                             value={typeFilter}
                                             onChange={handleTypeFilterChange}
-                                            input={<OutlinedInput label='Badge' />}
+                                            input={<OutlinedInput label={t('marketplaces.badge')} />}
                                             renderValue={(selected) => selected.join(', ')}
                                             MenuProps={MenuProps}
                                             sx={SelectStyles}
@@ -489,7 +493,7 @@ const Marketplace = () => {
                                         }}
                                     >
                                         <InputLabel size='small' id='type-fw-label'>
-                                            Framework
+                                            {t('marketplaces.framework')}
                                         </InputLabel>
                                         <Select
                                             size='small'
@@ -498,7 +502,7 @@ const Marketplace = () => {
                                             multiple
                                             value={frameworkFilter}
                                             onChange={handleFrameworkFilterChange}
-                                            input={<OutlinedInput label='Badge' />}
+                                            input={<OutlinedInput label={t('marketplaces.badge')} />}
                                             renderValue={(selected) => selected.join(', ')}
                                             MenuProps={MenuProps}
                                             sx={SelectStyles}
@@ -519,8 +523,8 @@ const Marketplace = () => {
                             }
                             onSearchChange={onSearchChange}
                             search={true}
-                            searchPlaceholder='Search Name/Description/Node'
-                            title='Marketplace'
+                            searchPlaceholder={t('marketplaces.searchNameDescNode')}
+                            title={t('marketplaces.title')}
                         >
                             <ToggleButtonGroup
                                 sx={{ borderRadius: 2, height: '100%' }}
@@ -537,7 +541,7 @@ const Marketplace = () => {
                                     }}
                                     variant='contained'
                                     value='card'
-                                    title='Card View'
+                                    title={t('marketplaces.cardView')}
                                 >
                                     <IconLayoutGrid />
                                 </ToggleButton>
@@ -549,15 +553,15 @@ const Marketplace = () => {
                                     }}
                                     variant='contained'
                                     value='list'
-                                    title='List View'
+                                    title={t('marketplaces.listView')}
                                 >
                                     <IconList />
                                 </ToggleButton>
                             </ToggleButtonGroup>
                         </ViewHeader>
                         <Tabs value={activeTabValue} onChange={handleTabChange} textColor='primary' aria-label='tabs' centered>
-                            <Tab value={0} label='Community Templates'></Tab>
-                            <Tab value={1} label='My Templates' />
+                            <Tab value={0} label={t('marketplaces.communityTemplates')}></Tab>
+                            <Tab value={1} label={t('marketplaces.myTemplates')} />
                         </Tabs>
                         <TabPanel value={activeTabValue} index={0}>
                             <Stack direction='row' sx={{ gap: 2, my: 2, alignItems: 'center', flexWrap: 'wrap' }}>
@@ -590,7 +594,7 @@ const Marketplace = () => {
                                     onClick={() => clearAllUsecases()}
                                     startIcon={<IconX />}
                                 >
-                                    Clear All
+                                    {t('marketplaces.clearAll')}
                                 </Button>
                             )}
 
@@ -622,28 +626,28 @@ const Marketplace = () => {
                                                                     }
                                                                 }}
                                                                 badgeContent={data.badge}
-                                                                color={data.badge === 'POPULAR' ? 'primary' : 'error'}
+                                                                color={data.badge === t('marketplaces.popularValue') ? 'primary' : 'error'}
                                                             >
-                                                                {(data.type === 'Chatflow' || data.type === 'Agentflow') && (
+                                                                {(data.type === t('marketplaces.chatflowValue') || data.type === t('marketplaces.agentflowValue')) && (
                                                                     <ItemCard
                                                                         onClick={() => goToCanvas(data)}
                                                                         data={data}
                                                                         images={images[data.id]}
                                                                     />
                                                                 )}
-                                                                {data.type === 'Tool' && (
+                                                                {data.type === t('marketplaces.toolValue') && (
                                                                     <ItemCard data={data} onClick={() => goToTool(data)} />
                                                                 )}
                                                             </Badge>
                                                         )}
-                                                        {!data.badge && (data.type === 'Chatflow' || data.type === 'Agentflow') && (
+                                                        {!data.badge && (data.type === t('marketplaces.chatflowValue') || data.type === t('marketplaces.agentflowValue')) && (
                                                             <ItemCard
                                                                 onClick={() => goToCanvas(data)}
                                                                 data={data}
                                                                 images={images[data.id]}
                                                             />
                                                         )}
-                                                        {!data.badge && data.type === 'Tool' && (
+                                                        {!data.badge && data.type === t('marketplaces.toolValue') && (
                                                             <ItemCard data={data} onClick={() => goToTool(data)} />
                                                         )}
                                                     </Box>
@@ -675,7 +679,7 @@ const Marketplace = () => {
                                             alt='WorkflowEmptySVG'
                                         />
                                     </Box>
-                                    <div>No Marketplace Yet</div>
+                                    <div>{t('marketplaces.noMarketplaces')}</div>
                                 </Stack>
                             )}
                         </TabPanel>
@@ -714,7 +718,7 @@ const Marketplace = () => {
                                     onClick={() => clearAllUsecases()}
                                     startIcon={<IconX />}
                                 >
-                                    Clear All
+                                    {t('marketplaces.clearAll')}
                                 </Button>
                             )}
                             {!view || view === 'card' ? (
@@ -745,28 +749,28 @@ const Marketplace = () => {
                                                                     }
                                                                 }}
                                                                 badgeContent={data.badge}
-                                                                color={data.badge === 'POPULAR' ? 'primary' : 'error'}
+                                                                color={data.badge === t('marketplaces.popularValue') ? 'primary' : 'error'}
                                                             >
-                                                                {(data.type === 'Chatflow' || data.type === 'Agentflow') && (
+                                                                {(data.type === t('marketplaces.chatflowValue') || data.type === t('marketplaces.agentflowValue')) && (
                                                                     <ItemCard
                                                                         onClick={() => goToCanvas(data)}
                                                                         data={data}
                                                                         images={templateImages[data.id]}
                                                                     />
                                                                 )}
-                                                                {data.type === 'Tool' && (
+                                                                {data.type === t('marketplaces.toolValue') && (
                                                                     <ItemCard data={data} onClick={() => goToTool(data)} />
                                                                 )}
                                                             </Badge>
                                                         )}
-                                                        {!data.badge && (data.type === 'Chatflow' || data.type === 'Agentflow') && (
+                                                        {!data.badge && (data.type === t('marketplaces.chatflowValue') || data.type === t('marketplaces.agentflowValue')) && (
                                                             <ItemCard
                                                                 onClick={() => goToCanvas(data)}
                                                                 data={data}
                                                                 images={templateImages[data.id]}
                                                             />
                                                         )}
-                                                        {!data.badge && data.type === 'Tool' && (
+                                                        {!data.badge && data.type === t('marketplaces.toolValue') && (
                                                             <ItemCard data={data} onClick={() => goToTool(data)} />
                                                         )}
                                                     </Box>
@@ -798,7 +802,7 @@ const Marketplace = () => {
                                             alt='WorkflowEmptySVG'
                                         />
                                     </Box>
-                                    <div>No Saved Custom Templates</div>
+                                    <div>{t('marketplaces.noCustomTemplates')}</div>
                                 </Stack>
                             )}
                         </TabPanel>

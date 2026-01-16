@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import { useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import { IconButton, Box, OutlinedInput, Toolbar, Typography } from '@mui/material'
@@ -31,6 +32,7 @@ const ViewHeader = ({
     onEdit
 }) => {
     const theme = useTheme()
+    const { t } = useTranslation()
     const searchInputRef = useRef()
     useSearchShortcut(searchInputRef)
 
@@ -109,7 +111,7 @@ const ViewHeader = ({
                                 }
                             }}
                             variant='outlined'
-                            placeholder={`${searchPlaceholder} ${isDesktop ? keyboardShortcut : ''}`}
+                            placeholder={`${searchPlaceholder === 'Search' ? t('viewHeader.searchPlaceholder') : searchPlaceholder} ${isDesktop ? keyboardShortcut : ''}`}
                             onChange={onSearchChange}
                             startAdornment={
                                 <Box

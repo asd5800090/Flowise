@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 
 import {
     Tabs,
@@ -83,6 +84,7 @@ function a11yProps(index) {
 }
 
 const APICodeDialog = ({ show, dialogProps, onCancel }) => {
+    const { t } = useTranslation()
     const portalElement = document.getElementById('portal')
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -270,6 +272,7 @@ const APICodeDialog = ({ show, dialogProps, onCancel }) => {
     }
 
     const getCode = (codeLang) => {
+        const exampleQuestion = t('codeExample.question');
         if (codeLang === 'Python') {
             return `import requests
 
@@ -280,7 +283,7 @@ def query(payload):
     return response.json()
     
 output = query({
-    "question": "Hey, how are you?",
+    "question": "${exampleQuestion}",
 })
 `
         } else if (codeLang === 'JavaScript') {
@@ -299,20 +302,21 @@ output = query({
     return result;
 }
 
-query({"question": "Hey, how are you?"}).then((response) => {
+query({"question": "${exampleQuestion}"}).then((response) => {
     console.log(response);
 });
 `
         } else if (codeLang === 'cURL') {
             return `curl ${baseURL}/api/v1/prediction/${dialogProps.chatflowid} \\
      -X POST \\
-     -d '{"question": "Hey, how are you?"}' \\
+     -d '{"question": "${exampleQuestion}"}' \\
      -H "Content-Type: application/json"`
         }
         return ''
     }
 
     const getCodeWithAuthorization = (codeLang) => {
+        const exampleQuestion = t('codeExample.question');
         if (codeLang === 'Python') {
             return `import requests
 
@@ -324,7 +328,7 @@ def query(payload):
     return response.json()
     
 output = query({
-    "question": "Hey, how are you?",
+    "question": "${exampleQuestion}",
 })
 `
         } else if (codeLang === 'JavaScript') {
@@ -344,14 +348,14 @@ output = query({
     return result;
 }
 
-query({"question": "Hey, how are you?"}).then((response) => {
+query({"question": "${exampleQuestion}"}).then((response) => {
     console.log(response);
 });
 `
         } else if (codeLang === 'cURL') {
             return `curl ${baseURL}/api/v1/prediction/${dialogProps.chatflowid} \\
      -X POST \\
-     -d '{"question": "Hey, how are you?"}' \\
+     -d '{"question": "${exampleQuestion}"}' \\
      -H "Content-Type: application/json" \\
      -H "Authorization: Bearer ${selectedApiKey?.apiKey}"`
         }
@@ -401,7 +405,7 @@ API_URL = "${baseURL}/api/v1/prediction/${dialogProps.chatflowid}"
 form_data = {
     "files": ${`('example${fileType}', open('example${fileType}', 'rb'))`}
 }
-body_data = {${getConfigExamplesForPython(configData, 'formData')}}
+body_data = {${getConfigExamplesForPython(configData, 'formData', false, null, t)}}
 
 def query(form_data):
     response = requests.post(API_URL, files=form_data, data=body_data)
@@ -412,7 +416,7 @@ output = query(form_data)
         } else if (codeLang === 'JavaScript') {
             return `// use FormData to upload files
 let formData = new FormData();
-${getConfigExamplesForJS(configData, 'formData')}
+${getConfigExamplesForJS(configData, 'formData', false, null, t)}
 async function query(formData) {
     const response = await fetch(
         "${baseURL}/api/v1/prediction/${dialogProps.chatflowid}",
@@ -431,7 +435,7 @@ query(formData).then((response) => {
 `
         } else if (codeLang === 'cURL') {
             return `curl ${baseURL}/api/v1/prediction/${dialogProps.chatflowid} \\
-     -X POST \\${getConfigExamplesForCurl(configData, 'formData')} \\
+     -X POST \${getConfigExamplesForCurl(configData, 'formData', false, null, t)} \\
      -H "Content-Type: multipart/form-data"`
         }
         return ''
@@ -453,7 +457,7 @@ headers = {"Authorization": "Bearer ${selectedApiKey?.apiKey}"}
 form_data = {
     "files": ${`('example${fileType}', open('example${fileType}', 'rb'))`}
 }
-body_data = {${getConfigExamplesForPython(configData, 'formData')}}
+body_data = {${getConfigExamplesForPython(configData, 'formData', true, selectedChatflowId, t)}}
 
 def query(form_data):
     response = requests.post(API_URL, headers=headers, files=form_data, data=body_data)
@@ -464,7 +468,7 @@ output = query(form_data)
         } else if (codeLang === 'JavaScript') {
             return `// use FormData to upload files
 let formData = new FormData();
-${getConfigExamplesForJS(configData, 'formData')}
+${getConfigExamplesForJS(configData, 'formData', true, selectedChatflowId, t)}
 async function query(formData) {
     const response = await fetch(
         "${baseURL}/api/v1/prediction/${dialogProps.chatflowid}",
@@ -484,7 +488,7 @@ query(formData).then((response) => {
 `
         } else if (codeLang === 'cURL') {
             return `curl ${baseURL}/api/v1/prediction/${dialogProps.chatflowid} \\
-     -X POST \\${getConfigExamplesForCurl(configData, 'formData')} \\
+     -X POST \${getConfigExamplesForCurl(configData, 'formData', true, selectedChatflowId, t)} \\
      -H "Content-Type: multipart/form-data" \\
      -H "Authorization: Bearer ${selectedApiKey?.apiKey}"`
         }
@@ -504,8 +508,8 @@ def query(payload):
     return response.json()
 
 output = query({
-    "question": "Hey, how are you?",
-    "overrideConfig": {${getConfigExamplesForPython(configData, 'json')}
+      "question": "${t('apiCode.questionExample')}",
+    "overrideConfig": {${getConfigExamplesForPython(configData, 'json', false, null, t)}}
     }
 })
 `
@@ -526,8 +530,8 @@ output = query({
 }
 
 query({
-  "question": "Hey, how are you?",
-  "overrideConfig": {${getConfigExamplesForJS(configData, 'json')}
+    "question": "${t('apiCode.questionExample')}",
+  "overrideConfig": {${getConfigExamplesForJS(configData, 'json', false, null, t)}}
   }
 }).then((response) => {
     console.log(response);
@@ -536,7 +540,7 @@ query({
         } else if (codeLang === 'cURL') {
             return `curl ${baseURL}/api/v1/prediction/${dialogProps.chatflowid} \\
      -X POST \\
-     -d '{"question": "Hey, how are you?", "overrideConfig": {${getConfigExamplesForCurl(configData, 'json')}}' \\
+     -d '{"question": "${t('apiCode.questionExample')}", "overrideConfig": {${getConfigExamplesForCurl(configData, 'json', false, null, t)}}}' \\
      -H "Content-Type: application/json"`
         }
         return ''
@@ -556,8 +560,8 @@ def query(payload):
     return response.json()
 
 output = query({
-    "question": "Hey, how are you?",
-    "overrideConfig": {${getConfigExamplesForPython(configData, 'json')}
+      "question": "${t('apiCode.questionExample')}",
+    "overrideConfig": {${getConfigExamplesForPython(configData, 'json', true, selectedChatflowId, t)}}
     }
 })
 `
@@ -579,8 +583,8 @@ output = query({
 }
 
 query({
-  "question": "Hey, how are you?",
-  "overrideConfig": {${getConfigExamplesForJS(configData, 'json')}
+  "question": "${t('apiCode.questionExample')}",
+  "overrideConfig": {${getConfigExamplesForJS(configData, 'json', true, selectedChatflowId, t)}}
   }
 }).then((response) => {
     console.log(response);
@@ -589,7 +593,7 @@ query({
         } else if (codeLang === 'cURL') {
             return `curl ${baseURL}/api/v1/prediction/${dialogProps.chatflowid} \\
      -X POST \\
-     -d '{"question": "Hey, how are you?", "overrideConfig": {${getConfigExamplesForCurl(configData, 'json')}}' \\
+     -d '{"question": "${t('apiCode.questionExample')}", "overrideConfig": {${getConfigExamplesForCurl(configData, 'json', true, selectedChatflowId, t)}}}' \\
      -H "Content-Type: application/json" \\
      -H "Authorization: Bearer ${selectedApiKey?.apiKey}"`
         }
@@ -693,13 +697,13 @@ formData.append("openAIApiKey[openAIEmbeddings_0]", "sk-my-openai-2nd-key")`
                         </Tabs>
                     </div>
                     <div style={{ flex: 20 }}>
-                        <Dropdown
-                            name='SelectKey'
-                            disableClearable={true}
-                            options={keyOptions}
-                            onSelect={(newValue) => onApiKeySelected(newValue)}
-                            value={dialogProps.chatflowApiKeyId ?? chatflowApiKeyId ?? 'Choose an API key'}
-                        />
+                            <Dropdown
+                                name='SelectKey'
+                                disableClearable={true}
+                                options={keyOptions}
+                                onSelect={(newValue) => onApiKeySelected(newValue)}
+                                value={dialogProps.chatflowApiKeyId ?? chatflowApiKeyId ?? t('apiCodeDialog.chooseApiKey')}
+                            />
                     </div>
                 </div>
                 <div style={{ marginTop: 10 }}></div>
@@ -707,9 +711,9 @@ formData.append("openAIApiKey[openAIEmbeddings_0]", "sk-my-openai-2nd-key")`
                     <TabPanel key={index} value={value} index={index}>
                         {(codeLang === 'Embed' || codeLang === 'Share Chatbot') && chatflowApiKeyId && (
                             <>
-                                <p>You cannot use API key while embedding/sharing chatbot.</p>
+                                <p>{t('apiCodeDialog.noAuthForEmbed')}</p>
                                 <p>
-                                    Please select <b>&quot;No Authorization&quot;</b> from the dropdown at the top right corner.
+                                    {t('apiCodeDialog.selectNoAuth')} <b>&quot;{t('button.noAuthorization')}&quot;</b> {t('apiCodeDialog.fromDropdown')}
                                 </p>
                             </>
                         )}
@@ -723,11 +727,11 @@ formData.append("openAIApiKey[openAIEmbeddings_0]", "sk-my-openai-2nd-key")`
                                     showLineNumbers={false}
                                     wrapLines
                                 />
-                                <CheckboxInput label='Show Override Config' value={checkboxVal} onChange={onCheckBoxChanged} />
+                                <CheckboxInput label={t('apiCodeDialog.showOverrideConfig')} value={checkboxVal} onChange={onCheckBoxChanged} />
                                 {checkboxVal && getConfigApi.data && getConfigApi.data.length > 0 && (
                                     <>
                                         <Typography sx={{ mt: 2 }}>
-                                            You can override existing input configuration of the chatflow with overrideConfig property.
+                                            {t('apiCodeDialog.overrideConfigDescription')}
                                         </Typography>
                                         <div
                                             style={{
@@ -749,18 +753,16 @@ formData.append("openAIApiKey[openAIEmbeddings_0]", "sk-my-openai-2nd-key")`
                                             >
                                                 <IconExclamationCircle size={30} color='rgb(116,66,16)' />
                                                 <span style={{ color: 'rgb(116,66,16)', marginLeft: 10, fontWeight: 500 }}>
-                                                    {
-                                                        'For security reason, override config is disabled by default. You can change this by going into Chatflow Configuration -> Security tab, and enable the property you want to override.'
-                                                    }
-                                                    &nbsp;Refer{' '}
+                                                    {t('apiCodeDialog.overrideConfigTip')}
+                                                    &nbsp;{t('apiCodeDialog.referHere')}{' '}
                                                     <a
                                                         rel='noreferrer'
                                                         target='_blank'
                                                         href='https://docs.flowiseai.com/using-flowise/api#override-config'
                                                     >
-                                                        here
+                                                        {t('apiCodeDialog.here')}
                                                     </a>{' '}
-                                                    for more details
+                                                    {t('apiCodeDialog.forMoreDetails')}
                                                 </span>
                                             </div>
                                         </div>
@@ -768,7 +770,7 @@ formData.append("openAIApiKey[openAIEmbeddings_0]", "sk-my-openai-2nd-key")`
                                             <Card sx={{ borderColor: theme.palette.primary[200] + 75, p: 2 }} variant='outlined'>
                                                 <Stack sx={{ mt: 1, mb: 2, ml: 1, alignItems: 'center' }} direction='row' spacing={2}>
                                                     <IconBox />
-                                                    <Typography variant='h4'>Nodes</Typography>
+                                                    <Typography variant='h4'>{t('apiCodeDialog.nodes')}</Typography>
                                                 </Stack>
                                                 {Object.keys(nodeConfig)
                                                     .sort()
@@ -832,7 +834,7 @@ formData.append("openAIApiKey[openAIEmbeddings_0]", "sk-my-openai-2nd-key")`
                                             <Card sx={{ borderColor: theme.palette.primary[200] + 75, p: 2 }} variant='outlined'>
                                                 <Stack sx={{ mt: 1, mb: 2, ml: 1, alignItems: 'center' }} direction='row' spacing={2}>
                                                     <IconVariable />
-                                                    <Typography variant='h4'>Variables</Typography>
+                                                    <Typography variant='h4'>{t('apiCodeDialog.variables')}</Typography>
                                                 </Stack>
                                                 <TableViewOnly rows={variableOverrides} columns={['name', 'type', 'enabled']} />
                                             </Card>
@@ -872,7 +874,7 @@ formData.append("openAIApiKey[openAIEmbeddings_0]", "sk-my-openai-2nd-key")`
                                             >
                                                 <IconBulb size={30} color='#2d6a4f' />
                                                 <span style={{ color: '#2d6a4f', marginLeft: 10, fontWeight: 500 }}>
-                                                    You can also specify multiple values for a config parameter by specifying the node id
+                                                    {t('apiCodeDialog.multiConfigTip')}
                                                 </span>
                                             </div>
                                             <div style={{ padding: 10 }}>
@@ -893,11 +895,12 @@ formData.append("openAIApiKey[openAIEmbeddings_0]", "sk-my-openai-2nd-key")`
                                 )}
                                 {getIsChatflowStreamingApi.data?.isStreaming && (
                                     <p>
-                                        Read&nbsp;
+                                        {t('apiCodeDialog.streamingInfo')}
+                                        &nbsp;
                                         <a rel='noreferrer' target='_blank' href='https://docs.flowiseai.com/using-flowise/streaming'>
-                                            here
+                                            {t('apiCodeDialog.here')}
                                         </a>
-                                        &nbsp;on how to stream response back to application
+                                        &nbsp;{t('apiCodeDialog.onHowToStream')}
                                     </p>
                                 )}
                             </>

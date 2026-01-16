@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import { useState, useEffect, forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import {
@@ -50,6 +51,7 @@ DatePickerCustomInput.propTypes = {
 }
 
 const ViewLeadsDialog = ({ show, dialogProps, onCancel }) => {
+    const { t } = useTranslation()
     const portalElement = document.getElementById('portal')
     const dispatch = useDispatch()
     const theme = useTheme()
@@ -136,7 +138,7 @@ const ViewLeadsDialog = ({ show, dialogProps, onCancel }) => {
                             }
                         }}
                         variant='outlined'
-                        placeholder='Search Name or Email or Phone'
+                        placeholder={t('viewLeads.searchPlaceholder')}
                         onChange={onSearchChange}
                         startAdornment={
                             <Box

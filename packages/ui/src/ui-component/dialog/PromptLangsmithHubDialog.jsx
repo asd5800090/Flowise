@@ -1,6 +1,7 @@
 import { createPortal } from 'react-dom'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
 
 import rehypeMathjax from 'rehype-mathjax'
@@ -88,6 +89,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 const PromptLangsmithHubDialog = ({ promptType, show, onCancel, onSubmit }) => {
     const portalElement = document.getElementById('portal')
     const dispatch = useDispatch()
+    const { t } = useTranslation()
     const customization = useSelector((state) => state.customization)
     const getAvailablePromptsApi = useApi(promptApi.getAvailablePrompts)
 
@@ -574,13 +576,13 @@ const PromptLangsmithHubDialog = ({ promptType, show, onCancel, onSubmit }) => {
             </DialogContent>
             {availablePrompNameList && availablePrompNameList.length > 0 && (
                 <DialogActions>
-                    <Button onClick={onCancel}>Cancel</Button>
+                    <Button onClick={onCancel}>{t('promptLangsmith.cancel')}</Button>
                     <StyledButton
                         disabled={!selectedPrompt?.detailed}
                         onClick={() => onSubmit(selectedPrompt.detailed)}
                         variant='contained'
                     >
-                        Load
+                        {t('promptLangsmith.load')}
                     </StyledButton>
                 </DialogActions>
             )}

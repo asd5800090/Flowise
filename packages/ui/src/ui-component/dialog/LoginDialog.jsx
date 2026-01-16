@@ -1,21 +1,23 @@
 import { createPortal } from 'react-dom'
 import { useState } from 'react'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 
 import { Dialog, DialogActions, DialogContent, Typography, DialogTitle } from '@mui/material'
 import { StyledButton } from '@/ui-component/button/StyledButton'
 import { Input } from '@/ui-component/input/Input'
 
-const LoginDialog = ({ show, dialogProps, onConfirm }) => {
+const LoginDialog = ({ show, onConfirm }) => {
+    const { t } = useTranslation()
     const portalElement = document.getElementById('portal')
     const usernameInput = {
-        label: 'Username',
+        label: t('login.username'),
         name: 'username',
         type: 'string',
-        placeholder: 'john doe'
+        placeholder: t('login.usernamePlaceholder')
     }
     const passwordInput = {
-        label: 'Password',
+        label: t('login.password'),
         name: 'password',
         type: 'password'
     }
@@ -36,10 +38,10 @@ const LoginDialog = ({ show, dialogProps, onConfirm }) => {
             aria-describedby='alert-dialog-description'
         >
             <DialogTitle sx={{ fontSize: '1rem' }} id='alert-dialog-title'>
-                {dialogProps.title}
+                {t('login.title')}
             </DialogTitle>
             <DialogContent>
-                <Typography>Username</Typography>
+                <Typography>{t('login.username')}</Typography>
                 <Input
                     inputParam={usernameInput}
                     onChange={(newValue) => setUsernameVal(newValue)}
@@ -47,12 +49,12 @@ const LoginDialog = ({ show, dialogProps, onConfirm }) => {
                     showDialog={false}
                 />
                 <div style={{ marginTop: 20 }}></div>
-                <Typography>Password</Typography>
+                <Typography>{t('login.password')}</Typography>
                 <Input inputParam={passwordInput} onChange={(newValue) => setPasswordVal(newValue)} value={passwordVal} />
             </DialogContent>
             <DialogActions>
                 <StyledButton variant='contained' onClick={() => onConfirm(usernameVal, passwordVal)}>
-                    {dialogProps.confirmButtonName}
+                    {t('login.confirmButtonName')}
                 </StyledButton>
             </DialogActions>
         </Dialog>
@@ -63,7 +65,6 @@ const LoginDialog = ({ show, dialogProps, onConfirm }) => {
 
 LoginDialog.propTypes = {
     show: PropTypes.bool,
-    dialogProps: PropTypes.object,
     onConfirm: PropTypes.func
 }
 

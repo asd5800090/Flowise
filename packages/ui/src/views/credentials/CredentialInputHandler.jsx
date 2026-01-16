@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import { useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import { Box, Typography, IconButton } from '@mui/material'
@@ -16,6 +17,7 @@ import { TooltipWithParser } from '@/ui-component/tooltip/TooltipWithParser'
 // ===========================|| NodeInputHandler ||=========================== //
 
 const CredentialInputHandler = ({ inputParam, data, disabled = false }) => {
+    const { t } = useTranslation()
     const customization = useSelector((state) => state.customization)
     const ref = useRef(null)
 
@@ -117,7 +119,7 @@ const CredentialInputHandler = ({ inputParam, data, disabled = false }) => {
                                 name={inputParam.name}
                                 options={inputParam.options}
                                 onSelect={(newValue) => (data[inputParam.name] = newValue)}
-                                value={data[inputParam.name] ?? inputParam.default ?? 'choose an option'}
+                                value={data[inputParam.name] ?? inputParam.default ?? t('dropdown.defaultOption')}
                             />
                         )}
                     </Box>

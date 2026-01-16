@@ -2,6 +2,7 @@ import { getBezierPath, EdgeText } from 'reactflow'
 import PropTypes from 'prop-types'
 import { useDispatch } from 'react-redux'
 import { useContext } from 'react'
+import { useTranslation } from 'react-i18next'
 import { SET_DIRTY } from '@/store/actions'
 import { flowContext } from '@/store/context/ReactFlowContext'
 import { IconX } from '@tabler/icons-react'
@@ -11,6 +12,7 @@ import './index.css'
 const foreignObjectSize = 40
 
 const ButtonEdge = ({ id, sourceX, sourceY, targetX, targetY, sourcePosition, targetPosition, style = {}, data, markerEnd }) => {
+    const { t } = useTranslation()
     const [edgePath, edgeCenterX, edgeCenterY] = getBezierPath({
         sourceX,
         sourceY,
@@ -53,7 +55,7 @@ const ButtonEdge = ({ id, sourceX, sourceY, targetX, targetY, sourcePosition, ta
                 requiredExtensions='http://www.w3.org/1999/xhtml'
             >
                 <div>
-                    <button className='edgebutton' onClick={(event) => onEdgeClick(event, id)}>
+                    <button className='edgebutton' onClick={(event) => onEdgeClick(event, id)} title={t('canvas.deleteEdge')}>
                         <IconX stroke={2} size='12' />
                     </button>
                 </div>

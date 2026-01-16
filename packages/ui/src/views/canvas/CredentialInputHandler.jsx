@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import { useEffect, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import { IconButton } from '@mui/material'
@@ -16,6 +17,7 @@ import credentialsApi from '@/api/credentials'
 // ===========================|| CredentialInputHandler ||=========================== //
 
 const CredentialInputHandler = ({ inputParam, data, onSelect, disabled = false }) => {
+    const { t } = useTranslation()
     const ref = useRef(null)
     const [credentialId, setCredentialId] = useState(data?.credential ?? '')
     const [showCredentialListDialog, setShowCredentialListDialog] = useState(false)
@@ -27,8 +29,8 @@ const CredentialInputHandler = ({ inputParam, data, onSelect, disabled = false }
     const editCredential = (credentialId) => {
         const dialogProp = {
             type: 'EDIT',
-            cancelButtonName: 'Cancel',
-            confirmButtonName: 'Save',
+            cancelButtonName: t('button.cancel'),
+            confirmButtonName: t('button.save'),
             credentialId
         }
         setSpecificCredentialDialogProps(dialogProp)
@@ -102,7 +104,7 @@ const CredentialInputHandler = ({ inputParam, data, onSelect, disabled = false }
                                 disabled={disabled}
                                 name={inputParam.name}
                                 nodeData={data}
-                                value={credentialId ?? 'choose an option'}
+                                value={credentialId ?? t('dropdown.defaultOption')}
                                 isCreateNewOption={true}
                                 credentialNames={inputParam.credentialNames}
                                 onSelect={(newValue) => {

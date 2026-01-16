@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import { useContext, useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 import { Handle, Position, useUpdateNodeInternals } from 'reactflow'
 
 // material-ui
@@ -76,6 +77,7 @@ const NodeInputHandler = ({
     disablePadding = false,
     onHideNodeInfoDialog
 }) => {
+    const { t } = useTranslation()
     const theme = useTheme()
     const customization = useSelector((state) => state.customization)
     const ref = useRef(null)
@@ -113,8 +115,8 @@ const NodeInputHandler = ({
             inputParam,
             disabled,
             languageType,
-            confirmButtonName: 'Save',
-            cancelButtonName: 'Cancel'
+            confirmButtonName: t('canvas.save'),
+            cancelButtonName: t('canvas.cancel')
         }
         setExpandDialogProps(dialogProps)
         setShowExpandDialog(true)
@@ -125,8 +127,8 @@ const NodeInputHandler = ({
             data,
             inputParam,
             disabled,
-            confirmButtonName: 'Save',
-            cancelButtonName: 'Cancel'
+            confirmButtonName: t('button.save'),
+            cancelButtonName: t('button.cancel')
         }
         setConditionDialogProps(dialogProps)
         setShowConditionDialog(true)
@@ -152,8 +154,8 @@ const NodeInputHandler = ({
             relativeLinksMethod,
             limit,
             selectedLinks,
-            confirmButtonName: 'Save',
-            cancelButtonName: 'Cancel'
+            confirmButtonName: t('button.save'),
+            cancelButtonName: t('button.cancel')
         }
         setManageScrapedLinksDialogProps(dialogProps)
         setShowManageScrapedLinksDialog(true)
@@ -527,7 +529,7 @@ const NodeInputHandler = ({
                                         onClick={() => onShowPromptHubButtonClicked()}
                                         endIcon={<IconAutoFixHigh />}
                                     >
-                                        Langchain Hub
+                                        {t('canvas.langchainHub')}
                                     </Button>
                                     <PromptLangsmithHubDialog
                                         promptType={inputParam.name}
@@ -549,7 +551,7 @@ const NodeInputHandler = ({
                                     variant='outlined'
                                     onClick={() => setIsNvidiaNIMDialogOpen(true)}
                                 >
-                                    Setup NIM Locally
+                                    {t('canvas.setupNIMLocally')}
                                 </Button>
                             </>
                         )}
@@ -594,7 +596,7 @@ const NodeInputHandler = ({
                                         height: 25,
                                         width: 25
                                     }}
-                                    title='Expand'
+                                    title={t('canvas.expand')}
                                     color='primary'
                                     onClick={() =>
                                         onExpandDialogClicked(data.inputs[inputParam.name] ?? inputParam.default ?? '', inputParam)
@@ -697,7 +699,7 @@ const NodeInputHandler = ({
                                                 data.inputs[inputParam.name] = inputParam.codeExample
                                             }}
                                         >
-                                            See Example
+                                            {t('canvas.seeExample')}
                                         </Button>
                                     )}
                                 </div>
@@ -783,7 +785,7 @@ const NodeInputHandler = ({
                                 options={getDropdownOptions(inputParam)}
                                 freeSolo={inputParam.freeSolo}
                                 onSelect={(newValue) => (data.inputs[inputParam.name] = newValue)}
-                                value={data.inputs[inputParam.name] ?? inputParam.default ?? 'choose an option'}
+                                value={data.inputs[inputParam.name] ?? inputParam.default ?? t('dropdown.defaultOption')}
                             />
                         )}
                         {inputParam.type === 'multiOptions' && (
@@ -792,7 +794,7 @@ const NodeInputHandler = ({
                                 name={inputParam.name}
                                 options={getDropdownOptions(inputParam)}
                                 onSelect={(newValue) => (data.inputs[inputParam.name] = newValue)}
-                                value={data.inputs[inputParam.name] ?? inputParam.default ?? 'choose an option'}
+                                value={data.inputs[inputParam.name] ?? inputParam.default ?? t('dropdown.defaultOption')}
                             />
                         )}
                         {(inputParam.type === 'asyncOptions' || inputParam.type === 'asyncMultiOptions') && (
@@ -803,7 +805,7 @@ const NodeInputHandler = ({
                                         disabled={disabled}
                                         name={inputParam.name}
                                         nodeData={data}
-                                        value={data.inputs[inputParam.name] ?? inputParam.default ?? 'choose an option'}
+                                        value={data.inputs[inputParam.name] ?? inputParam.default ?? t('dropdown.defaultOption')}
                                         freeSolo={inputParam.freeSolo}
                                         multiple={inputParam.type === 'asyncMultiOptions'}
                                         isCreateNewOption={EDITABLE_OPTIONS.includes(inputParam.name)}
@@ -812,7 +814,7 @@ const NodeInputHandler = ({
                                     />
                                     {EDITABLE_OPTIONS.includes(inputParam.name) && data.inputs[inputParam.name] && (
                                         <IconButton
-                                            title='Edit'
+                                            title={t('canvas.edit')}
                                             color='primary'
                                             size='small'
                                             onClick={() => editAsyncOption(inputParam.name, data.inputs[inputParam.name])}
@@ -822,7 +824,7 @@ const NodeInputHandler = ({
                                     )}
                                     {inputParam.refresh && (
                                         <IconButton
-                                            title='Refresh'
+                                            title={t('canvas.refresh')}
                                             color='primary'
                                             size='small'
                                             onClick={() => setReloadTimestamp(Date.now().toString())}
@@ -873,7 +875,7 @@ const NodeInputHandler = ({
                                             )
                                         }
                                     >
-                                        Manage Links
+                                        {t('canvas.manageLinks')}
                                     </Button>
                                     <ManageScrapedLinksDialog
                                         show={showManageScrapedLinksDialog}

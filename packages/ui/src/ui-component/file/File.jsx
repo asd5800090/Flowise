@@ -4,8 +4,10 @@ import { useTheme } from '@mui/material/styles'
 import { FormControl, Button } from '@mui/material'
 import { IconUpload } from '@tabler/icons-react'
 import { getFileName } from '@/utils/genericHelper'
+import { useTranslation } from 'react-i18next'
 
 export const File = ({ value, formDataUpload, fileType, onChange, onFormDataChange, disabled = false }) => {
+    const { t } = useTranslation()
     const theme = useTheme()
 
     const [myValue, setMyValue] = useState(value ?? '')
@@ -88,7 +90,7 @@ export const File = ({ value, formDataUpload, fileType, onChange, onFormDataChan
                         marginBottom: '1rem'
                     }}
                 >
-                    {myValue ? getFileName(myValue) : 'Choose a file to upload'}
+                    {myValue ? getFileName(myValue) : t('file.chooseFileToUpload')}
                 </span>
             )}
             <Button
@@ -99,7 +101,7 @@ export const File = ({ value, formDataUpload, fileType, onChange, onFormDataChan
                 startIcon={<IconUpload />}
                 sx={{ marginRight: '1rem' }}
             >
-                {'Upload File'}
+{t('file.uploadFile')}
                 <input
                     type='file'
                     multiple

@@ -204,7 +204,7 @@ const DocStoreInputHandler = ({ inputParam, data, disabled = false }) => {
                                 name={inputParam.name}
                                 options={inputParam.options}
                                 onSelect={(newValue) => (data.inputs[inputParam.name] = newValue)}
-                                value={data.inputs[inputParam.name] ?? inputParam.default ?? 'choose an option'}
+                                value={data.inputs[inputParam.name] ?? inputParam.default ?? t('dropdown.defaultOption')}
                             />
                         )}
                         {inputParam.type === 'multiOptions' && (
@@ -214,7 +214,7 @@ const DocStoreInputHandler = ({ inputParam, data, disabled = false }) => {
                                 name={inputParam.name}
                                 options={inputParam.options}
                                 onSelect={(newValue) => (data.inputs[inputParam.name] = newValue)}
-                                value={data.inputs[inputParam.name] ?? inputParam.default ?? 'choose an option'}
+                                value={data.inputs[inputParam.name] ?? inputParam.default ?? t('dropdown.defaultOption')}
                             />
                         )}
                         {(inputParam.type === 'asyncOptions' || inputParam.type === 'asyncMultiOptions') && (
@@ -229,7 +229,7 @@ const DocStoreInputHandler = ({ inputParam, data, disabled = false }) => {
                                             nodeData={data}
                                             freeSolo={inputParam.freeSolo}
                                             multiple={inputParam.type === 'asyncMultiOptions'}
-                                            value={data.inputs[inputParam.name] ?? inputParam.default ?? 'choose an option'}
+                                            value={data.inputs[inputParam.name] ?? inputParam.default ?? t('dropdown.defaultOption')}
                                             onSelect={(newValue) => (data.inputs[inputParam.name] = newValue)}
                                             onCreateNew={() => addAsyncOption(inputParam.name)}
                                         />

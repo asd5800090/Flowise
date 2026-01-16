@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 import ReactFlow, { Controls, Background, useNodesState, useEdgesState } from 'reactflow'
 import 'reactflow/dist/style.css'
 import '@/views/canvas/index.css'
@@ -22,6 +23,7 @@ const edgeTypes = { buttonedge: '' }
 const MarketplaceCanvas = () => {
     const theme = useTheme()
     const navigate = useNavigate()
+    const { t } = useTranslation()
 
     const { state } = useLocation()
     const { flowData, name } = state
@@ -47,7 +49,7 @@ const MarketplaceCanvas = () => {
 
     const onChatflowCopy = (flowData) => {
         const isAgentCanvas = (flowData?.nodes || []).some(
-            (node) => node.data.category === 'Multi Agents' || node.data.category === 'Sequential Agents'
+            (node) => node.data.category === t('marketplaces.multiAgents') || node.data.category === t('marketplaces.sequentialAgents')
         )
         const templateFlowData = JSON.stringify(flowData)
         navigate(`/${isAgentCanvas ? 'agentcanvas' : 'canvas'}`, { state: { templateFlowData } })

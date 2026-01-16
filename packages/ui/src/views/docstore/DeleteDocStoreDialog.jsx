@@ -147,7 +147,7 @@ const DeleteDocStoreDialog = ({ show, dialogProps, onCancel, onDelete }) => {
                 {dialogProps.type === 'STORE' && dialogProps.recordManagerConfig && (
                     <FormControlLabel
                         control={<Checkbox checked={removeFromVS} onChange={(event) => setRemoveFromVS(event.target.checked)} />}
-                        label='Remove data from vector store and record manager'
+                        label={t('documentStores.removeDataFromVectorStoreAndRecordManager')}
                     />
                 )}
                 {removeFromVS && (
@@ -224,10 +224,10 @@ const DeleteDocStoreDialog = ({ show, dialogProps, onCancel, onDelete }) => {
             </DialogContent>
             <DialogActions sx={{ pr: 3, pb: 3 }}>
                 <Button onClick={onCancel} color='primary'>
-                    Cancel
+                    {t('button.cancel')}
                 </Button>
                 <Button variant='contained' onClick={() => onDelete(dialogProps.type, dialogProps.file, removeFromVS)} color='error'>
-                    Delete
+                    {t('button.delete')}
                 </Button>
             </DialogActions>
         </Dialog>

@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useCallback, Fragment } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
 import { cloneDeep } from 'lodash'
 import rehypeMathjax from 'rehype-mathjax'
@@ -160,6 +161,7 @@ CardWithDeleteOverlay.propTypes = {
 }
 
 export const ChatMessage = ({ open, chatflowid, isAgentCanvas, isDialog, previews, setPreviews }) => {
+    const { t } = useTranslation()
     const theme = useTheme()
     const customization = useSelector((state) => state.customization)
 
@@ -175,7 +177,7 @@ export const ChatMessage = ({ open, chatflowid, isAgentCanvas, isDialog, preview
     const [loading, setLoading] = useState(false)
     const [messages, setMessages] = useState([
         {
-            message: 'Hi there! How can I help?',
+            message: t('chatMessage.welcomeMessage'),
             type: 'apiMessage'
         }
     ])
@@ -1174,7 +1176,7 @@ export const ChatMessage = ({ open, chatflowid, isAgentCanvas, isDialog, preview
             setLoading(false)
             setMessages([
                 {
-                    message: 'Hi there! How can I help?',
+                    message: t('chatMessage.welcomeMessage'),
                     type: 'apiMessage'
                 }
             ])

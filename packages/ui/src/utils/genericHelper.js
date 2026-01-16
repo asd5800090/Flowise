@@ -689,17 +689,17 @@ export const unshiftFiles = (configData) => {
     return configData
 }
 
-export const getConfigExamplesForJS = (configData, bodyType, isMultiple, stopNodeId) => {
+export const getConfigExamplesForJS = (configData, bodyType, isMultiple, stopNodeId, t) => {
     let finalStr = ''
     configData = unshiftFiles(configData)
     const loop = Math.min(configData.length, 4)
     for (let i = 0; i < loop; i += 1) {
         const config = configData[i]
-        let exampleVal = `"example"`
-        if (config.type === 'string') exampleVal = `"example"`
+        let exampleVal = `"${t ? t('apiCode.example') : 'example'}"`
+        if (config.type === 'string') exampleVal = `"${t ? t('apiCode.example') : 'example'}"`
         else if (config.type === 'boolean') exampleVal = `true`
         else if (config.type === 'number') exampleVal = `1`
-        else if (config.type === 'json') exampleVal = `{ "key": "val" }`
+        else if (config.type === 'json') exampleVal = `{ "key": "${t ? t('apiCode.exampleVal') : 'val'}" }`
         else if (config.name === 'files') exampleVal = `input.files[0]`
         finalStr += bodyType === 'json' ? `\n      "${config.name}": ${exampleVal},` : `formData.append("${config.name}", ${exampleVal})\n`
         if (i === loop - 1 && bodyType !== 'json')
@@ -707,22 +707,22 @@ export const getConfigExamplesForJS = (configData, bodyType, isMultiple, stopNod
                 ? ``
                 : stopNodeId
                 ? `formData.append("stopNodeId", "${stopNodeId}")\n`
-                : `formData.append("question", "Hey, how are you?")\n`
+                : `formData.append("question", "${t ? t('apiCode.questionExample') : 'Hey, how are you?'}")\n`
     }
     return finalStr
 }
 
-export const getConfigExamplesForPython = (configData, bodyType, isMultiple, stopNodeId) => {
+export const getConfigExamplesForPython = (configData, bodyType, isMultiple, stopNodeId, t) => {
     let finalStr = ''
     configData = unshiftFiles(configData)
     const loop = Math.min(configData.length, 4)
     for (let i = 0; i < loop; i += 1) {
         const config = configData[i]
-        let exampleVal = `"example"`
-        if (config.type === 'string') exampleVal = `"example"`
+        let exampleVal = `"${t ? t('apiCode.example') : 'example'}"`
+        if (config.type === 'string') exampleVal = `"${t ? t('apiCode.example') : 'example'}"`
         else if (config.type === 'boolean') exampleVal = `true`
         else if (config.type === 'number') exampleVal = `1`
-        else if (config.type === 'json') exampleVal = `{ "key": "val" }`
+        else if (config.type === 'json') exampleVal = `{ "key": "${t ? t('apiCode.exampleVal') : 'val'}" }`
         else if (config.name === 'files') continue
         finalStr += bodyType === 'json' ? `\n        "${config.name}": ${exampleVal},` : `\n    "${config.name}": ${exampleVal},`
         if (i === loop - 1 && bodyType !== 'json')
@@ -730,22 +730,22 @@ export const getConfigExamplesForPython = (configData, bodyType, isMultiple, sto
                 ? `\n`
                 : stopNodeId
                 ? `\n    "stopNodeId": "${stopNodeId}"\n`
-                : `\n    "question": "Hey, how are you?"\n`
+                : `\n    "question": "${t ? t('apiCode.questionExample') : 'Hey, how are you?'}"\n`
     }
     return finalStr
 }
 
-export const getConfigExamplesForCurl = (configData, bodyType, isMultiple, stopNodeId) => {
+export const getConfigExamplesForCurl = (configData, bodyType, isMultiple, stopNodeId, t) => {
     let finalStr = ''
     configData = unshiftFiles(configData)
     const loop = Math.min(configData.length, 4)
     for (let i = 0; i < loop; i += 1) {
         const config = configData[i]
-        let exampleVal = `"example"`
-        if (config.type === 'string') exampleVal = bodyType === 'json' ? `"example"` : `example`
+        let exampleVal = `"${t ? t('apiCode.example') : 'example'}"`
+        if (config.type === 'string') exampleVal = bodyType === 'json' ? `"${t ? t('apiCode.example') : 'example'}"` : `${t ? t('apiCode.example') : 'example'}`
         else if (config.type === 'boolean') exampleVal = `true`
         else if (config.type === 'number') exampleVal = `1`
-        else if (config.type === 'json') exampleVal = `{key:val}`
+        else if (config.type === 'json') exampleVal = `{key:${t ? t('apiCode.exampleVal') : 'val'}}`
         else if (config.name === 'files')
             exampleVal = `@/home/user1/Desktop/example${config.type.includes(',') ? config.type.split(',')[0] : config.type}`
         finalStr += bodyType === 'json' ? `"${config.name}": ${exampleVal}` : `\n     -F "${config.name}=${exampleVal}"`
@@ -757,7 +757,7 @@ export const getConfigExamplesForCurl = (configData, bodyType, isMultiple, stopN
                     ? ``
                     : stopNodeId
                     ? ` \\\n     -F "stopNodeId=${stopNodeId}"`
-                    : ` \\\n     -F "question=Hey, how are you?"`
+                    : ` \\\n     -F "question=${t ? t('apiCode.questionExample') : 'Hey, how are you?'}"`
         else finalStr += bodyType === 'json' ? `, ` : ` \\`
     }
     return finalStr

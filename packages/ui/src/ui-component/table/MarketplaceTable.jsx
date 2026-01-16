@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
 import { useSelector } from 'react-redux'
 import { styled } from '@mui/material/styles'
@@ -53,6 +54,7 @@ export const MarketplaceTable = ({
 }) => {
     const theme = useTheme()
     const customization = useSelector((state) => state.customization)
+    const { t } = useTranslation()
 
     const openTemplate = (selectedTemplate) => {
         if (selectedTemplate.flowData) {
@@ -74,25 +76,25 @@ export const MarketplaceTable = ({
                     >
                         <TableRow>
                             <StyledTableCell sx={{ minWidth: '150px' }} component='th' scope='row' key='0'>
-                                Name
+                                {t('marketplaces.name')}
                             </StyledTableCell>
                             <StyledTableCell sx={{ minWidth: '100px' }} component='th' scope='row' key='1'>
-                                Type
+                                {t('marketplaces.type')}
                             </StyledTableCell>
-                            <StyledTableCell key='2'>Description</StyledTableCell>
+                            <StyledTableCell key='2'>{t('marketplaces.description')}</StyledTableCell>
                             <StyledTableCell sx={{ minWidth: '100px' }} key='3'>
-                                Framework
+                                {t('marketplaces.framework')}
                             </StyledTableCell>
                             <StyledTableCell sx={{ minWidth: '100px' }} key='4'>
-                                Use cases
+                                {t('marketplaces.useCases')}
                             </StyledTableCell>
-                            <StyledTableCell key='5'>Nodes</StyledTableCell>
+                            <StyledTableCell key='5'>{t('marketplaces.nodes')}</StyledTableCell>
                             <StyledTableCell component='th' scope='row' key='6'>
-                                &nbsp;
+                                {t('marketplaces.actions')}
                             </StyledTableCell>
                             {onDelete && (
                                 <StyledTableCell component='th' scope='row' key='7'>
-                                    Delete
+                                    {t('marketplaces.delete')}
                                 </StyledTableCell>
                             )}
                         </TableRow>
@@ -254,9 +256,9 @@ export const MarketplaceTable = ({
                                             </StyledTableCell>
                                             {onDelete && (
                                                 <StyledTableCell key='7'>
-                                                    <IconButton title='Delete' color='error' onClick={() => onDelete(row)}>
-                                                        <IconTrash />
-                                                    </IconButton>
+                                            <IconButton title={t('marketplaces.delete')} color='error' onClick={() => onDelete(row)}>
+                                                <IconTrash />
+                                            </IconButton>
                                                 </StyledTableCell>
                                             )}
                                         </StyledTableRow>

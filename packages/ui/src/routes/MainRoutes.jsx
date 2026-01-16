@@ -39,6 +39,9 @@ const LoaderConfigPreviewChunks = Loadable(lazy(() => import('@/views/docstore/L
 const VectorStoreConfigure = Loadable(lazy(() => import('@/views/docstore/VectorStoreConfigure')))
 const VectorStoreQuery = Loadable(lazy(() => import('@/views/docstore/VectorStoreQuery')))
 
+// i18n test routing
+const I18nTest = Loadable(lazy(() => import('@/ui-component/i18n-test/TestPage')))
+
 // ==============================|| MAIN ROUTING ||============================== //
 
 const MainRoutes = {
@@ -120,6 +123,10 @@ const MainRoutes = {
         {
             path: '/document-stores/query/:storeId',
             element: <VectorStoreQuery />
+        },
+        {
+            path: '/i18n-test',
+            element: <I18nTest />
         }
     ]
 }

@@ -2,6 +2,7 @@ import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
 import { useState, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar as enqueueSnackbarAction, closeSnackbar as closeSnackbarAction } from '@/store/actions'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -349,7 +350,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
             const createResp = await assistantsApi.createNewAssistant(obj)
             if (createResp.data) {
                 enqueueSnackbar({
-                    message: 'New Assistant added',
+                    message: t('assistants.newAssistantAdded'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -365,9 +366,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
             setLoading(false)
         } catch (error) {
             enqueueSnackbar({
-                message: `Failed to add new Assistant: ${
-                    typeof error.response.data === 'object' ? error.response.data.message : error.response.data
-                }`,
+                message: `${t('assistants.failedToAddAssistant', { error: typeof error.response.data === 'object' ? error.response.data.message : error.response.data })}`,
                 options: {
                     key: new Date().getTime() + Math.random(),
                     variant: 'error',
@@ -404,7 +403,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
             const saveResp = await assistantsApi.updateAssistant(assistantId, obj)
             if (saveResp.data) {
                 enqueueSnackbar({
-                    message: 'Assistant saved',
+                    message: t('assistants.assistantSaved'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -420,9 +419,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
             setLoading(false)
         } catch (error) {
             enqueueSnackbar({
-                message: `Failed to save Assistant: ${
-                    typeof error.response.data === 'object' ? error.response.data.message : error.response.data
-                }`,
+                message: `${t('assistants.failedToSaveAssistant', { error: typeof error.response.data === 'object' ? error.response.data.message : error.response.data })}`,
                 options: {
                     key: new Date().getTime() + Math.random(),
                     variant: 'error',
@@ -445,7 +442,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
             if (getResp.data) {
                 syncData(getResp.data)
                 enqueueSnackbar({
-                    message: 'Assistant successfully synced!',
+                    message: t('assistants.assistantSuccessfullySynced'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -460,9 +457,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
             setLoading(false)
         } catch (error) {
             enqueueSnackbar({
-                message: `Failed to sync Assistant: ${
-                    typeof error.response.data === 'object' ? error.response.data.message : error.response.data
-                }`,
+                message: `${t('assistants.failedToSyncAssistant', { error: typeof error.response.data === 'object' ? error.response.data.message : error.response.data })}`,
                 options: {
                     key: new Date().getTime() + Math.random(),
                     variant: 'error',
@@ -485,7 +480,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
             const uploadResp = await assistantsApi.uploadFilesToAssistantVectorStore(vectorStoreId, assistantCredential, formData)
             if (uploadResp.data) {
                 enqueueSnackbar({
-                    message: 'File uploaded successfully!',
+                    message: t('assistants.fileUploadSuccess'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -511,9 +506,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
             setLoading(false)
         } catch (error) {
             enqueueSnackbar({
-                message: `Failed to upload file: ${
-                    typeof error.response.data === 'object' ? error.response.data.message : error.response.data
-                }`,
+                message: `${t('assistants.failedToUploadFile', { error: typeof error.response.data === 'object' ? error.response.data.message : error.response.data })}`,
                 options: {
                     key: new Date().getTime() + Math.random(),
                     variant: 'error',
@@ -535,7 +528,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
             const uploadResp = await assistantsApi.uploadFilesToAssistant(assistantCredential, formData)
             if (uploadResp.data) {
                 enqueueSnackbar({
-                    message: 'File uploaded successfully!',
+                    message: t('assistants.fileUploadSuccess'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -563,9 +556,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
             setLoading(false)
         } catch (error) {
             enqueueSnackbar({
-                message: `Failed to upload file: ${
-                    typeof error.response.data === 'object' ? error.response.data.message : error.response.data
-                }`,
+                message: `${t('assistants.failedToUploadFile', { error: typeof error.response.data === 'object' ? error.response.data.message : error.response.data })}`,
                 options: {
                     key: new Date().getTime() + Math.random(),
                     variant: 'error',
@@ -607,7 +598,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
             const delResp = await assistantsApi.deleteAssistant(assistantId, isDeleteBoth)
             if (delResp.data) {
                 enqueueSnackbar({
-                    message: 'Assistant deleted',
+                    message: t('assistants.assistantDeleted'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -622,9 +613,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
             }
         } catch (error) {
             enqueueSnackbar({
-                message: `Failed to delete Assistant: ${
-                    typeof error.response.data === 'object' ? error.response.data.message : error.response.data
-                }`,
+                message: `${t('assistants.failedToDeleteAssistant', { error: typeof error.response.data === 'object' ? error.response.data.message : error.response.data })}`,
                 options: {
                     key: new Date().getTime() + Math.random(),
                     variant: 'error',
@@ -691,7 +680,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                     <Box>
                         <Stack sx={{ position: 'relative' }} direction='row'>
                             <Typography variant='overline'>
-                                OpenAI Credential
+                                {t('canvasNode.inputs')}
                                 <span style={{ color: 'red' }}>&nbsp;*</span>
                             </Typography>
                         </Stack>
@@ -710,7 +699,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                     <Box>
                         <Stack sx={{ position: 'relative' }} direction='row'>
                             <Typography variant='overline'>
-                                Assistant Model
+                                {t('assistants.model')}
                                 <span style={{ color: 'red' }}>&nbsp;*</span>
                             </Typography>
                         </Stack>
@@ -719,13 +708,13 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                             name={assistantModel}
                             options={assistantAvailableModels}
                             onSelect={(newValue) => setAssistantModel(newValue)}
-                            value={assistantModel ?? 'choose an option'}
+                            value={assistantModel ?? t('dropdown.defaultOption')}
                         />
                     </Box>
                     <Box>
                         <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
-                            <Typography variant='overline'>Assistant Name</Typography>
-                            <TooltipWithParser title={'The name of the assistant. The maximum length is 256 characters.'} />
+                            <Typography variant='overline'>{t('assistants.name')}</Typography>
+                            <TooltipWithParser title={t('assistants.nameTooltip')} />
                         </Stack>
                         <OutlinedInput
                             id='assistantName'
@@ -740,8 +729,8 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                     </Box>
                     <Box>
                         <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
-                            <Typography variant='overline'>Assistant Description</Typography>
-                            <TooltipWithParser title={'The description of the assistant. The maximum length is 512 characters.'} />
+                            <Typography variant='overline'>{t('assistants.description')}</Typography>
+                            <TooltipWithParser title={t('assistants.descriptionTooltip')} />
                         </Stack>
                         <OutlinedInput
                             id='assistantDesc'
@@ -793,9 +782,9 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                     </Box>
                     <Box>
                         <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
-                            <Typography variant='overline'>Assistant Instruction</Typography>
+                            <Typography variant='overline'>{t('assistants.instruction')}</Typography>
                             <TooltipWithParser
-                                title={'The system instructions that the assistant uses. The maximum length is 32768 characters.'}
+                                title={t('assistants.instructionTooltip')}
                             />
                         </Stack>
                         <OutlinedInput
@@ -813,10 +802,10 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                     </Box>
                     <Box>
                         <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
-                            <Typography variant='overline'>Assistant Temperature</Typography>
+                            <Typography variant='overline'>{t('assistants.temperature')}</Typography>
                             <TooltipWithParser
                                 title={
-                                    'Controls randomness: Lowering results in less random completions. As the temperature approaches zero, the model will become deterministic and repetitive.'
+                                    t('assistants.temperature') + ': Controls randomness: Lowering results in less random completions. As the temperature approaches zero, the model will become deterministic and repetitive.'
                                 }
                             />
                         </Stack>
@@ -877,7 +866,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                                             dialogRef?.current?.scrollTo({ top: maxScroll })
                                         }, 100)
                                     }}
-                                    value={assistantTools ?? 'choose an option'}
+                                    value={assistantTools ?? t('dropdown.defaultOption')}
                                 />
                             </Box>
                             <Box>

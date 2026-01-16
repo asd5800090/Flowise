@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import { useTheme } from '@mui/material/styles'
@@ -34,6 +35,7 @@ import { closeSnackbar as closeSnackbarAction, enqueueSnackbar as enqueueSnackba
 // ==============================|| CANVAS HEADER ||============================== //
 
 const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlow, handleLoadFlow }) => {
+    const { t } = useTranslation()
     const theme = useTheme()
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -60,7 +62,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
     const enqueueSnackbar = (...args) => dispatch(enqueueSnackbarAction(...args))
     const closeSnackbar = (...args) => dispatch(closeSnackbarAction(...args))
 
-    const title = isAgentCanvas ? 'Agents' : 'Chatflow'
+    const title = isAgentCanvas ? t('canvas.agents') : t('canvas.chatflow')
 
     const updateChatflowApi = useApi(chatflowsApi.updateChatflow)
     const canvas = useSelector((state) => state.canvas)
@@ -72,20 +74,20 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
             handleDeleteFlow()
         } else if (setting === 'viewMessages') {
             setViewMessagesDialogProps({
-                title: 'View Messages',
+                title: t('canvas.viewMessages'),
                 chatflow: chatflow
             })
             setViewMessagesDialogOpen(true)
         } else if (setting === 'viewLeads') {
             setViewLeadsDialogProps({
-                title: 'View Leads',
+                title: t('canvas.viewLeads'),
                 chatflow: chatflow
             })
             setViewLeadsDialogOpen(true)
         } else if (setting === 'saveAsTemplate') {
             if (canvas.isDirty) {
                 enqueueSnackbar({
-                    message: 'Please save the flow before exporting as template',
+                    message: t('message.pleaseSaveBeforeExport'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'error',
@@ -100,19 +102,19 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                 return
             }
             setExportAsTemplateDialogProps({
-                title: 'Export As Template',
+                title: t('canvas.exportAsTemplate'),
                 chatflow: chatflow
             })
             setExportAsTemplateDialogOpen(true)
         } else if (setting === 'viewUpsertHistory') {
             setUpsertHistoryDialogProps({
-                title: 'View Upsert History',
+                title: t('canvas.viewUpsertHistory'),
                 chatflow: chatflow
             })
             setUpsertHistoryDialogOpen(true)
         } else if (setting === 'chatflowConfiguration') {
             setChatflowConfigurationDialogProps({
-                title: `${title} Configuration`,
+                title: t('canvas.configuration', { title }),
                 chatflow: chatflow
             })
             setChatflowConfigurationDialogOpen(true)
@@ -192,7 +194,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
         }
 
         setAPIDialogProps({
-            title: 'Embed in website or use as API',
+            title: t('canvas.embedInWebsite'),
             chatflowid: chatflow.id,
             chatflowApiKeyId: chatflow.apikeyid,
             isFormDataRequired,
@@ -240,7 +242,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
             <Stack flexDirection='row' justifyContent='space-between' sx={{ width: '100%' }}>
                 <Stack flexDirection='row' sx={{ width: '100%', maxWidth: '50%' }}>
                     <Box>
-                        <ButtonBase title='Back' sx={{ borderRadius: '50%' }}>
+                        <ButtonBase title={t('button.back')} sx={{ borderRadius: '50%' }}>
                             <Avatar
                                 variant='rounded'
                                 sx={{
@@ -279,7 +281,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                                     {canvas.isDirty && <strong style={{ color: theme.palette.orange.main }}>*</strong>} {flowName}
                                 </Typography>
                                 {chatflow?.id && (
-                                    <ButtonBase title='Edit Name' sx={{ borderRadius: '50%' }}>
+                                    <ButtonBase title={t('button.editName')} sx={{ borderRadius: '50%' }}>
                                         <Avatar
                                             variant='rounded'
                                             sx={{
@@ -322,7 +324,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                                         }
                                     }}
                                 />
-                                <ButtonBase title='Save Name' sx={{ borderRadius: '50%' }}>
+                                <ButtonBase title={t('button.saveName')} sx={{ borderRadius: '50%' }}>
                                     <Avatar
                                         variant='rounded'
                                         sx={{
@@ -343,7 +345,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                                         <IconCheck stroke={1.5} size='1.3rem' />
                                     </Avatar>
                                 </ButtonBase>
-                                <ButtonBase title='Cancel' sx={{ borderRadius: '50%' }}>
+                                <ButtonBase title={t('button.cancel')} sx={{ borderRadius: '50%' }}>
                                     <Avatar
                                         variant='rounded'
                                         sx={{
@@ -370,7 +372,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                 </Stack>
                 <Box>
                     {chatflow?.id && (
-                        <ButtonBase title='API Endpoint' sx={{ borderRadius: '50%', mr: 2 }}>
+                        <ButtonBase title={t('button.apiEndpoint')} sx={{ borderRadius: '50%', mr: 2 }}>
                             <Avatar
                                 variant='rounded'
                                 sx={{
@@ -391,7 +393,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                             </Avatar>
                         </ButtonBase>
                     )}
-                    <ButtonBase title={`Save ${title}`} sx={{ borderRadius: '50%', mr: 2 }}>
+                    <ButtonBase title={isAgentCanvas ? t('button.saveAgents') : t('button.saveChatflow')} sx={{ borderRadius: '50%', mr: 2 }}>
                         <Avatar
                             variant='rounded'
                             sx={{
@@ -411,7 +413,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                             <IconDeviceFloppy stroke={1.5} size='1.3rem' />
                         </Avatar>
                     </ButtonBase>
-                    <ButtonBase ref={settingsRef} title='Settings' sx={{ borderRadius: '50%' }}>
+                    <ButtonBase ref={settingsRef} title={t('button.settings')} sx={{ borderRadius: '50%' }}>
                         <Avatar
                             variant='rounded'
                             sx={{
@@ -444,9 +446,9 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
             <SaveChatflowDialog
                 show={flowDialogOpen}
                 dialogProps={{
-                    title: `Save New ${title}`,
-                    confirmButtonName: 'Save',
-                    cancelButtonName: 'Cancel'
+                    title: isAgentCanvas ? t('saveChatflow.saveNewAgents') : t('saveChatflow.saveNewChatflow'),
+                    confirmButtonName: t('button.save'),
+                    cancelButtonName: t('button.cancel')
                 }}
                 onCancel={() => setFlowDialogOpen(false)}
                 onConfirm={onConfirmSaveName}

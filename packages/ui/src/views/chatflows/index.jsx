@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import { Box, Skeleton, Stack, ToggleButton, ToggleButtonGroup } from '@mui/material'
@@ -34,6 +35,7 @@ import { IconPlus, IconLayoutGrid, IconList } from '@tabler/icons-react'
 const Chatflows = () => {
     const navigate = useNavigate()
     const theme = useTheme()
+    const { t } = useTranslation()
 
     const [isLoading, setLoading] = useState(true)
     const [error, setError] = useState(null)
@@ -87,8 +89,8 @@ const Chatflows = () => {
         if (getAllChatflowsApi.error) {
             if (getAllChatflowsApi.error?.response?.status === 401) {
                 setLoginDialogProps({
-                    title: 'Login',
-                    confirmButtonName: 'Login'
+                    title: t('login.title'),
+                    confirmButtonName: t('login.confirmButtonName')
                 })
                 setLoginDialogOpen(true)
             } else {
@@ -131,7 +133,7 @@ const Chatflows = () => {
                 <ErrorBoundary error={error} />
             ) : (
                 <Stack flexDirection='column' sx={{ gap: 3 }}>
-                    <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='Search Name or Category' title='Chatflows'>
+                    <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder={t('chatflows.searchPlaceholder')} title={t('chatflows.title')}>
                         <ToggleButtonGroup
                             sx={{ borderRadius: 2, maxHeight: 40 }}
                             value={view}
@@ -147,7 +149,7 @@ const Chatflows = () => {
                                 }}
                                 variant='contained'
                                 value='card'
-                                title='Card View'
+                                title={t('chatflows.cardView')}
                             >
                                 <IconLayoutGrid />
                             </ToggleButton>
@@ -159,13 +161,13 @@ const Chatflows = () => {
                                 }}
                                 variant='contained'
                                 value='list'
-                                title='List View'
+                                title={t('chatflows.listView')}
                             >
                                 <IconList />
                             </ToggleButton>
                         </ToggleButtonGroup>
                         <StyledButton variant='contained' onClick={addNew} startIcon={<IconPlus />} sx={{ borderRadius: 2, height: 40 }}>
-                            Add New
+                            {t('chatflows.addNew')}
                         </StyledButton>
                     </ViewHeader>
                     {!view || view === 'card' ? (
@@ -203,13 +205,13 @@ const Chatflows = () => {
                                     alt='WorkflowEmptySVG'
                                 />
                             </Box>
-                            <div>No Chatflows Yet</div>
+                            <div>{t('chatflows.noChatflows')}</div>
                         </Stack>
                     )}
                 </Stack>
             )}
 
-            <LoginDialog show={loginDialogOpen} dialogProps={loginDialogProps} onConfirm={onLoginClick} />
+            <LoginDialog show={loginDialogOpen} onConfirm={onLoginClick} />
             <ConfirmDialog />
         </MainCard>
     )

@@ -11,6 +11,7 @@ import { styled } from '@mui/material/styles'
 // project imports
 import LogoSection from '../LogoSection'
 import ProfileSection from './ProfileSection'
+import LanguageSwitcher from '@/ui-component/language/LanguageSwitcher'
 
 // assets
 import { IconMenu2 } from '@tabler/icons-react'
@@ -126,6 +127,8 @@ const Header = ({ handleLeftDrawerToggle }) => {
                 </ButtonBase>
             </Box>
             <Box sx={{ flexGrow: 1 }} />
+            <LanguageSwitcher />
+            <Box sx={{ ml: 1 }} />
             <MaterialUISwitch checked={isDark} onChange={changeDarkMode} />
             <Box sx={{ ml: 2 }}></Box>
             <ProfileSection handleLogout={signOutClicked} username={localStorage.getItem('username') ?? ''} />

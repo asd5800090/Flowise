@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import { Box, Stack, Button, ButtonGroup, Skeleton, ToggleButtonGroup, ToggleButton } from '@mui/material'
@@ -27,6 +28,7 @@ import { useTheme } from '@mui/material/styles'
 // ==============================|| CHATFLOWS ||============================== //
 
 const Tools = () => {
+    const { t } = useTranslation()
     const theme = useTheme()
     const getAllToolsApi = useApi(toolsApi.getAllTools)
 
@@ -47,10 +49,10 @@ const Tools = () => {
     const onUploadFile = (file) => {
         try {
             const dialogProp = {
-                title: 'Add New Tool',
+                title: t('tools.addNewTool'),
                 type: 'IMPORT',
-                cancelButtonName: 'Cancel',
-                confirmButtonName: 'Save',
+                cancelButtonName: t('button.cancel'),
+                confirmButtonName: t('button.save'),
                 data: JSON.parse(file)
             }
             setDialogProps(dialogProp)
@@ -78,10 +80,10 @@ const Tools = () => {
 
     const addNew = () => {
         const dialogProp = {
-            title: 'Add New Tool',
+            title: t('tools.addNewTool'),
             type: 'ADD',
-            cancelButtonName: 'Cancel',
-            confirmButtonName: 'Add'
+            cancelButtonName: t('button.cancel'),
+            confirmButtonName: t('button.add')
         }
         setDialogProps(dialogProp)
         setShowDialog(true)
@@ -89,10 +91,10 @@ const Tools = () => {
 
     const edit = (selectedTool) => {
         const dialogProp = {
-            title: 'Edit Tool',
+            title: t('tools.editTool'),
             type: 'EDIT',
-            cancelButtonName: 'Cancel',
-            confirmButtonName: 'Save',
+            cancelButtonName: t('button.cancel'),
+            confirmButtonName: t('button.save'),
             data: selectedTool
         }
         setDialogProps(dialogProp)
@@ -138,7 +140,7 @@ const Tools = () => {
                     <ErrorBoundary error={error} />
                 ) : (
                     <Stack flexDirection='column' sx={{ gap: 3 }}>
-                        <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='Search Tools' title='Tools'>
+                        <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder={t('tools.searchPlaceholder')} title={t('tools.title')}>
                             <ToggleButtonGroup
                                 sx={{ borderRadius: 2, maxHeight: 40 }}
                                 value={view}
@@ -154,7 +156,7 @@ const Tools = () => {
                                     }}
                                     variant='contained'
                                     value='card'
-                                    title='Card View'
+                                    title={t('tools.cardView')}
                                 >
                                     <IconLayoutGrid />
                                 </ToggleButton>
@@ -166,7 +168,7 @@ const Tools = () => {
                                     }}
                                     variant='contained'
                                     value='list'
-                                    title='List View'
+                                    title={t('tools.listView')}
                                 >
                                     <IconList />
                                 </ToggleButton>
@@ -178,7 +180,7 @@ const Tools = () => {
                                     startIcon={<IconFileUpload />}
                                     sx={{ borderRadius: 2, height: 40 }}
                                 >
-                                    Load
+                                    {t('tools.load')}
                                 </Button>
                                 <input
                                     style={{ display: 'none' }}
@@ -196,7 +198,7 @@ const Tools = () => {
                                     startIcon={<IconPlus />}
                                     sx={{ borderRadius: 2, height: 40 }}
                                 >
-                                    Create
+                                    {t('button.create')}
                                 </StyledButton>
                             </ButtonGroup>
                         </ViewHeader>
@@ -229,7 +231,7 @@ const Tools = () => {
                                         alt='ToolEmptySVG'
                                     />
                                 </Box>
-                                <div>No Tools Created Yet</div>
+                                <div>{t('tools.noTools')}</div>
                             </Stack>
                         )}
                     </Stack>

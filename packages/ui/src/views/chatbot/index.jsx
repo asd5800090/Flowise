@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { FullPageChat } from 'flowise-embed-react'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 // Project import
 import LoginDialog from '@/ui-component/dialog/LoginDialog'
@@ -17,6 +18,7 @@ import { baseURL } from '@/store/constant'
 // ==============================|| Chatbot ||============================== //
 
 const ChatbotFull = () => {
+    const { t } = useTranslation()
     const URLpath = document.location.pathname.toString().split('/')
     const chatflowId = URLpath[URLpath.length - 1] === 'chatbot' ? '' : URLpath[URLpath.length - 1]
     const navigate = useNavigate()
@@ -50,8 +52,8 @@ const ChatbotFull = () => {
                     getSpecificChatflowApi.request(chatflowId)
                 } else {
                     setLoginDialogProps({
-                        title: 'Login',
-                        confirmButtonName: 'Login'
+                        title: t('login.title'),
+                        confirmButtonName: t('login.confirmButtonName')
                     })
                     setLoginDialogOpen(true)
                 }
@@ -64,8 +66,8 @@ const ChatbotFull = () => {
         if (getSpecificChatflowApi.error) {
             if (getSpecificChatflowApi.error?.response?.status === 401) {
                 setLoginDialogProps({
-                    title: 'Login',
-                    confirmButtonName: 'Login'
+                    title: t('login.title'),
+                    confirmButtonName: t('login.confirmButtonName')
                 })
                 setLoginDialogOpen(true)
             }
@@ -123,7 +125,7 @@ const ChatbotFull = () => {
                             theme={{ chatWindow: chatbotTheme }}
                         />
                     )}
-                    <LoginDialog show={loginDialogOpen} dialogProps={loginDialogProps} onConfirm={onLoginClick} />
+                    <LoginDialog show={loginDialogOpen} onConfirm={onLoginClick} />
                 </>
             ) : null}
         </>

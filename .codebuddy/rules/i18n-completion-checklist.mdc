@@ -1,0 +1,30 @@
+---
+description: 
+alwaysApply: false
+enabled: true
+updatedAt: 2026-01-15T10:06:32.075Z
+provider: 
+---
+
+## 执行原则
+1. 任何新添加的 UI 文本必须使用翻译键，禁止硬编码
+2. 修改现有组件时，优先使用已有的翻译键
+3. 如需新翻译键，同时在 en/zh-CN common.json 中添加
+4. 保持代码简洁，避免不必要的复杂结构
+5. 每次修改后运行 linter 检查
+
+## 检查要点
+- [ ] 所有用户可见文本都已国际化
+- [ ] 翻译键命名规范一致
+- [ ] 中英文内容准确对应  
+- [ ] 无 linter 错误
+- [ ] 功能测试正常
+
+## 常用翻译键路径
+- 按钮: `t('button.save')`, `t('button.cancel')`, `t('button.delete')`
+- 验证: `t('validation.required')`, `t('validation.invalidPort')`
+- 消息: `t('message.saveSuccess')`, `t('message.error')`
+- 变量: `t('variables.actions')`, `t('variables.load')`
+- 工具: `t('tools.name')`, `t('tools.description')`
+- NVIDIA NIM: `t('nvidiaNIM.title')`, `t('nvidiaNIM.downloadInstaller')`
+- 文件: `t('file.chooseFileToUpload')`, `t('file.uploadFile')`

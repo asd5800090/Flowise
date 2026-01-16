@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 import {
     Accordion,
     AccordionDetails,
@@ -86,6 +87,7 @@ OverrideConfigTable.propTypes = {
 
 const OverrideConfig = ({ dialogProps }) => {
     const dispatch = useDispatch()
+    const { t } = useTranslation()
     const chatflow = useSelector((state) => state.canvas.chatflow)
     const chatflowid = chatflow.id
     const apiConfig = chatflow.apiConfig ? JSON.parse(chatflow.apiConfig) : {}
@@ -267,7 +269,7 @@ const OverrideConfig = ({ dialogProps }) => {
             })
             if (saveResp.data) {
                 enqueueSnackbar({
-                    message: 'Override Configuration Saved',
+                    message: t('overrideConfig.configurationSaved'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -282,7 +284,7 @@ const OverrideConfig = ({ dialogProps }) => {
             }
         } catch (error) {
             enqueueSnackbar({
-                message: `Failed to save Override Configuration: ${
+                message: `${t('overrideConfig.failedToSaveConfiguration')}: ${
                     typeof error.response.data === 'object' ? error.response.data.message : error.response.data
                 }`,
                 options: {
@@ -326,16 +328,14 @@ const OverrideConfig = ({ dialogProps }) => {
     return (
         <Stack direction='column' spacing={2} sx={{ alignItems: 'start' }}>
             <Typography variant='h3'>
-                Override Configuration
+                {t('overrideConfig.title')}
                 <TooltipWithParser
                     style={{ mb: 1, mt: 2, marginLeft: 10 }}
-                    title={
-                        'Enable or disable which properties of the flow configuration can be overridden. Refer to the <a href="https://docs.flowiseai.com/using-flowise/api#override-config" target="_blank">documentation</a> for more information.'
-                    }
+                    title={t('overrideConfig.tooltip')}
                 />
             </Typography>
             <Stack direction='column' spacing={2} sx={{ width: '100%' }}>
-                <SwitchInput label='Enable Override Configuration' onChange={setOverrideConfigStatus} value={overrideConfigStatus} />
+                <SwitchInput label={t('overrideConfig.enableOverrideConfiguration')} onChange={setOverrideConfigStatus} value={overrideConfigStatus} />
                 {overrideConfigStatus && (
                     <>
                         {nodeOverrides && nodeConfig && (

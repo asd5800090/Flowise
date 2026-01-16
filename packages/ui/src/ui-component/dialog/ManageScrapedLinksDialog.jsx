@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import { createPortal } from 'react-dom'
 import { useDispatch } from 'react-redux'
 import { useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import {
     Box,
@@ -36,6 +37,7 @@ import {
 const ManageScrapedLinksDialog = ({ show, dialogProps, onCancel, onSave }) => {
     const portalElement = document.getElementById('portal')
     const dispatch = useDispatch()
+    const { t } = useTranslation()
 
     useNotifier()
     const enqueueSnackbar = (...args) => dispatch(enqueueSnackbarAction(...args))
@@ -69,7 +71,7 @@ const ManageScrapedLinksDialog = ({ show, dialogProps, onCancel, onSave }) => {
             if (fetchLinksResp.data) {
                 setSelectedLinks(fetchLinksResp.data.links)
                 enqueueSnackbar({
-                    message: 'Successfully fetched links',
+                    message: t('scrapeLinks.fetchSuccess'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -130,7 +132,7 @@ const ManageScrapedLinksDialog = ({ show, dialogProps, onCancel, onSave }) => {
             aria-describedby='manage-scraped-links-dialog-description'
         >
             <DialogTitle sx={{ fontSize: '1rem' }} id='manage-scraped-links-dialog-title'>
-                {dialogProps.title || `Manage Scraped Links - ${url}`}
+                {dialogProps.title || t('scrapeLinks.title', { url })}
             </DialogTitle>
             <DialogContent>
                 <Box sx={{ mb: 4 }}>
@@ -147,29 +149,29 @@ const ManageScrapedLinksDialog = ({ show, dialogProps, onCancel, onSave }) => {
                                 }}
                             />
                         </FormControl>
-                        <Button
-                            disabled={!url}
-                            sx={{ borderRadius: '12px', mt: 1, display: 'flex', flexShrink: 0 }}
-                            size='small'
-                            variant='contained'
-                            onClick={handleFetchLinks}
-                        >
-                            Fetch Links
-                        </Button>
+                    <Button
+                        disabled={!url}
+                        sx={{ borderRadius: '12px', mt: 1, display: 'flex', flexShrink: 0 }}
+                        size='small'
+                        variant='contained'
+                        onClick={handleFetchLinks}
+                    >
+                        {t('scrapeLinks.fetchLinks')}
+                    </Button>
                     </Stack>
                 </Box>
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 1.5 }}>
-                    <Typography sx={{ fontWeight: 500 }}>Scraped Links</Typography>
+                    <Typography sx={{ fontWeight: 500 }}>{t('scrapeLinks.scrapedLinks')}</Typography>
                     {selectedLinks.length > 0 ? (
                         <Button
                             sx={{ height: 'max-content', width: 'max-content' }}
                             variant='outlined'
                             color='error'
-                            title='Clear All Links'
+                            title={t('scrapeLinks.clearAllTitle')}
                             onClick={handleRemoveAllLinks}
                             startIcon={<IconEraser />}
                         >
-                            Clear All
+                            {t('scrapeLinks.clearAll')}
                         </Button>
                     ) : null}
                 </Box>
@@ -215,15 +217,15 @@ const ManageScrapedLinksDialog = ({ show, dialogProps, onCancel, onSave }) => {
                         </PerfectScrollbar>
                     ) : (
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                            <Typography sx={{ my: 2 }}>Links scraped from the URL will appear here</Typography>
+                            <Typography sx={{ my: 2 }}>{t('scrapeLinks.noLinksMessage')}</Typography>
                         </div>
                     )}
                 </>
             </DialogContent>
             <DialogActions>
-                <Button onClick={onCancel}>Cancel</Button>
+                <Button onClick={onCancel}>{t('scrapeLinks.cancel')}</Button>
                 <StyledButton variant='contained' onClick={handleSaveLinks}>
-                    Save
+                    {t('scrapeLinks.save')}
                 </StyledButton>
             </DialogActions>
         </Dialog>

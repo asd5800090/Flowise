@@ -1,4 +1,6 @@
 import { useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
+import { useNodeTranslations } from '@/utils/nodeTranslations'
 import PropTypes from 'prop-types'
 import { Box, List, ListItemButton, ListItem, ListItemAvatar, ListItemText, Typography, Stack } from '@mui/material'
 import PerfectScrollbar from 'react-perfect-scrollbar'
@@ -28,6 +30,8 @@ const sequentialStateMessagesSelection = [
 ]
 
 const SelectVariable = ({ availableNodesForVariable, disabled = false, onSelectAndReturnVal, isSequentialAgent }) => {
+    const { t } = useTranslation()
+    const { translateDescription } = useNodeTranslations()
     const customization = useSelector((state) => state.customization)
 
     const onSelectOutputResponseClick = (node, prefix) => {
@@ -210,7 +214,7 @@ const SelectVariable = ({ availableNodesForVariable, disabled = false, onSelectA
                                                         }
                                                         secondary={
                                                             node.data.name === 'ifElseFunction'
-                                                                ? `${node.data.description}`
+                                                                ? `${translateDescription(node.data.description)}`
                                                                 : `${selectedOutputAnchor?.label ?? 'output'} from ${node.data.label}`
                                                         }
                                                     />

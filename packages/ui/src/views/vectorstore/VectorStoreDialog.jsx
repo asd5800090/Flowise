@@ -2,6 +2,7 @@ import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
 import { useDispatch } from 'react-redux'
 import { useContext, useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import { CopyBlock, atomOneDark } from 'react-code-blocks'
 
@@ -82,6 +83,7 @@ const VectorStoreDialog = ({ show, dialogProps, onCancel, onIndexResult }) => {
     const portalElement = document.getElementById('portal')
     const { reactFlowInstance } = useContext(flowContext)
     const dispatch = useDispatch()
+    const { t } = useTranslation()
 
     useNotifier()
     const enqueueSnackbar = (...args) => dispatch(enqueueSnackbarAction(...args))
@@ -116,7 +118,8 @@ output = query({
                 configData,
                 'json',
                 isMultiple,
-                vectorNodeId
+                vectorNodeId,
+                t
             )}
     }
 })
@@ -142,7 +145,8 @@ query({
                 configData,
                 'json',
                 isMultiple,
-                vectorNodeId
+                vectorNodeId,
+                t
             )}
   }
 }).then((response) => {
@@ -158,9 +162,10 @@ query({
                     configData,
                     'json',
                     isMultiple,
-                    vectorNodeId
-                )}}' \\`
-              : `-d '{"overrideConfig": {${getConfigExamplesForCurl(configData, 'json', isMultiple, vectorNodeId)}}' \\`
+                    vectorNodeId,
+                    t
+                )}}}' \\`
+               : `-d '{"overrideConfig": {${getConfigExamplesForCurl(configData, 'json', isMultiple, vectorNodeId, t)}}}' \\`
       }
       -H "Content-Type: application/json"`
         }
@@ -180,7 +185,7 @@ API_URL = "${baseURL}/api/v1/vector/upsert/${dialogProps.chatflowid}"
 form_data = {
     "files": ${`('example${fileType}', open('example${fileType}', 'rb'))`}
 }
-body_data = {${getConfigExamplesForPython(configData, 'formData', isMultiple, vectorNodeId)}}
+body_data = {${getConfigExamplesForPython(configData, 'formData', isMultiple, vectorNodeId, t)}}
 
 def query(form_data, body_data):
     response = requests.post(API_URL, files=form_data, data=body_data)
@@ -191,7 +196,7 @@ output = query(form_data, body_data)
         } else if (codeLang === 'JavaScript') {
             return `// use FormData to upload files
 let formData = new FormData();
-${getConfigExamplesForJS(configData, 'formData', isMultiple, vectorNodeId)}
+${getConfigExamplesForJS(configData, 'formData', isMultiple, vectorNodeId, t)}
 async function query(formData) {
     const response = await fetch(
         "${baseURL}/api/v1/vector/upsert/${dialogProps.chatflowid}",
@@ -210,7 +215,7 @@ query(formData).then((response) => {
 `
         } else if (codeLang === 'cURL') {
             return `curl ${baseURL}/api/v1/vector/upsert/${dialogProps.chatflowid} \\
-     -X POST \\${getConfigExamplesForCurl(configData, 'formData', isMultiple, vectorNodeId)} \\
+     -X POST \\${getConfigExamplesForCurl(configData, 'formData', isMultiple, vectorNodeId, t)} \\
      -H "Content-Type: multipart/form-data"`
         }
         return ''

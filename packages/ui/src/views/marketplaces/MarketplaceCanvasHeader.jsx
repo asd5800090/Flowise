@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom'
 
@@ -14,11 +15,12 @@ import { IconCopy, IconChevronLeft } from '@tabler/icons-react'
 const MarketplaceCanvasHeader = ({ flowName, flowData, onChatflowCopy }) => {
     const theme = useTheme()
     const navigate = useNavigate()
+    const { t } = useTranslation()
 
     return (
         <>
             <Box>
-                <ButtonBase title='Back' sx={{ borderRadius: '50%' }}>
+                <ButtonBase title={t('marketplaces.back')} sx={{ borderRadius: '50%' }}>
                     <Avatar
                         variant='rounded'
                         sx={{
@@ -56,11 +58,11 @@ const MarketplaceCanvasHeader = ({ flowName, flowData, onChatflowCopy }) => {
                 <StyledButton
                     color='secondary'
                     variant='contained'
-                    title='Use Chatflow'
+                    title={t('marketplaces.useTemplate')}
                     onClick={() => onChatflowCopy(flowData)}
                     startIcon={<IconCopy />}
                 >
-                    Use Template
+                    {t('marketplaces.useTemplate')}
                 </StyledButton>
             </Box>
         </>

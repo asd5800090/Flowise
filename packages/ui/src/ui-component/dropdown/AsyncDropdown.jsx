@@ -2,6 +2,7 @@ import { useState, useEffect, Fragment } from 'react'
 import { useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
 import axios from 'axios'
+import { useTranslation } from 'react-i18next'
 
 // Material
 import Autocomplete, { autocompleteClasses } from '@mui/material/Autocomplete'
@@ -62,6 +63,7 @@ export const AsyncDropdown = ({
     disableClearable = false,
     multiple = false
 }) => {
+    const { t } = useTranslation()
     const customization = useSelector((state) => state.customization)
 
     const [open, setOpen] = useState(false)
@@ -70,7 +72,7 @@ export const AsyncDropdown = ({
     const findMatchingOptions = (options = [], value) => {
         if (multiple) {
             let values = []
-            if ('choose an option' !== value && value && typeof value === 'string') {
+            if (t('dropdown.defaultOption') !== value && value && typeof value === 'string') {
                 values = JSON.parse(value)
             } else {
                 values = value
@@ -81,7 +83,7 @@ export const AsyncDropdown = ({
     }
     const getDefaultOptionValue = () => (multiple ? [] : '')
     const addNewOption = [{ label: '- Create New -', name: '-create-' }]
-    let [internalValue, setInternalValue] = useState(value ?? 'choose an option')
+    let [internalValue, setInternalValue] = useState(value ?? t('dropdown.defaultOption'))
 
     const fetchCredentialList = async () => {
         try {

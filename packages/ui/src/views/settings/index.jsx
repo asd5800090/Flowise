@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import { useTheme } from '@mui/material/styles'
@@ -20,6 +21,7 @@ import customAssistantSettings from '@/menu-items/customassistant'
 // ==============================|| SETTINGS ||============================== //
 
 const Settings = ({ chatflow, isSettingsOpen, isCustomAssistant, anchorEl, isAgentCanvas, onSettingsItemClick, onUploadFile, onClose }) => {
+    const { t } = useTranslation()
     const theme = useTheme()
     const [settingsMenu, setSettingsMenu] = useState([])
     const customization = useSelector((state) => state.customization)
@@ -95,7 +97,7 @@ const Settings = ({ chatflow, isSettingsOpen, isCustomAssistant, anchorEl, isAge
                 }}
             >
                 <ListItemIcon sx={{ my: 'auto', minWidth: !menu?.icon ? 18 : 36 }}>{itemIcon}</ListItemIcon>
-                <ListItemText primary={<Typography color='inherit'>{menu.title}</Typography>} />
+                <ListItemText primary={<Typography color='inherit'>{t(`settingsMenu.${menu.id}`)}</Typography>} />
             </ListItemButton>
         )
     })

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 
 import { Popper, FormControl, TextField, Box, Typography } from '@mui/material'
 import Autocomplete, { autocompleteClasses } from '@mui/material/Autocomplete'
@@ -19,10 +20,11 @@ const StyledPopper = styled(Popper)({
 })
 
 export const Dropdown = ({ name, value, loading, options, onSelect, disabled = false, freeSolo = false, disableClearable = false }) => {
+    const { t } = useTranslation()
     const customization = useSelector((state) => state.customization)
     const findMatchingOptions = (options = [], value) => options.find((option) => option.name === value)
     const getDefaultOptionValue = () => ''
-    let [internalValue, setInternalValue] = useState(value ?? 'choose an option')
+    let [internalValue, setInternalValue] = useState(value ?? t('dropdown.defaultOption'))
 
     return (
         <FormControl sx={{ mt: 1, width: '100%' }} size='small'>

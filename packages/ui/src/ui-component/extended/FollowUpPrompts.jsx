@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import { Box, Button, FormControl, ListItem, ListItemAvatar, ListItemText, MenuItem, Select, Typography } from '@mui/material'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 
 // Project Imports
 import { StyledButton } from '@/ui-component/button/StyledButton'
@@ -307,6 +308,7 @@ const followUpPromptsOptions = {
 }
 
 const FollowUpPrompts = ({ dialogProps }) => {
+    const { t } = useTranslation()
     const dispatch = useDispatch()
 
     useNotifier()
@@ -568,7 +570,7 @@ const FollowUpPrompts = ({ dialogProps }) => {
                                                             followUpPromptsConfig[selectedProvider] &&
                                                             followUpPromptsConfig[selectedProvider][inputParam.name]
                                                                 ? followUpPromptsConfig[selectedProvider][inputParam.name]
-                                                                : inputParam.default ?? 'choose an option'
+                                                                : inputParam.default ?? t('dropdown.defaultOption')
                                                         }
                                                         onSelect={(newValue) => setValue(newValue, selectedProvider, inputParam.name)}
                                                     />
@@ -585,7 +587,7 @@ const FollowUpPrompts = ({ dialogProps }) => {
                                                     followUpPromptsConfig[selectedProvider] &&
                                                     followUpPromptsConfig[selectedProvider][inputParam.name]
                                                         ? followUpPromptsConfig[selectedProvider][inputParam]
-                                                        : inputParam.default ?? 'choose an option'
+                                                        : inputParam.default ?? t('dropdown.defaultOption')
                                                 }
                                             />
                                         )}

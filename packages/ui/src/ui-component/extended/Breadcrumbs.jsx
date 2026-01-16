@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import { useTheme } from '@mui/material/styles'
@@ -28,6 +29,7 @@ const linkSX = {
 // ==============================|| BREADCRUMBS ||============================== //
 
 const Breadcrumbs = ({ card, divider, icon, icons, maxItems, navigation, rightAlign, separator, title, titleBottom, ...others }) => {
+    const { t } = useTranslation()
     const theme = useTheme()
 
     const iconStyle = {
@@ -144,7 +146,7 @@ const Breadcrumbs = ({ card, divider, icon, icons, maxItems, navigation, rightAl
                                     <Typography component={Link} to='/' color='inherit' variant='subtitle1' sx={linkSX}>
                                         {icons && <HomeTwoToneIcon sx={iconStyle} />}
                                         {icon && <HomeIcon sx={{ ...iconStyle, mr: 0 }} />}
-                                        {!icon && 'Dashboard'}
+                                        {!icon && t('breadcrumbs.dashboard')}
                                     </Typography>
                                     {mainContent}
                                     {itemContent}

@@ -9,6 +9,7 @@ import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 import axios from 'axios'
 import { cloneDeep } from 'lodash'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import {
@@ -134,6 +135,7 @@ ConfirmDeleteMessageDialog.propTypes = {
 }
 
 const ViewMessagesDialog = ({ show, dialogProps, onCancel }) => {
+    const { t } = useTranslation()
     const portalElement = document.getElementById('portal')
     const dispatch = useDispatch()
     const theme = useTheme()
@@ -238,10 +240,10 @@ const ViewMessagesDialog = ({ show, dialogProps, onCancel }) => {
 
     const onDeleteMessages = () => {
         setHardDeleteDialogProps({
-            title: 'Delete Messages',
-            description: 'Are you sure you want to delete messages? This action cannot be undone.',
-            confirmButtonName: 'Delete',
-            cancelButtonName: 'Cancel'
+            title: t('viewMessages.deleteTitle'),
+            description: t('viewMessages.deleteDescription'),
+            confirmButtonName: t('button.delete'),
+            cancelButtonName: t('button.cancel')
         })
         setHardDeleteDialogOpen(true)
     }
@@ -399,13 +401,13 @@ const ViewMessagesDialog = ({ show, dialogProps, onCancel }) => {
     const clearChat = async (chatmsg) => {
         const description =
             chatmsg.sessionId && chatmsg.memoryType
-                ? `Are you sure you want to clear session id: ${chatmsg.sessionId} from ${chatmsg.memoryType}?`
-                : `Are you sure you want to clear messages?`
+                ? t('viewMessages.clearSessionDescription', { sessionId: chatmsg.sessionId, memoryType: chatmsg.memoryType })
+                : t('viewMessages.clearMessagesDescription')
         const confirmPayload = {
-            title: `Clear Session`,
+            title: t('viewMessages.clearSessionTitle'),
             description,
-            confirmButtonName: 'Clear',
-            cancelButtonName: 'Cancel'
+            confirmButtonName: t('viewMessages.clearButton'),
+            cancelButtonName: t('button.cancel')
         }
         const isConfirmed = await confirm(confirmPayload)
 
@@ -421,8 +423,8 @@ const ViewMessagesDialog = ({ show, dialogProps, onCancel }) => {
                 await chatmessageApi.deleteChatmessage(chatflowid, obj)
                 const description =
                     chatmsg.sessionId && chatmsg.memoryType
-                        ? `Succesfully cleared session id: ${chatmsg.sessionId} from ${chatmsg.memoryType}`
-                        : `Succesfully cleared messages`
+                        ? t('viewMessages.clearSessionSuccess', { sessionId: chatmsg.sessionId, memoryType: chatmsg.memoryType })
+                        : t('viewMessages.clearMessagesSuccess')
                 enqueueSnackbar({
                     message: description,
                     options: {
@@ -850,7 +852,7 @@ const ViewMessagesDialog = ({ show, dialogProps, onCancel }) => {
                     {dialogProps.title}
                     <div style={{ flex: 1 }} />
                     <Button variant='outlined' onClick={() => exportMessages()} startIcon={<IconFileExport />}>
-                        Export
+                        {t('button.export')}
                     </Button>
                 </div>
             </DialogTitle>
@@ -1073,11 +1075,11 @@ const ViewMessagesDialog = ({ show, dialogProps, onCancel }) => {
                                                 sx={{ height: 'max-content', width: 'max-content' }}
                                                 variant='outlined'
                                                 color='error'
-                                                title='Clear Message'
+                                                title={t('viewMessages.clearButton')}
                                                 onClick={() => clearChat(chatMessages[1])}
                                                 startIcon={<IconEraser />}
                                             >
-                                                Clear
+                                                {t('viewMessages.clearButton')}
                                             </StyledButton>
                                             {chatMessages[1].sessionId && (
                                                 <Tooltip

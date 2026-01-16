@@ -2,6 +2,7 @@ import { cloneDeep, set } from 'lodash'
 import { memo, useEffect, useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { FullPageChat } from 'flowise-embed-react'
 import PropTypes from 'prop-types'
 
@@ -76,6 +77,7 @@ MemoizedFullPageChat.propTypes = {
 const CustomAssistantConfigurePreview = () => {
     const navigate = useNavigate()
     const theme = useTheme()
+    const { t } = useTranslation()
     const settingsRef = useRef()
     const canvas = useSelector((state) => state.canvas)
     const customization = useSelector((state) => state.customization)
@@ -484,19 +486,19 @@ const CustomAssistantConfigurePreview = () => {
             handleDeleteFlow()
         } else if (setting === 'viewMessages') {
             setViewMessagesDialogProps({
-                title: 'View Messages',
+                title: t('settingsMenu.viewMessages'),
                 chatflow: canvas.chatflow
             })
             setViewMessagesDialogOpen(true)
         } else if (setting === 'viewLeads') {
             setViewLeadsDialogProps({
-                title: 'View Leads',
+                title: t('settingsMenu.viewLeads'),
                 chatflow: canvas.chatflow
             })
             setViewLeadsDialogOpen(true)
         } else if (setting === 'chatflowConfiguration') {
             setChatflowConfigurationDialogProps({
-                title: `Assistant Configuration`,
+                title: t('canvas.configuration', { title: t('assistants.title') }),
                 chatflow: canvas.chatflow
             })
             setChatflowConfigurationDialogOpen(true)
@@ -505,10 +507,10 @@ const CustomAssistantConfigurePreview = () => {
 
     const handleDeleteFlow = async () => {
         const confirmPayload = {
-            title: `Delete`,
-            description: `Delete ${selectedCustomAssistant.name}?`,
-            confirmButtonName: 'Delete',
-            cancelButtonName: 'Cancel'
+            title: t('button.delete'),
+            description: t('assistants.deleteConfirm', { name: selectedCustomAssistant.name }),
+            confirmButtonName: t('button.delete'),
+            cancelButtonName: t('button.cancel')
         }
         const isConfirmed = await confirm(confirmPayload)
 
@@ -521,7 +523,7 @@ const CustomAssistantConfigurePreview = () => {
                 navigate(-1)
             } catch (error) {
                 enqueueSnackbar({
-                    message: typeof error.response.data === 'object' ? error.response.data.message : error.response.data,
+                    message: t('assistants.failedToDeleteAssistant', { error: typeof error.response.data === 'object' ? error.response.data.message : error.response.data }),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'error',
@@ -908,7 +910,7 @@ const CustomAssistantConfigurePreview = () => {
                                                     </ButtonBase>
                                                 )}
                                                 {!customAssistantFlowId && !loadingAssistant && (
-                                                    <ButtonBase ref={settingsRef} title='Delete Assistant' sx={{ borderRadius: '50%' }}>
+                                                    <ButtonBase ref={settingsRef} title={t('assistants.deleteAssistant')} sx={{ borderRadius: '50%' }}>
                                                         <Avatar
                                                             variant='rounded'
                                                             sx={{
@@ -964,7 +966,7 @@ const CustomAssistantConfigurePreview = () => {
                                                         }
                                                     }
                                                 }}
-                                                value={selectedChatModel ? selectedChatModel?.name : 'choose an option'}
+                                                value={selectedChatModel ? selectedChatModel?.name : t('dropdown.defaultOption')}
                                             />
                                         </Box>
                                         <Box
@@ -1041,7 +1043,7 @@ const CustomAssistantConfigurePreview = () => {
                                                         onDocStoreItemSelected(newValue)
                                                     }
                                                 }}
-                                                value={selectedDocumentStores.map((ds) => ds.id) ?? 'choose an option'}
+                                                value={selectedDocumentStores.map((ds) => ds.id) ?? t('dropdown.defaultOption')}
                                             />
                                             {selectedDocumentStores.length > 0 && (
                                                 <Stack sx={{ mt: 3, position: 'relative', alignItems: 'center' }} direction='row'>
@@ -1167,6 +1169,7 @@ const CustomAssistantConfigurePreview = () => {
                                                                 <IconButton
                                                                     color='error'
                                                                     sx={{ height: 15, width: 15, p: 0 }}
+                                                                    title={t('assistants.deleteTool')}
                                                                     onClick={() => {
                                                                         const newSelectedTools = selectedTools.filter((t, i) => i !== index)
                                                                         setSelectedTools(newSelectedTools)
@@ -1198,7 +1201,7 @@ const CustomAssistantConfigurePreview = () => {
                                                                         }
                                                                     }
                                                                 }}
-                                                                value={tool?.name || 'choose an option'}
+                                                                value={tool?.name || t('dropdown.defaultOption')}
                                                             />
                                                         </Box>
                                                         {tool && Object.keys(tool).length === 0 && (

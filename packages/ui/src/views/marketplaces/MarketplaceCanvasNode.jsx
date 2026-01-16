@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
 import { useState } from 'react'
 
@@ -33,6 +34,7 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
 
 const MarketplaceCanvasNode = ({ data }) => {
     const theme = useTheme()
+    const { t } = useTranslation()
 
     const [showDialog, setShowDialog] = useState(false)
     const [dialogProps, setDialogProps] = useState({})
@@ -42,8 +44,8 @@ const MarketplaceCanvasNode = ({ data }) => {
             data,
             inputParams: data.inputParams.filter((param) => param.additionalParams),
             disabled: true,
-            confirmButtonName: 'Save',
-            cancelButtonName: 'Cancel'
+            confirmButtonName: t('button.save'),
+            cancelButtonName: t('button.cancel')
         }
         setDialogProps(dialogProps)
         setShowDialog(true)
@@ -74,7 +76,7 @@ const MarketplaceCanvasNode = ({ data }) => {
                                 <img
                                     style={{ width: '100%', height: '100%', padding: 5, objectFit: 'contain' }}
                                     src={`${baseURL}/api/v1/node-icon/${data.name}`}
-                                    alt='Notification'
+                                    alt={t('marketplaces.notification')}
                                 />
                             </div>
                         </Box>
@@ -100,7 +102,7 @@ const MarketplaceCanvasNode = ({ data }) => {
                                     <img
                                         style={{ width: '25px', height: '25px', borderRadius: '50%', objectFit: 'contain' }}
                                         src={LlamaindexPNG}
-                                        alt='LlamaIndex'
+                                        alt={t('marketplaces.llamaIndex')}
                                     />
                                 </div>
                             </>
@@ -116,7 +118,7 @@ const MarketplaceCanvasNode = ({ data }) => {
                                         textAlign: 'center'
                                     }}
                                 >
-                                    Inputs
+                                    {t('canvas.inputs')}
                                 </Typography>
                             </Box>
                             <Divider />
@@ -140,7 +142,7 @@ const MarketplaceCanvasNode = ({ data }) => {
                             }}
                         >
                             <Button sx={{ borderRadius: 25, width: '90%', mb: 2 }} variant='outlined' onClick={onDialogClicked}>
-                                Additional Parameters
+                                {t('canvas.additionalParams')}
                             </Button>
                         </div>
                     )}
@@ -152,7 +154,7 @@ const MarketplaceCanvasNode = ({ data }) => {
                                 textAlign: 'center'
                             }}
                         >
-                            Output
+                            {t('canvas.output')}
                         </Typography>
                     </Box>
                     <Divider />

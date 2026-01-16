@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux'
 import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar as enqueueSnackbarAction, closeSnackbar as closeSnackbarAction, SET_CHATFLOW } from '@/store/actions'
 
 // material-ui
@@ -239,6 +240,7 @@ const speechToTextProviders = {
 }
 
 const SpeechToText = ({ dialogProps }) => {
+    const { t } = useTranslation()
     const dispatch = useDispatch()
 
     useNotifier()
@@ -446,7 +448,7 @@ const SpeechToText = ({ dialogProps }) => {
                                     value={
                                         speechToText[selectedProvider]
                                             ? speechToText[selectedProvider][inputParam.name]
-                                            : inputParam.default ?? 'choose an option'
+                                            : inputParam.default ?? t('dropdown.defaultOption')
                                     }
                                 />
                             )}

@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
+import { useNodeTranslations } from '@/utils/nodeTranslations'
 
 // material-ui
 import { useTheme } from '@mui/material/styles'
@@ -54,22 +56,29 @@ function a11yProps(index) {
     }
 }
 
-const blacklistCategoriesForAgentCanvas = ['Agents', 'Memory', 'Record Manager', 'Utilities']
-
 const agentMemoryNodes = ['agentMemory', 'sqliteAgentMemory', 'postgresAgentMemory', 'mySQLAgentMemory']
 
-// Show blacklisted nodes (exceptions) for agent canvas
-const exceptionsForAgentCanvas = {
-    Memory: agentMemoryNodes,
-    Utilities: ['getVariable', 'setVariable', 'stickyNote']
-}
-
-// Hide some nodes from the chatflow canvas
-const blacklistForChatflowCanvas = {
-    Memory: agentMemoryNodes
-}
-
 const AddNodes = ({ nodesData, node, isAgentCanvas }) => {
+    const { t } = useTranslation()
+    const { translateDescription } = useNodeTranslations()
+    
+    const blacklistCategoriesForAgentCanvas = [
+        t('nodeCategories.Agents'),
+        t('nodeCategories.Memory'),
+        t('nodeCategories.Record Manager'),
+        t('nodeCategories.Utilities')
+    ]
+    
+    // Show blacklisted nodes (exceptions) for agent canvas
+    const exceptionsForAgentCanvas = {
+        [t('nodeCategories.Memory')]: agentMemoryNodes,
+        [t('nodeCategories.Utilities')]: ['getVariable', 'setVariable', 'stickyNote']
+    }
+    
+    // Hide some nodes from the chatflow canvas
+    const blacklistForChatflowCanvas = {
+        [t('nodeCategories.Memory')]: agentMemoryNodes
+    }
     const theme = useTheme()
     const customization = useSelector((state) => state.customization)
     const dispatch = useDispatch()
@@ -122,7 +131,9 @@ const AddNodes = ({ nodesData, node, isAgentCanvas }) => {
             })
             return passed
         }
-        let nodes = nodesData.filter((nd) => nd.category !== 'Multi Agents' && nd.category !== 'Sequential Agents')
+        let nodes = nodesData.filter(
+            (nd) => nd.category !== t('nodeCategories.Multi Agents') && nd.category !== t('nodeCategories.Sequential Agents')
+        )
 
         for (const category in blacklistForChatflowCanvas) {
             const nodeNames = blacklistForChatflowCanvas[category]
@@ -192,9 +203,9 @@ const AddNodes = ({ nodesData, node, isAgentCanvas }) => {
                 }
             }
             setNodes(filteredResult)
-            accordianCategories['Multi Agents'] = true
-            accordianCategories['Sequential Agents'] = true
-            accordianCategories['Memory'] = true
+            accordianCategories[t('nodeCategories.Multi Agents')] = true
+            accordianCategories[t('nodeCategories.Sequential Agents')] = true
+            accordianCategories[t('nodeCategories.Memory')] = true
             setCategoryExpanded(accordianCategories)
         } else {
             const taggedNodes = groupByTags(nodes, newTabValue)
@@ -208,7 +219,7 @@ const AddNodes = ({ nodesData, node, isAgentCanvas }) => {
 
             const filteredResult = {}
             for (const category in result) {
-                if (category === 'Multi Agents' || category === 'Sequential Agents') {
+                if (category === t('nodeCategories.Multi Agents') || category === t('nodeCategories.Sequential Agents')) {
                     continue
                 }
                 if (Object.keys(blacklistForChatflowCanvas).includes(category)) {
@@ -284,7 +295,7 @@ const AddNodes = ({ nodesData, node, isAgentCanvas }) => {
                 size='small'
                 color='primary'
                 aria-label='add'
-                title='Add Node'
+                title={t('canvas.addNode')}
                 onClick={handleToggle}
             >
                 {open ? <IconMinus /> : <IconPlus />}
@@ -315,7 +326,7 @@ const AddNodes = ({ nodesData, node, isAgentCanvas }) => {
                                 <MainCard border={false} elevation={16} content={false} boxShadow shadow={theme.shadows[16]}>
                                     <Box sx={{ p: 2 }}>
                                         <Stack>
-                                            <Typography variant='h4'>Add Nodes</Typography>
+                                            <Typography variant='h4'>{t('canvas.addNodes')}</Typography>
                                         </Stack>
                                         <OutlinedInput
                                             // eslint-disable-next-line
@@ -324,7 +335,7 @@ const AddNodes = ({ nodesData, node, isAgentCanvas }) => {
                                             id='input-search-node'
                                             value={searchValue}
                                             onChange={(e) => filterSearch(e.target.value)}
-                                            placeholder='Search nodes'
+                                            placeholder={t('canvas.searchNodes')}
                                             startAdornment={
                                                 <InputAdornment position='start'>
                                                     <IconSearch stroke={1.5} size='1rem' color={theme.palette.grey[500]} />
@@ -340,7 +351,7 @@ const AddNodes = ({ nodesData, node, isAgentCanvas }) => {
                                                             color: theme.palette.grey[900]
                                                         }
                                                     }}
-                                                    title='Clear Search'
+                                                    title={t('canvas.clearSearch')}
                                                 >
                                                     <IconX
                                                         stroke={1.5}
@@ -365,33 +376,37 @@ const AddNodes = ({ nodesData, node, isAgentCanvas }) => {
                                                 onChange={handleTabChange}
                                                 aria-label='tabs'
                                             >
-                                                {['LangChain', 'LlamaIndex', 'Utilities'].map((item, index) => (
-                                                    <Tab
-                                                        icon={
-                                                            <div
+                                            {[
+                                                t('nodeCategories.LangChain'),
+                                                t('nodeCategories.LlamaIndex'),
+                                                t('nodeCategories.Utilities')
+                                            ].map((item, index) => (
+                                                <Tab
+                                                    icon={
+                                                        <div
+                                                            style={{
+                                                                borderRadius: '50%'
+                                                            }}
+                                                        >
+                                                            <img
                                                                 style={{
-                                                                    borderRadius: '50%'
+                                                                    width: '20px',
+                                                                    height: '20px',
+                                                                    borderRadius: '50%',
+                                                                    objectFit: 'contain'
                                                                 }}
-                                                            >
-                                                                <img
-                                                                    style={{
-                                                                        width: '20px',
-                                                                        height: '20px',
-                                                                        borderRadius: '50%',
-                                                                        objectFit: 'contain'
-                                                                    }}
-                                                                    src={getImage(index)}
-                                                                    alt={item}
-                                                                />
-                                                            </div>
-                                                        }
-                                                        iconPosition='start'
-                                                        sx={{ minHeight: '50px', height: '50px' }}
-                                                        key={index}
-                                                        label={item}
-                                                        {...a11yProps(index)}
-                                                    ></Tab>
-                                                ))}
+                                                                src={getImage(index)}
+                                                                alt={item}
+                                                            />
+                                                        </div>
+                                                    }
+                                                    iconPosition='start'
+                                                    sx={{ minHeight: '50px', height: '50px' }}
+                                                    key={index}
+                                                    label={item}
+                                                    {...a11yProps(index)}
+                                                ></Tab>
+                                            ))}
                                             </Tabs>
                                         )}
 
@@ -450,7 +465,7 @@ const AddNodes = ({ nodesData, node, isAgentCanvas }) => {
                                                                             alignItems: 'center'
                                                                         }}
                                                                     >
-                                                                        <Typography variant='h5'>{category.split(';')[0]}</Typography>
+                                                                        <Typography variant='h5'>{t(`nodeCategories.${category.split(';')[0]}`)}</Typography>
                                                                         &nbsp;
                                                                         <Chip
                                                                             sx={{
@@ -471,7 +486,7 @@ const AddNodes = ({ nodesData, node, isAgentCanvas }) => {
                                                                         />
                                                                     </div>
                                                                 ) : (
-                                                                    <Typography variant='h5'>{category}</Typography>
+                                                                    <Typography variant='h5'>{t(`nodeCategories.${category}`)}</Typography>
                                                                 )}
                                                             </AccordionSummary>
                                                             <AccordionDetails>
@@ -529,19 +544,19 @@ const AddNodes = ({ nodesData, node, isAgentCanvas }) => {
                                                                                                             width: 'max-content',
                                                                                                             fontWeight: 700,
                                                                                                             fontSize: '0.65rem',
-                                                                                                            background:
-                                                                                                                node.badge === 'DEPRECATING'
-                                                                                                                    ? theme.palette.warning
-                                                                                                                          .main
-                                                                                                                    : theme.palette.teal
-                                                                                                                          .main,
-                                                                                                            color:
-                                                                                                                node.badge !== 'DEPRECATING'
-                                                                                                                    ? 'white'
-                                                                                                                    : 'inherit'
-                                                                                                        }}
-                                                                                                        size='small'
-                                                                                                        label={node.badge}
+                                                                                                        background:
+                                                                                                            node.badge === t('marketplaces.deprecating')
+                                                                                                                ? theme.palette.warning
+                                                                                                                      .main
+                                                                                                                : theme.palette.teal
+                                                                                                                      .main,
+                                                                                                        color:
+                                                                                                            node.badge !== t('marketplaces.deprecating')
+                                                                                                                ? 'white'
+                                                                                                                : 'inherit'
+                                                                                                    }}
+                                                                                                    size='small'
+                                                                                                    label={node.badge}
                                                                                                     />
                                                                                                 )}
                                                                                             </div>
@@ -552,12 +567,12 @@ const AddNodes = ({ nodesData, node, isAgentCanvas }) => {
                                                                                                         fontWeight: 700
                                                                                                     }}
                                                                                                 >
-                                                                                                    By {node.author}
+                                                                                                    {t('marketplaces.byAuthor', { author: node.author })}
                                                                                                 </span>
                                                                                             )}
                                                                                         </>
                                                                                     }
-                                                                                    secondary={node.description}
+                                                                                    secondary={translateDescription(node.description)}
                                                                                 />
                                                                             </ListItem>
                                                                         </ListItemButton>

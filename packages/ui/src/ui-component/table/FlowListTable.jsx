@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 import moment from 'moment'
 import { styled } from '@mui/material/styles'
 import {
@@ -50,6 +51,7 @@ const getLocalStorageKeyName = (name, isAgentCanvas) => {
 export const FlowListTable = ({ data, images, isLoading, filterFunction, updateFlowsApi, setError, isAgentCanvas }) => {
     const theme = useTheme()
     const customization = useSelector((state) => state.customization)
+    const { t } = useTranslation()
 
     const localStorageKeyOrder = getLocalStorageKeyName('order', isAgentCanvas)
     const localStorageKeyOrderBy = getLocalStorageKeyName('orderBy', isAgentCanvas)
@@ -92,14 +94,14 @@ export const FlowListTable = ({ data, images, isLoading, filterFunction, updateF
                         <TableRow>
                             <StyledTableCell component='th' scope='row' style={{ width: '20%' }} key='0'>
                                 <TableSortLabel active={orderBy === 'name'} direction={order} onClick={() => handleRequestSort('name')}>
-                                    Name
+                                    {t('table.name')}
                                 </TableSortLabel>
                             </StyledTableCell>
                             <StyledTableCell style={{ width: '25%' }} key='1'>
-                                Category
+                                {t('table.category')}
                             </StyledTableCell>
                             <StyledTableCell style={{ width: '30%' }} key='2'>
-                                Nodes
+                                {t('table.nodes')}
                             </StyledTableCell>
                             <StyledTableCell style={{ width: '15%' }} key='3'>
                                 <TableSortLabel
@@ -107,11 +109,11 @@ export const FlowListTable = ({ data, images, isLoading, filterFunction, updateF
                                     direction={order}
                                     onClick={() => handleRequestSort('updatedDate')}
                                 >
-                                    Last Modified Date
+                                    {t('table.lastModifiedDate')}
                                 </TableSortLabel>
                             </StyledTableCell>
                             <StyledTableCell style={{ width: '10%' }} key='4'>
-                                Actions
+                                {t('table.actions')}
                             </StyledTableCell>
                         </TableRow>
                     </TableHead>
@@ -242,7 +244,7 @@ export const FlowListTable = ({ data, images, isLoading, filterFunction, updateF
                                                                 fontWeight: 200
                                                             }}
                                                         >
-                                                            + {images[row.id].length - 5} More
+                                                            + {images[row.id].length - 5} {t('table.more')}
                                                         </Typography>
                                                     )}
                                                 </Box>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import {
@@ -43,6 +44,7 @@ import { baseURL, gridSpacing } from '@/store/constant'
 // ==============================|| DOCUMENTS ||============================== //
 
 const Documents = () => {
+    const { t } = useTranslation()
     const theme = useTheme()
     const customization = useSelector((state) => state.customization)
 
@@ -78,10 +80,10 @@ const Documents = () => {
 
     const addNew = () => {
         const dialogProp = {
-            title: 'Add New Document Store',
+            title: t('documentStores.addNew'),
             type: 'ADD',
-            cancelButtonName: 'Cancel',
-            confirmButtonName: 'Add'
+            cancelButtonName: t('button.cancel'),
+            confirmButtonName: t('button.add')
         }
         setDialogProps(dialogProp)
         setShowDialog(true)
@@ -145,7 +147,7 @@ const Documents = () => {
                 <ErrorBoundary error={error} />
             ) : (
                 <Stack flexDirection='column' sx={{ gap: 3 }}>
-                    <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='Search Name' title='Document Store'>
+                    <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder={t('documentStores.searchPlaceholder')} title={t('documentStores.title')}>
                         <ToggleButtonGroup
                             sx={{ borderRadius: 2, maxHeight: 40 }}
                             value={view}
@@ -161,7 +163,7 @@ const Documents = () => {
                                 }}
                                 variant='contained'
                                 value='card'
-                                title='Card View'
+                                title={t('documentStores.cardView')}
                             >
                                 <IconLayoutGrid />
                             </ToggleButton>
@@ -173,7 +175,7 @@ const Documents = () => {
                                 }}
                                 variant='contained'
                                 value='list'
-                                title='List View'
+                                title={t('documentStores.listView')}
                             >
                                 <IconList />
                             </ToggleButton>
@@ -185,7 +187,7 @@ const Documents = () => {
                             startIcon={<IconPlus />}
                             id='btn_createVariable'
                         >
-                            Add New
+                            {t('button.addNew')}
                         </StyledButton>
                     </ViewHeader>
                     {!view || view === 'card' ? (
@@ -220,12 +222,12 @@ const Documents = () => {
                                 >
                                     <TableRow>
                                         <TableCell>&nbsp;</TableCell>
-                                        <TableCell>Name</TableCell>
-                                        <TableCell>Description</TableCell>
-                                        <TableCell>Connected flows</TableCell>
-                                        <TableCell>Total characters</TableCell>
-                                        <TableCell>Total chunks</TableCell>
-                                        <TableCell>Loader types</TableCell>
+                                        <TableCell>{t('documentStores.name')}</TableCell>
+                                        <TableCell>{t('documentStores.description')}</TableCell>
+                                        <TableCell>{t('documentStores.connectedFlows')}</TableCell>
+                                        <TableCell>{t('documentStores.totalCharacters')}</TableCell>
+                                        <TableCell>{t('documentStores.totalChunks')}</TableCell>
+                                        <TableCell>{t('documentStores.loaderTypes')}</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
@@ -332,7 +334,7 @@ const Documents = () => {
                                     alt='doc_store_empty'
                                 />
                             </Box>
-                            <div>No Document Stores Created Yet</div>
+                            <div>{t('documentStores.noDocumentStores')}</div>
                         </Stack>
                     )}
                 </Stack>

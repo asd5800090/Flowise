@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { enqueueSnackbar as enqueueSnackbarAction, closeSnackbar as closeSnackbarAction } from '@/store/actions'
+import { useTranslation } from 'react-i18next'
 
 // Material
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Box, Typography, Stack } from '@mui/material'
@@ -25,30 +26,32 @@ import useNotifier from '@/utils/useNotifier'
 import { HIDE_CANVAS_DIALOG, SHOW_CANVAS_DIALOG } from '@/store/actions'
 import { Dropdown } from '@/ui-component/dropdown/Dropdown'
 
-const importModes = [
-    {
-        label: 'Add & Overwrite',
-        name: 'overwriteIfExist',
-        description: 'Add keys and overwrite existing keys with the same name'
-    },
-    {
-        label: 'Add & Ignore',
-        name: 'ignoreIfExist',
-        description: 'Add keys and ignore existing keys with the same name'
-    },
-    {
-        label: 'Add & Verify',
-        name: 'errorIfExist',
-        description: 'Add Keys and throw error if key with same name exists'
-    },
-    {
-        label: 'Replace All',
-        name: 'replaceAll',
-        description: 'Replace all keys with the imported keys'
-    }
-]
-
 const UploadJSONFileDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
+    const { t } = useTranslation()
+    
+    const importModes = [
+        {
+            label: t('apikey.importMode.overwrite'),
+            name: 'overwriteIfExist',
+            description: t('apikey.importMode.overwriteDesc')
+        },
+        {
+            label: t('apikey.importMode.ignore'),
+            name: 'ignoreIfExist',
+            description: t('apikey.importMode.ignoreDesc')
+        },
+        {
+            label: t('apikey.importMode.verify'),
+            name: 'errorIfExist',
+            description: t('apikey.importMode.verifyDesc')
+        },
+        {
+            label: t('apikey.importMode.replace'),
+            name: 'replaceAll',
+            description: t('apikey.importMode.replaceDesc')
+        }
+    ]
+
     const portalElement = document.getElementById('portal')
 
     const dispatch = useDispatch()
@@ -84,7 +87,7 @@ const UploadJSONFileDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
             const createResp = await apikeyAPI.importAPI(obj)
             if (createResp.data) {
                 enqueueSnackbar({
-                    message: 'Imported keys successfully!',
+                    message: t('apikey.importSuccess'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -99,9 +102,7 @@ const UploadJSONFileDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
             }
         } catch (error) {
             enqueueSnackbar({
-                message: `Failed to import keys: ${
-                    typeof error.response.data === 'object' ? error.response.data.message : error.response.data
-                }`,
+                message: t('apikey.importFailed', { error: typeof error.response.data === 'object' ? error.response.data.message : error.response.data }),
                 options: {
                     key: new Date().getTime() + Math.random(),
                     variant: 'error',
@@ -129,14 +130,14 @@ const UploadJSONFileDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
             <DialogTitle sx={{ fontSize: '1rem' }} id='alert-dialog-title'>
                 <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                     <IconFileUpload style={{ marginRight: '10px' }} />
-                    Import API Keys
+                    {t('apikey.importApiKeys')}
                 </div>
             </DialogTitle>
             <DialogContent>
                 <Box sx={{ p: 2 }}>
                     <Stack sx={{ position: 'relative' }} direction='row'>
                         <Typography variant='overline'>
-                            Import api.json file
+                            {t('apikey.importApiJsonFile')}
                             <span style={{ color: 'red' }}>&nbsp;*</span>
                         </Typography>
                     </Stack>
@@ -144,13 +145,13 @@ const UploadJSONFileDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
                         disabled={false}
                         fileType='.json'
                         onChange={(newValue) => setSelectedFile(newValue)}
-                        value={selectedFile ?? 'Choose a file to upload'}
+                        value={selectedFile ?? t('file.chooseFile')}
                     />
                 </Box>
                 <Box sx={{ p: 2 }}>
                     <Stack sx={{ position: 'relative' }} direction='row'>
                         <Typography variant='overline'>
-                            Import Mode
+                            {t('apikey.importMode.title')}
                             <span style={{ color: 'red' }}>&nbsp;*</span>
                         </Typography>
                     </Stack>
@@ -159,7 +160,7 @@ const UploadJSONFileDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
                         name={importMode}
                         options={importModes}
                         onSelect={(newValue) => setImportMode(newValue)}
-                        value={importMode ?? 'choose an option'}
+                        value={importMode ?? t('dropdown.defaultOption')}
                     />
                 </Box>
             </DialogContent>

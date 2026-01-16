@@ -2,6 +2,8 @@ import { createPortal } from 'react-dom'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
+import { useNodeTranslations } from '@/utils/nodeTranslations'
 
 // Material
 import { Button, Dialog, DialogContent, DialogTitle } from '@mui/material'
@@ -18,6 +20,8 @@ import useApi from '@/hooks/useApi'
 
 const NodeInfoDialog = ({ show, dialogProps, onCancel }) => {
     const portalElement = document.getElementById('portal')
+    const { t } = useTranslation()
+    const { translateDescription } = useNodeTranslations()
     const dispatch = useDispatch()
 
     const getNodeConfigApi = useApi(configApi.getNodeConfig)
@@ -175,7 +179,7 @@ const NodeInfoDialog = ({ show, dialogProps, onCancel }) => {
                                 }}
                                 startIcon={<IconBook2 />}
                             >
-                                Documentation
+                                {t('button.documentation')}
                             </Button>
                         )}
                     </div>
@@ -189,7 +193,7 @@ const NodeInfoDialog = ({ show, dialogProps, onCancel }) => {
                             marginBottom: 10
                         }}
                     >
-                        <span>{dialogProps.data.description}</span>
+                        <span>{translateDescription(dialogProps.data.description)}</span>
                     </div>
                 )}
                 {getNodeConfigApi.data && getNodeConfigApi.data.length > 0 && (

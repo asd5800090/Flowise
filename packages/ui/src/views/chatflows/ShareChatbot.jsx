@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { enqueueSnackbar as enqueueSnackbarAction, closeSnackbar as closeSnackbarAction, SET_CHATFLOW } from '@/store/actions'
 import { SketchPicker } from 'react-color'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 
 import { Card, Box, Typography, Button, Switch, OutlinedInput, Popover, Stack, IconButton } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
