@@ -20,6 +20,8 @@
   },
   "button": {
     "save": "Save",
+    "fetchSuccess": "Successfully fetched links",
+    "fetchFailed": "Failed to fetch links: {{error}}",
     "cancel": "Cancel",
     "delete": "Delete",
     "edit": "Edit",
@@ -29,6 +31,13 @@
     "confirm": "Confirm",
     "close": "Close",
     "addNew": "Add New",
+    "back": "Back",
+    "editName": "Edit Name",
+    "saveName": "Save Name",
+    "apiEndpoint": "API Endpoint",
+    "saveChatflow": "Save Chatflow",
+    "saveAgents": "Save Agents",
+    "settings": "Settings",
     "next": "Next",
     "export": "Export",
     "import": "Import"
@@ -46,6 +55,7 @@
     "failedToImport": "Failed to import",
     "internalServerError": "Internal Server Error",
     "failedToExport": "Failed to export",
+    "pleaseSaveBeforeExport": "Please save before exporting",
     "newCredentialAdded": "New Credential added",
     "credentialSaved": "Credential saved",
     "failedToAddCredential": "Failed to add new Credential: {{error}}",
@@ -96,6 +106,66 @@
     "exportingDataTakesTime": "Exporting data might takes a while",
     "export": "Export"
   },
+  "nodeDescriptions": {
+    "conversational_agent_for_a_chat_model_it_will_utilize_chat_specific_prompts": "Conversational agent for a chat model. It will utilize chat specific prompts",
+    "split_documents_recursively_by_different_characters_starting_with_then_then": "Split documents recursively by different characters - starting with \n\n, then \n, then ",
+    "splits_only_on_one_type_of_character_defaults_to": "splits only on one type of character (defaults to \n\n).",
+    "agent_that_is_optimized_for_being_used_in_a_conversational_setting": "Agent that is optimized for being used in a conversational setting",
+    "agent_that_is_optimized_for_being_used_with_a_llm": "Agent that is optimized for being used with a LLM",
+    "agent_that_uses_the_react_framework_to_decide_which_tool_to_use_based_on_the_tools_description": "Agent that uses the ReAct framework to decide which tool to use, based on the tool's description",
+    "autogpt_agent_that_can_complete_a_task_with_human_guidance": "AutoGPT Agent that can complete a task with human guidance",
+    "babyagi_agent_that_can_create_and_execute_tasks_based_on_a_given_objective": "BabyAGI Agent that can create and execute tasks based on a given objective",
+    "tool_calling_agent_optimized_for_being_used_with_openai_assistants": "Tool calling agent optimized for being used with OpenAI assistants",
+    "agent_that_uses_xml_to_prompt_the_model": "Agent that uses XML to prompt the model",
+    "a_chain_that_uses_a_chat_model_a_prompt_and_an_output_parser": "A chain that uses a chat model, a prompt, and an output parser",
+    "a_chain_that_uses_an_llm_to_generate_a_response_based_on_a_prompt": "A chain that uses an LLM to generate a response based on a prompt",
+    "a_chain_that_uses_an_llm_to_answer_questions_based_on_the_contents_of_retrieved_documents": "A chain that uses an LLM to answer questions based on the contents of retrieved documents",
+    "a_chain_that_uses_an_llm_to_generate_a_response_based_on_a_prompt_and_a_set_of_documents": "A chain that uses an LLM to generate a response based on a prompt and a set of documents",
+    "a_chain_that_uses_an_llm_to_generate_a_response_based_on_a_prompt_and_a_set_of_tools": "A chain that uses an LLM to generate a response based on a prompt and a set of tools",
+    "a_chain_that_uses_an_llm_to_generate_a_response_based_on_a_prompt_and_a_set_of_actions": "A chain that uses an LLM to generate a response based on a prompt and a set of actions",
+    "a_chain_that_uses_an_llm_to_generate_a_response_based_on_a_prompt_and_a_set_of_memories": "A chain that uses an LLM to generate a response based on a prompt and a set of memories",
+    "a_chain_that_uses_an_llm_to_generate_a_response_based_on_a_prompt_and_a_set_of_variables": "A chain that uses an LLM to generate a response based on a prompt and a set of variables",
+    "a_chain_that_uses_an_llm_to_generate_a_response_based_on_a_prompt_and_a_set_of_conditions": "A chain that uses an LLM to generate a response based on a prompt and a set of conditions",
+    "a_chain_that_uses_an_llm_to_generate_a_response_based_on_a_prompt_and_a_set_of_transformations": "A chain that uses an LLM to generate a response based on a prompt and a set of transformations",
+    "a_chain_that_uses_an_llm_to_generate_a_response_based_on_a_prompt_and_a_set_of_embeddings": "A chain that uses an LLM to generate a response based on a prompt and a set of embeddings",
+    "a_chain_that_uses_an_llm_to_generate_a_response_based_on_a_prompt_and_a_set_of_vectors": "A chain that uses an LLM to generate a response based on a prompt and a set of vectors",
+    "a_chain_that_uses_an_llm_to_generate_a_response_based_on_a_prompt_and_a_set_of_indices": "A chain that uses an LLM to generate a response based on a prompt and a set of indices",
+    "a_chain_that_uses_an_llm_to_generate_a_response_based_on_a_prompt_and_a_set_of_retrievers": "A chain that uses an LLM to generate a response based on a prompt and a set of retrievers",
+    "a_chain_that_uses_an_llm_to_generate_a_response_based_on_a_prompt_and_a_set_of_parsers": "A chain that uses an LLM to generate a response based on a prompt and a set of parsers",
+    "a_chain_that_uses_an_llm_to_generate_a_response_based_on_a_prompt_and_a_set_of_synthesizers": "A chain that uses an LLM to generate a response based on a prompt and a set of synthesizers",
+    "a_chain_that_uses_an_llm_to_generate_a_response_based_on_a_prompt_and_a_set_of_agents": "A chain that uses an LLM to generate a response based on a prompt and a set of agents",
+    "a_chain_that_uses_an_llm_to_generate_a_response_based_on_a_prompt_and_a_set_of_models": "A chain that uses an LLM to generate a response based on a prompt and a set of models",
+    "a_chain_that_uses_an_llm_to_generate_a_response_based_on_a_prompt_and_a_set_of_prompts": "A chain that uses an LLM to generate a response based on a prompt and a set of prompts",
+    "base_class_for_all_chat_models": "Base class for all chat models",
+    "base_class_for_all_language_models": "Base class for all language models",
+    "base_class_for_all_embedding_models": "Base class for all embedding models",
+    "base_class_for_all_vector_stores": "Base class for all vector stores",
+    "base_class_for_all_document_loaders": "Base class for all document loaders",
+    "base_class_for_all_text_splitters": "Base class for all text splitters",
+    "base_class_for_all_agents": "Base class for all agents",
+    "base_class_for_all_chains": "Base class for all chains",
+    "base_class_for_all_prompts": "Base class for all prompts",
+    "base_class_for_all_memories": "Base class for all memories",
+    "base_class_for_all_tools": "Base class for all tools",
+    "base_class_for_all_output_parsers": "Base class for all output parsers",
+    "base_class_for_all_retrievers": "Base class for all retrievers",
+    "base_class_for_all_text_transformers": "Base class for all text transformers",
+    "base_class_for_all_utilities": "Base class for all utilities",
+    "base_class_for_all_record_managers": "Base class for all record managers",
+    "base_class_for_all_audio_models": "Base class for all audio models",
+    "base_class_for_all_data_models": "Base class for all data models",
+    "base_class_for_all_file_models": "Base class for all file models",
+    "base_class_for_all_image_models": "Base class for all image models",
+    "base_class_for_all_video_models": "Base class for all video models",
+    "base_class_for_all_web_models": "Base class for all web models",
+    "base_class_for_all_other_models": "Base class for all other models",
+    "base_class_for_all_cache_models": "Base class for all cache models",
+    "base_class_for_all_graph_models": "Base class for all graph models",
+    "base_class_for_all_moderation_models": "Base class for all moderation models",
+    "base_class_for_all_mcp_tools": "Base class for all MCP tools",
+    "base_class_for_all_engines": "Base class for all engines",
+    "base_class_for_all_response_synthesizers": "Base class for all response synthesizers"
+  },
   "dataTypes": {
     "agentflows": "Agentflows",
     "assistantsCustom": "Assistants Custom",
@@ -108,6 +178,16 @@
     "documentStores": "Document Stores",
     "tools": "Tools",
     "variables": "Variables"
+  },
+  "json": {
+    "selectVariable": "Select Variable",
+    "questionDesc": "User's question from chatbox",
+    "chatHistoryDesc": "Past conversation history between user and AI",
+    "fileAttachmentDesc": "Files uploaded from the chat when Full File Upload is enabled on the Configuration",
+    "allMessagesDesc": "All messages from the start of the conversation till now",
+    "stateVariableDesc": "Current value of the state variable with specified key",
+    "firstMessageDesc": "First message content",
+    "lastMessageDesc": "Last message content"
   },
   "chatflows": {
     "title": "Chatflows",
@@ -156,6 +236,19 @@
     "name": "Name",
     "value": "Value",
     "type": "Type",
+    "add": "Add",
+    "edit": "Edit",
+    "static": "Static",
+    "runtime": "Runtime",
+    "staticDescription": "Static",
+    "runtimeDescription": "Runtime",
+    "addNew": "Add New",
+    "nameRequired": "Name is required",
+    "valueRequired": "Value is required",
+    "addSuccess": "Added successfully",
+    "addFailed": "Failed to add",
+    "updateSuccess": "Updated successfully",
+    "updateFailed": "Failed to update",
     "lastUpdated": "Last Updated",
     "created": "Created",
     "actions": "Actions",
@@ -243,7 +336,35 @@
     "searchNodes": "Search nodes",
     "addNodes": "Add Nodes",
     "true": "True",
-    "false": "False"
+    "false": "False",
+    "clearSearch": "Clear Search",
+    "inputs": "Inputs",
+    "output": "Output",
+    "additionalParams": "Additional Params",
+    "nodeOutdated": "Node version {{oldVersion}} is outdated\nUpdate to latest version {{newVersion}}",
+    "nodeVersionEmpty": "Node is outdated\nUpdate to latest version {{newVersion}}",
+    "deprecatingMessage": "This node will be deprecated in the next version. Switch to the new node marked as NEW",
+    "expand": "Expand",
+    "edit": "Edit",
+    "refresh": "Refresh",
+    "manageLinks": "Manage Links",
+    "setupNIMLocally": "Setup NIM Locally",
+    "seeExample": "See Example",
+    "editJSON": "Edit JSON",
+    "addNewTool": "Add New Tool",
+    "editTool": "Edit Tool",
+    "addNewAssistant": "Add New Assistant",
+    "editAssistant": "Edit Assistant",
+    "save": "Save",
+    "fetchSuccess": "Successfully fetched links",
+    "fetchFailed": "Failed to fetch links: {{error}}",
+    "cancel": "Cancel",
+    "add": "Add",
+    "chooseFile": "Choose File",
+    "langchainHub": "LangChain Hub",
+    "formatPromptValues": "Format Prompt Values",
+    "inputHint": "Input Hint",
+    "conditionFunction": "Condition Function"
   },
   "about": {
     "title": "Flowise Version",
@@ -265,7 +386,9 @@
     }
   },
   "saveChatflow": {
-    "placeholder": "My New Chatflow"
+    "placeholder": "My New Chatflow",
+    "saveNewChatflow": "Save New Chatflow",
+    "saveNewAgents": "Save New Agents"
   },
   "dropdown": {
     "defaultOption": "choose an option"
@@ -277,6 +400,8 @@
     "title": "Conversation Starter Prompts",
     "hint": "Starter prompts will only be shown when there is no messages on the chat",
     "save": "Save",
+    "fetchSuccess": "Successfully fetched links",
+    "fetchFailed": "Failed to fetch links: {{error}}",
     "saveSuccess": "Conversation Starter Prompts Saved",
     "saveFailed": "Failed to save Conversation Starter Prompts: {{error}}"
   },
@@ -304,7 +429,9 @@
     "clearAllTitle": "Clear All Links",
     "noLinksMessage": "Links scraped from the URL will appear here",
     "cancel": "Cancel",
-    "save": "Save"
+    "save": "Save",
+    "fetchSuccess": "Successfully fetched links",
+    "fetchFailed": "Failed to fetch links: {{error}}"
   },
   "tagDialog": {
     "title": "Set Chatflow Category Tags",
@@ -321,6 +448,7 @@
     "title": "API Code",
     "showOverrideConfig": "Show Override Config",
     "overrideConfigTip": "For security reason, override config is disabled by default. You can change this by going into Chatflow Configuration -> Security tab, and enable the property you want to override.",
+    "overrideConfigDescription": "Override Configuration",
     "nodes": "Nodes",
     "variables": "Variables",
     "multiConfigTip": "You can also specify multiple values for a config parameter by specifying the node id",
@@ -328,6 +456,9 @@
     "selectNoAuth": "Please",
     "fromDropdown": "from the dropdown at the top right corner",
     "referHere": "Refer here",
+    "here": "here",
+    "forMoreDetails": "for more details",
+    "onHowToStream": "on how to stream response back",
     "streamingInfo": "Read here on how to stream response back to application",
     "chooseApiKey": "Choose an API key"
   },
@@ -411,7 +542,11 @@
     "Files": "Files",
     "Images": "Images",
     "Video": "Video",
-    "Web": "Web"
+    "Web": "Web",
+    "Other": "Other",
+    "Cache": "Cache",
+    "Engine": "Engine",
+    "Response Synthesizer": "Response Synthesizer"
   },
   "assistants": {
     "title": "Assistants",
@@ -493,7 +628,6 @@
     "clearAll": "Clear All",
     "cancel": "Cancel",
     "popular": "POPULAR",
-    "new": "NEW",
     "chatflow": "Chatflow",
     "agentflow": "Agentflow",
     "tool": "Tool",
@@ -546,18 +680,7 @@
     "usecaseHint": "Type a usecase and press enter to add it to the list. You can add as many items as you want.",
     "saveTemplate": "Save Template"
   },
-  "scrapeLinks": {
-    "title": "Manage Scraped Links - {{url}}",
-    "fetchLinks": "Fetch Links",
-    "scrapedLinks": "Scraped Links",
-    "clearAll": "Clear All",
-    "clearAllTitle": "Clear All Links",
-    "noLinksMessage": "No links found",
-    "cancel": "Cancel",
-    "save": "Save",
-    "fetchSuccess": "Successfully fetched links"
-  },
-"file": {
+  "file": {
     "chooseFileToUpload": "Choose a file to upload",
     "uploadFile": "Upload File"
   },
@@ -618,5 +741,49 @@
     "overrideExistingConfiguration": "Override existing configuration",
     "thisIsNewText": "This is a new text",
     "varExample": "var1: 'abc'"
+  },
+  "viewMessages": {
+    "deleteTitle": "Delete Messages",
+    "deleteDescription": "Are you sure you want to delete the messages? This action cannot be undone.",
+    "clearSessionTitle": "Clear Session",
+    "clearSessionDescription": "Are you sure you want to clear session ID: {{sessionId}} from {{memoryType}}?",
+    "clearMessagesDescription": "Are you sure you want to clear the messages?",
+    "clearButton": "Clear",
+    "clearSessionSuccess": "Successfully cleared session ID: {{sessionId}} from {{memoryType}}",
+    "clearMessagesSuccess": "Successfully cleared messages",
+    "noMessages": "No messages yet"
+  },
+  "viewLeads": {
+    "searchPlaceholder": "Search name, email or phone",
+    "noLeads": "No leads yet"
+  },
+  "chatMessage": {
+    "welcomeMessage": "Hello! How can I help you?"
+  },
+  "rateLimit": {
+    "title": "Rate Limit",
+    "enableRateLimit": "Enable Rate Limit",
+    "configurationSaved": "Rate Limit Configuration Saved",
+    "failedToSaveConfiguration": "Failed to save Rate Limit Configuration: {{error}}",
+    "needToFillAllFields": "Need to fill all fields",
+    "tooltip": "Rate limit allows you to control the number of requests per minute from a single IP address"
+  },
+  "allowedDomains": {
+    "title": "Allowed Domains",
+    "domains": "Domains",
+    "errorMessage": "Error: Please enter valid domain names",
+    "unauthorizedDomainMessage": "Unauthorized domain",
+    "configurationSaved": "Allowed Domains Configuration Saved",
+    "failedToSaveConfiguration": "Failed to save Allowed Domains Configuration: {{error}}",
+    "tooltip": "Allowed domains allows you to restrict access to the chatbot from specific domains",
+    "errorMessageTooltip": "Please enter valid domain names separated by commas",
+    "exampleDomain": "example.com"
+  },
+  "overrideConfig": {
+    "title": "Override Configuration",
+    "enableOverrideConfiguration": "Enable Override Configuration",
+    "configurationSaved": "Override Configuration Saved",
+    "failedToSaveConfiguration": "Failed to save Override Configuration: {{error}}",
+    "tooltip": "Override configuration allows you to override the default configuration of the chatbot"
   }
 }

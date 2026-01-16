@@ -20,6 +20,8 @@
   },
   "button": {
     "save": "保存",
+    "fetchSuccess": "成功获取链接",
+    "fetchFailed": "获取链接失败: {{error}}",
     "cancel": "取消",
     "delete": "删除",
     "edit": "编辑",
@@ -104,6 +106,66 @@
     "exportingDataTakesTime": "导出数据可能需要一些时间",
     "export": "导出"
   },
+  "nodeDescriptions": {
+    "conversational_agent_for_a_chat_model_it_will_utilize_chat_specific_prompts": "对话模型的会话智能体。它将使用特定于聊天的提示",
+    "split_documents_recursively_by_different_characters_starting_with_then_then": "按不同字符递归分割文档 - 从\n\n开始，然后是\n，最后是",
+    "splits_only_on_one_type_of_character_defaults_to": "仅按一种字符类型分割（默认为\n\n）",
+    "agent_that_is_optimized_for_being_used_in_a_conversational_setting": "针对对话场景优化的智能体",
+    "agent_that_is_optimized_for_being_used_with_a_llm": "针对与大语言模型配合使用的智能体",
+    "agent_that_uses_the_react_framework_to_decide_which_tool_to_use_based_on_the_tools_description": "使用ReAct框架根据工具描述决定使用哪个工具的智能体",
+    "autogpt_agent_that_can_complete_a_task_with_human_guidance": "可以在人类指导下完成任务的AutoGPT智能体",
+    "babyagi_agent_that_can_create_and_execute_tasks_based_on_a_given_objective": "可以根据给定目标创建和执行任务的BabyAGI智能体",
+    "tool_calling_agent_optimized_for_being_used_with_openai_assistants": "针对OpenAI助手优化的工具调用智能体",
+    "agent_that_uses_xml_to_prompt_the_model": "使用XML提示模型的智能体",
+    "a_chain_that_uses_a_chat_model_a_prompt_and_an_output_parser": "使用聊天模型、提示和输出解析器的链",
+    "a_chain_that_uses_an_llm_to_generate_a_response_based_on_a_prompt": "使用LLM根据提示生成响应的链",
+    "a_chain_that_uses_an_llm_to_answer_questions_based_on_the_contents_of_retrieved_documents": "使用LLM根据检索到的文档内容回答问题的链",
+    "a_chain_that_uses_an_llm_to_generate_a_response_based_on_a_prompt_and_a_set_of_documents": "使用LLM根据提示和一组文档生成响应的链",
+    "a_chain_that_uses_an_llm_to_generate_a_response_based_on_a_prompt_and_a_set_of_tools": "使用LLM根据提示和一组工具生成响应的链",
+    "a_chain_that_uses_an_llm_to_generate_a_response_based_on_a_prompt_and_a_set_of_actions": "使用LLM根据提示和一组动作生成响应的链",
+    "a_chain_that_uses_an_llm_to_generate_a_response_based_on_a_prompt_and_a_set_of_memories": "使用LLM根据提示和一组记忆生成响应的链",
+    "a_chain_that_uses_an_llm_to_generate_a_response_based_on_a_prompt_and_a_set_of_variables": "使用LLM根据提示和一组变量生成响应的链",
+    "a_chain_that_uses_an_llm_to_generate_a_response_based_on_a_prompt_and_a_set_of_conditions": "使用LLM根据提示和一组条件生成响应的链",
+    "a_chain_that_uses_an_llm_to_generate_a_response_based_on_a_prompt_and_a_set_of_transformations": "使用LLM根据提示和一组转换生成响应的链",
+    "a_chain_that_uses_an_llm_to_generate_a_response_based_on_a_prompt_and_a_set_of_embeddings": "使用LLM根据提示和一组嵌入生成响应的链",
+    "a_chain_that_uses_an_llm_to_generate_a_response_based_on_a_prompt_and_a_set_of_vectors": "使用LLM根据提示和一组向量生成响应的链",
+    "a_chain_that_uses_an_llm_to_generate_a_response_based_on_a_prompt_and_a_set_of_indices": "使用LLM根据提示和一组索引生成响应的链",
+    "a_chain_that_uses_an_llm_to_generate_a_response_based_on_a_prompt_and_a_set_of_retrievers": "使用LLM根据提示和一组检索器生成响应的链",
+    "a_chain_that_uses_an_llm_to_generate_a_response_based_on_a_prompt_and_a_set_of_parsers": "使用LLM根据提示和一组解析器生成响应的链",
+    "a_chain_that_uses_an_llm_to_generate_a_response_based_on_a_prompt_and_a_set_of_synthesizers": "使用LLM根据提示和一组合成器生成响应的链",
+    "a_chain_that_uses_an_llm_to_generate_a_response_based_on_a_prompt_and_a_set_of_agents": "使用LLM根据提示和一组智能体生成响应的链",
+    "a_chain_that_uses_an_llm_to_generate_a_response_based_on_a_prompt_and_a_set_of_models": "使用LLM根据提示和一组模型生成响应的链",
+    "a_chain_that_uses_an_llm_to_generate_a_response_based_on_a_prompt_and_a_set_of_prompts": "使用LLM根据提示和一组提示生成响应的链",
+    "base_class_for_all_chat_models": "所有聊天模型的基类",
+    "base_class_for_all_language_models": "所有语言模型的基类",
+    "base_class_for_all_embedding_models": "所有嵌入模型的基类",
+    "base_class_for_all_vector_stores": "所有向量存储的基类",
+    "base_class_for_all_document_loaders": "所有文档加载器的基类",
+    "base_class_for_all_text_splitters": "所有文本分割器的基类",
+    "base_class_for_all_agents": "所有智能体的基类",
+    "base_class_for_all_chains": "所有链的基类",
+    "base_class_for_all_prompts": "所有提示的基类",
+    "base_class_for_all_memories": "所有记忆的基类",
+    "base_class_for_all_tools": "所有工具的基类",
+    "base_class_for_all_output_parsers": "所有输出解析器的基类",
+    "base_class_for_all_retrievers": "所有检索器的基类",
+    "base_class_for_all_text_transformers": "所有文本转换器的基类",
+    "base_class_for_all_utilities": "所有工具的基类",
+    "base_class_for_all_record_managers": "所有记录管理器的基类",
+    "base_class_for_all_audio_models": "所有音频模型的基类",
+    "base_class_for_all_data_models": "所有数据模型的基类",
+    "base_class_for_all_file_models": "所有文件模型的基类",
+    "base_class_for_all_image_models": "所有图像模型的基类",
+    "base_class_for_all_video_models": "所有视频模型的基类",
+    "base_class_for_all_web_models": "所有网络模型的基类",
+    "base_class_for_all_other_models": "所有其他模型的基类",
+    "base_class_for_all_cache_models": "所有缓存模型的基类",
+    "base_class_for_all_graph_models": "所有图模型的基类",
+    "base_class_for_all_moderation_models": "所有审核模型的基类",
+    "base_class_for_all_mcp_tools": "所有MCP工具的基类",
+    "base_class_for_all_engines": "所有引擎的基类",
+    "base_class_for_all_response_synthesizers": "所有响应合成器的基类"
+  },
   "dataTypes": {
     "agentflows": "智能体流",
     "assistantsCustom": "自定义助手",
@@ -116,6 +178,16 @@
     "documentStores": "文档存储",
     "tools": "工具",
     "variables": "变量"
+  },
+  "json": {
+    "selectVariable": "选择变量",
+    "questionDesc": "来自聊天框的用户问题",
+    "chatHistoryDesc": "用户与AI之间的历史对话记录",
+    "fileAttachmentDesc": "在配置中启用完整文件上传时从聊天上传的文件",
+    "allMessagesDesc": "从对话开始到现在的所有消息",
+    "stateVariableDesc": "具有指定键的状态变量的当前值",
+    "firstMessageDesc": "第一条消息内容",
+    "lastMessageDesc": "最后一条消息内容"
   },
   "chatflows": {
     "title": "对话流",
@@ -290,7 +362,9 @@
     "langchainHub": "LangChain Hub",
     "formatPromptValues": "格式化提示值",
     "inputHint": "输入提示",
-    "conditionFunction": "条件函数"
+    "conditionFunction": "条件函数",
+    "fetchSuccess": "成功获取链接",
+    "fetchFailed": "获取链接失败：{{error}}"
   },
   "assistants": {
     "title": "助手",
@@ -377,8 +451,8 @@
     "tool": "工具",
     "langchain": "Langchain",
     "popularValue": "POPULAR",
-    "chatflowValue": "Chatflow",
-    "agentflowValue": "Agentflow",
+    "chatflowValue": "对话流",
+    "agentflowValue": "智能体流",
     "toolValue": "Tool",
     "addNewTool": "添加新工具",
     "add": "添加",
@@ -447,172 +521,29 @@
     }
   },
   "saveChatflow": {
-    "placeholder": "我的新对话流"
-  },
-  "dropdown": {
-    "defaultOption": "选择一个选项"
-  },
-  "breadcrumbs": {
-    "dashboard": "控制面板"
-  },
-  "starterPrompts": {
-    "title": "对话起始提示",
-    "hint": "起始提示仅在聊天中没有消息时显示",
-    "save": "保存",
-    "saveSuccess": "对话起始提示已保存",
-    "saveFailed": "保存对话起始提示失败: {{error}}"
-  },
-  "conditionDialog": {
-    "cancel": "取消",
-    "confirm": "确认"
-  },
-  "confirmDialog": {
-    "cancel": "取消",
-    "confirm": "确认"
-  },
-  "chatFeedback": {
-    "title": "提供额外反馈",
-    "placeholder": "您对回复有什么看法？",
-    "cancel": "取消",
-    "submit": "提交反馈",
-    "fetchSuccess": "成功获取链接",
-    "fetchFailed": "获取链接失败: {{error}}"
-  },
-  "scrapeLinks": {
-    "title": "管理抓取的链接 - {{url}}",
-    "fetchLinks": "获取链接",
-    "scrapedLinks": "抓取的链接",
-    "clearAll": "清空所有",
-    "clearAllTitle": "清空所有链接",
-    "noLinksMessage": "从URL抓取的链接将显示在这里",
-    "cancel": "取消",
-    "save": "保存"
-  },
-  "tagDialog": {
-    "title": "设置对话流分类标签",
-    "addTag": "添加标签",
-    "hint": "输入标签并按回车键添加到列表。您可以添加任意数量的标签。",
-    "cancel": "取消",
-    "submit": "提交"
-  },
-  "promptLangsmith": {
-    "cancel": "取消",
-    "load": "加载"
-  },
-  "apiCodeDialog": {
-    "title": "API 代码",
-    "showOverrideConfig": "显示覆盖配置",
-    "overrideConfigDescription": "您可以使用overrideConfig属性覆盖对话流的现有输入配置。",
-    "overrideConfigTip": "出于安全原因，覆盖配置默认是禁用的。您可以在对话流配置 -> 安全选项卡中启用要覆盖的属性。",
-    "nodes": "节点",
-    "variables": "变量",
-    "multiConfigTip": "您可以通过指定节点ID为配置参数指定多个值",
-    "noAuthForEmbed": "嵌入/分享聊天机器人时无法使用API密钥。",
-    "selectNoAuth": "请",
-    "fromDropdown": "从右上角的下拉菜单中",
-    "referHere": "参考",
-    "here": "这里",
-    "forMoreDetails": "了解更多详情",
-    "streamingInfo": "阅读",
-    "onHowToStream": "了解如何将响应流式传输回应用程序",
-    "chooseApiKey": "选择 API 密钥"
-  },
-  "shareChatbot": {
-    "title": "分享聊天机器人",
-    "makePublic": "设为公开",
-    "makePublicTip": "设为公开将允许任何人访问聊天机器人而无需用户名和密码",
-    "titleSettings": "标题设置",
-    "titleLabel": "标题",
-    "titleAvatarLink": "标题头像链接",
-    "titleBgColor": "标题背景色",
-    "titleTextColor": "标题文字颜色",
-    "generalSettings": "通用设置",
-    "welcomeMessage": "欢迎消息",
-    "errorMessage": "错误消息",
-    "bgColor": "背景色",
-    "fontSize": "字体大小",
-    "poweredByTextColor": "PoweredBy文字颜色",
-    "showAgentReasons": "使用Agentflow时显示智能体推理",
-    "renderHTML": "在聊天中渲染HTML",
-    "newSessionOnRefresh": "打开或刷新聊天机器人链接时启动新会话",
-    "botMessage": "机器人消息",
-    "botBgColor": "背景色",
-    "botTextColor": "文字颜色",
-    "botAvatarLink": "头像链接",
-    "showBotAvatar": "显示头像",
-    "userMessage": "用户消息",
-    "userBgColor": "背景色",
-    "userTextColor": "文字颜色",
-    "userAvatarLink": "头像链接",
-    "showUserAvatar": "显示头像",
-    "textInput": "文本输入",
-    "inputBgColor": "背景色",
-    "inputTextColor": "文字颜色",
-    "inputPlaceholder": "占位符",
-    "sendButtonColor": "发送按钮颜色",
-    "saveChanges": "保存更改",
-    "copied": "已复制！",
-    "copyLink": "复制链接",
-    "openNewTab": "在新标签页打开"
-  },
-  "canvasNode": {
-    "duplicate": "复制",
-    "delete": "删除",
-    "info": "信息",
-    "inputs": "输入",
-    "output": "输出",
-    "additionalParams": "附加参数",
-    "nodeOutdated": "节点版本{{oldVersion}}已过时\n更新到最新版本{{newVersion}}",
-    "nodeVersionEmpty": "节点已过时\n更新到最新版本{{newVersion}}",
-    "deprecatingMessage": "此节点将在下一个版本中弃用。切换到标记为NEW的新节点"
-  },
-  "settingsMenu": {
-    "viewMessages": "查看消息",
-    "viewLeads": "查看潜在客户",
-    "viewUpsertHistory": "更新历史",
-    "chatflowConfiguration": "配置",
-    "saveAsTemplate": "保存为模板",
-    "duplicateChatflow": "复制对话流",
-    "duplicateAgents": "复制智能体",
-    "loadChatflow": "加载对话流",
-    "loadAgents": "加载智能体",
-    "exportChatflow": "导出对话流",
-    "exportAgents": "导出智能体",
-    "deleteChatflow": "删除对话流",
-    "deleteAgents": "删除智能体"
-  },
-  "exportTemplate": {
-    "name": "名称",
-    "description": "描述",
-    "badge": "徽章",
-    "usecases": "用例",
-    "usecaseHint": "输入用例并按回车键添加到列表。您可以添加任意数量的项目。",
-    "templateNameMandatory": "模板名称为必填项！",
-    "savedSuccessfully": "已成功保存为模板！",
-    "failedToSave": "保存为模板失败！"
-  },
-  "viewMessages": {
-    "deleteTitle": "删除消息",
-    "deleteDescription": "您确定要删除消息吗？此操作无法撤销。",
-    "clearSessionTitle": "清除会话",
-    "clearSessionDescription": "您确定要清除会话 ID: {{sessionId}} 从 {{memoryType}} 吗？",
-    "clearMessagesDescription": "您确定要清除消息吗？",
-    "clearButton": "清除",
-    "clearSessionSuccess": "已成功清除会话 ID: {{sessionId}} 从 {{memoryType}}",
-    "clearMessagesSuccess": "已成功清除消息",
-    "noMessages": "暂无消息"
-  },
-  "viewLeads": {
-    "searchPlaceholder": "搜索姓名、邮箱或电话",
-    "noLeads": "暂无潜在客户"
-  },
-  "saveChatflow": {
     "saveNewChatflow": "保存新对话流",
     "saveNewAgents": "保存新智能体",
     "placeholder": "我的新对话流"
   },
   "chatMessage": {
     "welcomeMessage": "你好！有什么可以帮助你的吗？"
+  },
+  "starterPrompts": {
+    "title": "起始提示",
+    "hint": "用户首次打开聊天窗口时显示的提示",
+    "save": "保存起始提示",
+    "saveSuccess": "会话起始提示已保存",
+    "fetchSuccess": "成功获取链接",
+    "fetchFailed": "获取链接失败: {{error}}",
+    "saveFailed": "保存会话起始提示失败：{{error}}"
+  },
+  "chatFeedback": {
+    "title": "聊天反馈",
+    "placeholder": "留下反馈...",
+    "cancel": "取消",
+    "submit": "提交",
+    "fetchSuccess": "成功获取链接",
+    "fetchFailed": "获取链接失败: {{error}}"
   },
   "nvidiaNIM": {
     "title": "NIM 设置",
@@ -657,9 +588,10 @@
     "noLinksMessage": "未找到链接",
     "cancel": "取消",
     "save": "保存",
-    "fetchSuccess": "成功获取链接"
+    "fetchSuccess": "成功获取链接",
+    "fetchFailed": "获取链接失败: {{error}}"
   },
-"file": {
+  "file": {
     "chooseFileToUpload": "选择文件上传",
     "uploadFile": "上传文件"
   },
@@ -746,5 +678,112 @@
     "overrideExistingConfiguration": "覆盖现有配置",
     "thisIsNewText": "这是一段新文本",
     "varExample": "var1: 'abc'"
+  },
+  "dropdown": {
+    "defaultOption": "选择一个选项"
+  },
+  "breadcrumbs": {
+    "dashboard": "仪表板"
+  },
+  "conditionDialog": {
+    "cancel": "取消",
+    "confirm": "确认"
+  },
+  "confirmDialog": {
+    "cancel": "取消",
+    "confirm": "确认"
+  },
+  "tagDialog": {
+    "title": "设置对话流分类标签",
+    "addTag": "添加标签",
+    "hint": "输入标签并按回车将其添加到列表中。您可以添加任意多个标签。",
+    "cancel": "取消",
+    "submit": "提交"
+  },
+  "promptLangsmith": {
+    "cancel": "取消",
+    "load": "加载"
+  },
+  "apiCodeDialog": {
+    "title": "API 代码",
+    "showOverrideConfig": "显示覆盖配置",
+    "overrideConfigTip": "出于安全原因，默认情况下禁用覆盖配置。您可以通过进入对话流配置->安全选项卡，启用您想要覆盖的属性。",
+    "overrideConfigDescription": "覆盖配置",
+    "nodes": "节点",
+    "variables": "变量",
+    "multiConfigTip": "您还可以通过指定节点ID为配置参数指定多个值",
+    "noAuthForEmbed": "嵌入/分享聊天机器人时无法使用API密钥。",
+    "selectNoAuth": "请",
+    "fromDropdown": "从右上角的下拉菜单中",
+    "referHere": "请参考这里",
+    "here": "这里",
+    "forMoreDetails": "了解详情",
+    "onHowToStream": "关于如何流式传输响应",
+    "streamingInfo": "阅读此处了解如何将响应流式传输回应用程序",
+    "chooseApiKey": "选择一个API密钥"
+  },
+  "shareChatbot": {
+    "title": "分享聊天机器人",
+    "makePublic": "设为公开",
+    "makePublicTip": "设为公开将允许任何人无需用户名和密码即可访问聊天机器人",
+    "titleSettings": "标题设置",
+    "titleLabel": "标题",
+    "titleAvatarLink": "标题头像链接",
+    "titleBgColor": "标题背景色",
+    "titleTextColor": "标题文字颜色",
+    "generalSettings": "通用设置",
+    "welcomeMessage": "欢迎消息",
+    "errorMessage": "错误消息",
+    "bgColor": "背景色",
+    "fontSize": "字体大小",
+    "poweredByTextColor": "PoweredBy 文字颜色",
+    "showAgentReasons": "使用智能体流时显示智能体推理过程",
+    "renderHTML": "在聊天中渲染HTML",
+    "newSessionOnRefresh": "打开或刷新聊天机器人链接时开始新会话",
+    "botMessage": "机器人消息",
+    "botBgColor": "背景色",
+    "botTextColor": "文字颜色",
+    "botAvatarLink": "头像链接",
+    "showBotAvatar": "显示头像",
+    "userMessage": "用户消息",
+    "userBgColor": "背景色",
+    "userTextColor": "文字颜色",
+    "userAvatarLink": "头像链接",
+    "showUserAvatar": "显示头像",
+    "textInput": "文本输入",
+    "inputBgColor": "背景色",
+    "inputTextColor": "文字颜色",
+    "inputPlaceholder": "占位符",
+    "sendButtonColor": "发送按钮颜色",
+    "saveChanges": "保存更改",
+    "copied": "已复制！",
+    "copyLink": "复制链接",
+    "openNewTab": "打开新标签页"
+  },
+  "canvasNode": {
+    "duplicate": "复制",
+    "delete": "删除",
+    "info": "信息",
+    "inputs": "输入",
+    "output": "输出",
+    "additionalParams": "附加参数",
+    "nodeOutdated": "节点版本 {{oldVersion}} 已过时\n更新到最新版本 {{newVersion}}",
+    "nodeVersionEmpty": "节点已过时\n更新到最新版本 {{newVersion}}",
+    "deprecatingMessage": "此节点将在下次发布中弃用。更换为标记为 NEW 的新节点"
+  },
+  "viewMessages": {
+    "deleteTitle": "删除消息",
+    "deleteDescription": "您确定要删除消息吗？此操作无法撤销。",
+    "clearSessionTitle": "清除会话",
+    "clearSessionDescription": "您确定要从 {{memoryType}} 清除会话ID：{{sessionId}} 吗？",
+    "clearMessagesDescription": "您确定要清除消息吗？",
+    "clearButton": "清除",
+    "clearSessionSuccess": "成功从 {{memoryType}} 清除会话ID：{{sessionId}}",
+    "clearMessagesSuccess": "成功清除消息",
+    "noMessages": "暂无消息"
+  },
+  "viewLeads": {
+    "searchPlaceholder": "搜索姓名、邮箱或电话",
+    "noLeads": "暂无潜在客户"
   }
 }
