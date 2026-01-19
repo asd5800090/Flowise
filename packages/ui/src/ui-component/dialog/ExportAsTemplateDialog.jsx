@@ -46,13 +46,13 @@ const ExportAsTemplateDialog = ({ show, dialogProps, onCancel }) => {
     useEffect(() => {
         if (dialogProps.chatflow) {
             setName(dialogProps.chatflow.name)
-            setFlowType(dialogProps.chatflow.type === 'MULTIAGENT' ? 'Agentflow' : 'Chatflow')
+            setFlowType(dialogProps.chatflow.type === 'MULTIAGENT' ? t('exportTemplate.agentflow') : t('exportTemplate.chatflow'))
         }
 
         if (dialogProps.tool) {
             setName(dialogProps.tool.name)
             setDescription(dialogProps.tool.description)
-            setFlowType('Tool')
+            setFlowType(t('exportTemplate.tool'))
         }
 
         return () => {

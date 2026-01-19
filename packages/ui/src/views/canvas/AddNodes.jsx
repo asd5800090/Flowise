@@ -572,7 +572,7 @@ const AddNodes = ({ nodesData, node, isAgentCanvas }) => {
                                                                                             )}
                                                                                         </>
                                                                                     }
-                                                                                    secondary={translateDescription(node.description)}
+                                                                                    secondary={translateDescription(node.name, node.description)}
                                                                                 />
                                                                             </ListItem>
                                                                         </ListItemButton>

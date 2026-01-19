@@ -214,7 +214,7 @@ const SelectVariable = ({ availableNodesForVariable, disabled = false, onSelectA
                                                         }
                                                         secondary={
                                                             node.data.name === 'ifElseFunction'
-                                                                ? `${translateDescription(node.data.description)}`
+                                                                ? `${translateDescription(node.data.name, node.data.description)}`
                                                                 : `${selectedOutputAnchor?.label ?? 'output'} from ${node.data.label}`
                                                         }
                                                     />

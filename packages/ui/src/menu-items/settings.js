@@ -33,63 +33,63 @@ const settings = {
     children: [
         {
             id: 'viewMessages',
-            title: 'View Messages',
+            title: 'settingsMenu.viewMessages',
             type: 'item',
             url: '',
             icon: icons.IconMessage
         },
         {
             id: 'viewLeads',
-            title: 'View Leads',
+            title: 'settingsMenu.viewLeads',
             type: 'item',
             url: '',
             icon: icons.IconUsers
         },
         {
             id: 'viewUpsertHistory',
-            title: 'Upsert History',
+            title: 'settingsMenu.viewUpsertHistory',
             type: 'item',
             url: '',
             icon: icons.IconDatabaseExport
         },
         {
             id: 'chatflowConfiguration',
-            title: 'Configuration',
+            title: 'settingsMenu.chatflowConfiguration',
             type: 'item',
             url: '',
             icon: icons.IconAdjustmentsHorizontal
         },
         {
             id: 'saveAsTemplate',
-            title: 'Save As Template',
+            title: 'settingsMenu.saveAsTemplate',
             type: 'item',
             url: '',
             icon: icons.IconTemplate
         },
         {
             id: 'duplicateChatflow',
-            title: 'Duplicate Chatflow',
+            title: 'settingsMenu.duplicateChatflow',
             type: 'item',
             url: '',
             icon: icons.IconCopy
         },
         {
             id: 'loadChatflow',
-            title: 'Load Chatflow',
+            title: 'settingsMenu.loadChatflow',
             type: 'item',
             url: '',
             icon: icons.IconFileUpload
         },
         {
             id: 'exportChatflow',
-            title: 'Export Chatflow',
+            title: 'settingsMenu.exportChatflow',
             type: 'item',
             url: '',
             icon: icons.IconFileExport
         },
         {
             id: 'deleteChatflow',
-            title: 'Delete Chatflow',
+            title: 'settingsMenu.deleteChatflow',
             type: 'item',
             url: '',
             icon: icons.IconTrash

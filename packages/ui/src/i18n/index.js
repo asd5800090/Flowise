@@ -5,13 +5,17 @@ import LanguageDetector from 'i18next-browser-languagedetector'
 // 导入翻译资源
 import enCommon from '../locales/en/common.json'
 import zhCNCommon from '../locales/zh-CN/common.json'
+import enNodes from '../locales/en/nodes.json'
+import zhCNNodes from '../locales/zh-CN/nodes.json'
 
 const resources = {
   en: {
-    common: enCommon
+    common: enCommon,
+    nodes: enNodes
   },
   'zh-CN': {
-    common: zhCNCommon
+    common: zhCNCommon,
+    nodes: zhCNNodes
   }
 }
 
@@ -39,7 +43,7 @@ i18n
 
     // 命名空间
     defaultNS: 'common',
-    ns: ['common'],
+    ns: ['common', 'nodes'],
 
     // 键分隔符
     keySeparator: '.',

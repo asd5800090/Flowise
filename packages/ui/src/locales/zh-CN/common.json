@@ -40,7 +40,10 @@
     "export": "导出",
     "import": "导入",
     "saveAgents": "保存智能体",
-    "settings": "设置"
+    "settings": "设置",
+    "search": "搜索",
+    "load": "加载",
+    "documentation": "打开文档"
   },
   "message": {
     "saveSuccess": "保存成功",
@@ -67,7 +70,13 @@
     "documentStoreUpdated": "文档存储已更新",
     "failedToAddDocumentStore": "添加新文档存储失败: {{error}}",
     "failedToUpdateDocumentStore": "更新文档存储失败: {{error}}",
-    "pleaseSaveBeforeExport": "请先保存工作流再导出为模板"
+    "pleaseSaveBeforeExport": "请先保存工作流再导出为模板",
+    "messagesDeletedSuccess": "消息删除成功",
+    "failedToDownloadInstaller": "下载安装程序失败: {{error}}",
+    "failedToPreload": "预加载失败: {{error}}",
+    "failedToPullImage": "拉取镜像失败: {{error}}",
+    "failedToCheckContainerStatus": "检查容器状态失败: {{error}}",
+    "failedToStartContainer": "启动容器失败: {{error}}"
   },
   "validation": {
     "required": "此字段为必填项",
@@ -105,6 +114,22 @@
     "exporting": "正在导出..",
     "exportingDataTakesTime": "导出数据可能需要一些时间",
     "export": "导出"
+  },
+  "promptLangsmith": {
+    "title": "Langchain Hub",
+    "promptTemplate": "提示模板",
+    "chatPromptTemplate": "聊天提示模板",
+    "model": "模型",
+    "usecase": "用例",
+    "language": "语言",
+    "availablePrompts": "可用提示",
+    "loadingPrompts": "请稍等...正在加载提示",
+    "noAvailablePrompts": "暂无可用提示",
+    "prompt": "提示",
+    "description": "描述",
+    "readme": "说明文档",
+    "cancel": "取消",
+    "load": "加载"
   },
   "nodeDescriptions": {
     "conversational_agent_for_a_chat_model_it_will_utilize_chat_specific_prompts": "对话模型的会话智能体。它将使用特定于聊天的提示",
@@ -221,10 +246,6 @@
     "wrapper_around_cohere_large_language_models": "Cohere大语言模型的包装器",
     "wrapper_around_fireworks_api_for_large_language_models": "Fireworks API大语言模型的包装器",
     "wrapper_around_googlevertexai_large_language_models": "GoogleVertexAI大语言模型的包装器",
-    "wrapper_around_azure_openai_large_language_models": "Azure OpenAI大语言模型的包装器",
-    "wrapper_around_cohere_large_language_models": "Cohere大语言模型的包装器",
-    "wrapper_around_fireworks_api_for_large_language_models": "Fireworks API大语言模型的包装器",
-    "wrapper_around_googlevertexai_large_language_models": "GoogleVertexAI大语言模型的包装器",
     "use_replicate_to_run_open_source_models_on_cloud": "使用Replicate在云端运行开源模型",
     "memory_for_agentflow_to_remember_the_state_of_the_conversation": "用于agentflow的记忆，记住对话状态",
     "memory_for_agentflow_to_remember_the_state_of_the_conversation_using_mysql_database": "使用MySQL数据库的agentflow记忆，记住对话状态",
@@ -271,7 +292,6 @@
     "execute_custom_javascript_function": "执行自定义JavaScript函数",
     "execute_chatflowagentflow_and_return_final_response": "执行对话流/智能体流并返回最终响应",
     "execute_tool_and_return_tool": "执行工具并返回工具",
-    "toolset_with_over_250_apps_for_building_ai_powered_applications": "包含250多个应用程序的工具集，用于构建AI驱动的应用程序",
     "mcp_server_that_provides_a_tool_for_dynamic_and_reflective_problem_solving_through_a_structured_thinking_process": "MCP服务器，提供通过结构化思维过程进行动态和反思性问题解决的工具",
     "tool_used_to_invoke_query_engine": "用于调用查询引擎的工具",
     "babyagi_agent_that_can_create_and_execute_tasks_based_on_a_given_objective": "可以根据给定目标创建和执行任务的BabyAGI智能体",
@@ -351,7 +371,6 @@
     "chain_automatically_picks_an_appropriate_prompt_from_multiple_prompt_templates": "自动从多个提示模板中选择适当的提示的链",
     "advanced_chain_for_question_answering_against_a_neo4j_graph_by_generating_cypher_statements": "通过生成Cypher语句对Neo4j图进行高级问答的链",
     "answer_questions_over_a_sql_database": "回答SQL数据库问题",
-    "in_memory_vectorstore_that_stores_embeddings_and_does_an_exact_linear_search_for_the_most_similar_embeddings": "内存中的向量存储，存储嵌入并在最相似的嵌入中进行精确线性搜索",
     "search_and_retrieve_documents_from_document_store": "从文档存储中搜索和检索文档",
     "upsert_embedded_data_and_load_existing_index_using_couchbase_a_award_winning_distributed_nosql_database": "使用获奖的分布式NoSQL数据库Couchbase插入/更新嵌入数据并加载现有索引",
     "upsert_embedded_data_and_perform_similarity_or_mmr_search_upon_query_using_datstax_astra_db_a_serverless_vector_database_that_s_perfect_for_managing_mission_critical_ai_workloads": "使用DataStax Astra DB（无服务器向量数据库，完美适用于管理关键AI工作负载）插入/更新嵌入数据并对查询执行相似性或MMR搜索",
@@ -425,7 +444,13 @@
     "cardView": "卡片视图",
     "listView": "列表视图",
     "addNew": "添加新项",
-    "noChatflows": "暂无对话流"
+    "noChatflows": "暂无对话流",
+    "options": "选项",
+    "rename": "重命名",
+    "duplicate": "复制",
+    "allowedDomains": "允许的域名",
+    "updateCategory": "更新类别",
+    "deleteConfirm": "删除{{title}} {{chatflowName}}？"
   },
   "agentflows": {
     "title": "智能体流",
@@ -807,7 +832,10 @@
     "saveSuccess": "成功保存为模板！",
     "saveFailed": "保存模板失败！",
     "usecaseHint": "输入用例并按回车键将其添加到列表中。您可以添加任意多个项目。",
-    "saveTemplate": "保存模板"
+    "saveTemplate": "保存模板",
+    "agentflow": "智能体流",
+    "chatflow": "对话流",
+    "tool": "工具"
   },
   "scrapeLinks": {
     "title": "管理抓取的链接 - {{url}}",
@@ -825,6 +853,7 @@
     "chooseFileToUpload": "选择文件上传",
     "uploadFile": "上传文件"
   },
+  "plain_text_placeholder": "在此输入文本...",
   "apikey": {
     "title": "API 密钥",
     "searchPlaceholder": "搜索 API 密钥",
@@ -930,10 +959,6 @@
     "cancel": "取消",
     "submit": "提交"
   },
-  "promptLangsmith": {
-    "cancel": "取消",
-    "load": "加载"
-  },
   "apiCodeDialog": {
     "title": "API 代码",
     "showOverrideConfig": "显示覆盖配置",
@@ -1010,10 +1035,29 @@
     "clearButton": "清除",
     "clearSessionSuccess": "成功从 {{memoryType}} 清除会话ID：{{sessionId}}",
     "clearMessagesSuccess": "成功清除消息",
-    "noMessages": "暂无消息"
+    "noMessages": "暂无消息",
+    "stats": {
+      "totalMessages": "总消息数",
+      "totalFeedbackReceived": "总反馈数",
+      "positiveFeedback": "积极反馈"
+    }
   },
   "viewLeads": {
     "searchPlaceholder": "搜索姓名、邮箱或电话",
     "noLeads": "暂无潜在客户"
+  },
+  "sourceDocuments": {
+    "title": "源文档"
+  },
+  "promptGenerator": {
+    "defaultInstruction1": "总结文档",
+    "defaultInstruction2": "翻译语言",
+    "defaultInstruction3": "写一封邮件",
+    "defaultInstruction4": "将代码转换为另一种语言",
+    "defaultInstruction5": "研究并生成报告",
+    "defaultInstruction6": "计划旅行",
+    "placeholder": "在此描述您的任务",
+    "generate": "生成",
+    "apply": "应用"
   }
 }

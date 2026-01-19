@@ -33,56 +33,56 @@ const agent_settings = {
     children: [
         {
             id: 'viewMessages',
-            title: 'View Messages',
+            title: 'settingsMenu.viewMessages',
             type: 'item',
             url: '',
             icon: icons.IconMessage
         },
         {
             id: 'viewLeads',
-            title: 'View Leads',
+            title: 'settingsMenu.viewLeads',
             type: 'item',
             url: '',
             icon: icons.IconUsers
         },
         {
             id: 'chatflowConfiguration',
-            title: 'Configuration',
+            title: 'settingsMenu.chatflowConfiguration',
             type: 'item',
             url: '',
             icon: icons.IconAdjustmentsHorizontal
         },
         {
             id: 'saveAsTemplate',
-            title: 'Save As Template',
+            title: 'settingsMenu.saveAsTemplate',
             type: 'item',
             url: '',
             icon: icons.IconTemplate
         },
         {
             id: 'duplicateChatflow',
-            title: 'Duplicate Agents',
+            title: 'settingsMenu.duplicateAgents',
             type: 'item',
             url: '',
             icon: icons.IconCopy
         },
         {
             id: 'loadChatflow',
-            title: 'Load Agents',
+            title: 'settingsMenu.loadAgents',
             type: 'item',
             url: '',
             icon: icons.IconFileUpload
         },
         {
             id: 'exportChatflow',
-            title: 'Export Agents',
+            title: 'settingsMenu.exportAgents',
             type: 'item',
             url: '',
             icon: icons.IconFileExport
         },
         {
             id: 'deleteChatflow',
-            title: 'Delete Agents',
+            title: 'settingsMenu.deleteAgents',
             type: 'item',
             url: '',
             icon: icons.IconTrash

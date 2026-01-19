@@ -965,10 +965,10 @@ const ViewMessagesDialog = ({ show, dialogProps, onCancel }) => {
                             marginRight: 8
                         }}
                     >
-                        <StatsCard title='Total Messages' stat={`${stats.totalMessages}`} />
-                        <StatsCard title='Total Feedback Received' stat={`${stats.totalFeedback}`} />
+                        <StatsCard title={t('viewMessages.stats.totalMessages')} stat={`${stats.totalMessages}`} />
+                        <StatsCard title={t('viewMessages.stats.totalFeedbackReceived')} stat={`${stats.totalFeedback}`} />
                         <StatsCard
-                            title='Positive Feedback'
+                            title={t('viewMessages.stats.positiveFeedback')}
                             stat={`${((stats.positiveFeedback / stats.totalFeedback) * 100 || 0).toFixed(2)}%`}
                         />
                     </div>
@@ -982,7 +982,7 @@ const ViewMessagesDialog = ({ show, dialogProps, onCancel }) => {
                                         alt='msgEmptySVG'
                                     />
                                 </Box>
-                                <div>No Messages</div>
+                                <div>{t('viewMessages.noMessages')}</div>
                             </Stack>
                         )}
                         {chatlogs && chatlogs.length > 0 && (

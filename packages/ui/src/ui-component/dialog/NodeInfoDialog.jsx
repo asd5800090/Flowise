@@ -173,7 +173,7 @@ const NodeInfoDialog = ({ show, dialogProps, onCancel }) => {
                             <Button
                                 variant='outlined'
                                 color='primary'
-                                title='Open Documentation'
+                                title={t('button.documentation')}
                                 onClick={() => {
                                     window.open(dialogProps.data.documentation, '_blank', 'noopener,noreferrer')
                                 }}
@@ -193,7 +193,7 @@ const NodeInfoDialog = ({ show, dialogProps, onCancel }) => {
                             marginBottom: 10
                         }}
                     >
-                        <span>{translateDescription(dialogProps.data.description)}</span>
+                        <span>{translateDescription(dialogProps.data.name, dialogProps.data.description)}</span>
                     </div>
                 )}
                 {getNodeConfigApi.data && getNodeConfigApi.data.length > 0 && (

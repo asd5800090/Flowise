@@ -40,7 +40,10 @@
     "settings": "Settings",
     "next": "Next",
     "export": "Export",
-    "import": "Import"
+    "import": "Import",
+    "search": "Search",
+    "load": "Load",
+    "documentation": "Open Documentation"
   },
   "message": {
     "saveSuccess": "Saved successfully",
@@ -67,7 +70,13 @@
     "newDocumentStoreCreated": "New Document Store created.",
     "documentStoreUpdated": "Document Store Updated!",
     "failedToAddDocumentStore": "Failed to add new Document Store: {{error}}",
-    "failedToUpdateDocumentStore": "Failed to update Document Store: {{error}}"
+    "failedToUpdateDocumentStore": "Failed to update Document Store: {{error}}",
+    "messagesDeletedSuccess": "Successfully deleted messages",
+    "failedToDownloadInstaller": "Failed to download installer: {{error}}",
+    "failedToPreload": "Failed to preload: {{error}}",
+    "failedToPullImage": "Failed to pull image: {{error}}",
+    "failedToCheckContainerStatus": "Failed to check container status: {{error}}",
+    "failedToStartContainer": "Failed to start container: {{error}}"
   },
   "validation": {
     "required": "This field is required",
@@ -105,6 +114,22 @@
     "exporting": "Exporting..",
     "exportingDataTakesTime": "Exporting data might takes a while",
     "export": "Export"
+  },
+  "promptLangsmith": {
+    "title": "Langchain Hub",
+    "promptTemplate": "PromptTemplate",
+    "chatPromptTemplate": "ChatPromptTemplate",
+    "model": "Model",
+    "usecase": "Usecase",
+    "language": "Language",
+    "availablePrompts": "Available Prompts",
+    "loadingPrompts": "Please wait....loading Prompts",
+    "noAvailablePrompts": "No Available Prompts",
+    "prompt": "Prompt",
+    "description": "Description",
+    "readme": "Readme",
+    "cancel": "Cancel",
+    "load": "Load"
   },
   "nodeDescriptions": {
     "conversational_agent_for_a_chat_model_it_will_utilize_chat_specific_prompts": "Conversational agent for a chat model. It will utilize chat specific prompts",
@@ -222,11 +247,6 @@
     "wrapper_around_cohere_large_language_models": "Wrapper around Cohere large language models",
     "wrapper_around_fireworks_api_for_large_language_models": "Wrapper around Fireworks API for large language models",
     "wrapper_around_googlevertexai_large_language_models": "Wrapper around GoogleVertexAI large language models",
-    "wrapper_around_aws_bedrock_large_language_models": "Wrapper around AWS Bedrock large language models",
-    "wrapper_around_azure_openai_large_language_models": "Wrapper around Azure OpenAI large language models",
-    "wrapper_around_cohere_large_language_models": "Wrapper around Cohere large language models",
-    "wrapper_around_fireworks_api_for_large_language_models": "Wrapper around Fireworks API for large language models",
-    "wrapper_around_googlevertexai_large_language_models": "Wrapper around GoogleVertexAI large language models",
     "use_replicate_to_run_open_source_models_on_cloud": "Use Replicate to run open source models on cloud",
     "memory_for_agentflow_to_remember_the_state_of_the_conversation": "Memory for agentflow to remember the state of the conversation",
     "memory_for_agentflow_to_remember_the_state_of_the_conversation_using_mysql_database": "Memory for agentflow to remember the state of the conversation using MySQL database",
@@ -273,7 +293,6 @@
     "execute_custom_javascript_function": "Execute custom javascript function",
     "execute_chatflowagentflow_and_return_final_response": "Execute chatflow/agentflow and return final response",
     "execute_tool_and_return_tool": "Execute tool and return tool",
-    "toolset_with_over_250_apps_for_building_ai_powered_applications": "Toolset with over 250+ Apps for building AI-powered applications",
     "babyagi_agent_that_can_create_and_execute_tasks_based_on_a_given_objective": "BabyAGI Agent that can create and execute tasks based on a given objective",
     "tool_calling_agent_optimized_for_being_used_with_openai_assistants": "Tool calling agent optimized for being used with OpenAI assistants",
     "agent_that_uses_xml_to_prompt_the_model": "Agent that uses XML to prompt the model",
@@ -324,7 +343,77 @@
     "base_class_for_all_moderation_models": "Base class for all moderation models",
     "base_class_for_all_mcp_tools": "Base class for all MCP tools",
     "base_class_for_all_engines": "Base class for all engines",
-    "base_class_for_all_response_synthesizers": "Base class for all response synthesizers"
+    "base_class_for_all_response_synthesizers": "Base class for all response synthesizers",
+    "mcp_server_that_provides_a_tool_for_dynamic_and_reflective_problem_solving_through_a_structured_thinking_process": "MCP server that provides a tool for dynamic and reflective problem-solving through a structured thinking process",
+    "tool_used_to_invoke_query_engine": "Tool used to invoke query engine",
+    "a_chain_that_uses_an_llm_to_answer_questions_over_a_sql_database": "A chain that uses an LLM to answer questions over a SQL database",
+    "agent_used_to_answer_queries_on_airtable_table": "Agent used to answer queries on Airtable table",
+    "agent_that_uses_the_react_logic_to_decide_what_action_to_take_optimized_to_be_used_with_chat_models": "Agent that uses the ReAct logic to decide what action to take, optimized to be used with Chat Models",
+    "agent_that_uses_the_react_logic_to_decide_what_action_to_take_optimized_to_be_used_with_llms": "Agent that uses the ReAct logic to decide what action to take, optimized to be used with LLMs",
+    "task_driven_autonomous_agent_which_creates_new_task_and_reprioritizes_task_list_based_on_objective": "Task Driven Autonomous Agent which creates new task and reprioritizes task list based on objective",
+    "agent_used_to_answer_queries_on_csv_data": "Agent used to answer queries on CSV data",
+    "an_agent_that_uses_openai_assistant_api_to_pick_the_tool_and_args_to_call": "An agent that uses OpenAI Assistant API to pick the tool and args to call",
+    "agent_that_calls_a_vector_store_retrieval_and_uses_function_calling_to_pick_the_tools_and_args_to_call": "Agent that calls a vector store retrieval and uses Function Calling to pick the tools and args to call",
+    "agent_that_uses_function_calling_to_pick_the_tools_and_args_to_call": "Agent that uses Function Calling to pick the tools and args to call",
+    "agent_that_uses_openai_function_calling_to_pick_the_tools_and_args_to_call_using_llamaindex": "Agent that uses OpenAI Function Calling to pick the tools and args to call using LlamaIndex",
+    "agent_that_is_designed_for_llms_that_are_good_for_reasoning_writing_xml_eg_anthropic_claude": "Agent that is designed for LLMs that are good for reasoning/writing XML (e.g: Anthropic Claude)",
+    "agent_that_uses_anthropic_claude_function_calling_to_pick_the_tools_and_args_to_call_using_llamaindex": "Agent that uses Anthropic Claude Function Calling to pick the tools and args to call using LlamaIndex",
+    "qa_chain_for_vectara": "QA chain for Vectara",
+    "qa_chain_for_vector_databases": "QA chain for vector databases",
+    "qa_chain_that_automatically_picks_an_appropriate_vector_store_from_multiple_retrievers": "QA Chain that automatically picks an appropriate vector store from multiple retrievers",
+    "qa_chain_to_answer_a_question_based_on_the_retrieved_documents": "QA chain to answer a question based on the retrieved documents",
+    "document_qa_built_on_retrievalqachain_to_provide_a_chat_history_component": "Document QA built on RetrievalQAChain to provide a chat history component",
+    "chat_models_specific_conversational_chain_with_memory": "Chat models specific conversational chain with memory",
+    "chain_to_run_queries_against_get_api": "Chain to run queries against GET API",
+    "chain_to_run_queries_against_post_api": "Chain to run queries against POST API",
+    "chain_to_run_queries_against_llms": "Chain to run queries against LLMs",
+    "chain_that_automatically_select_and_call_apis_based_only_on_an_openapi_spec": "Chain that automatically select and call APIs based only on an OpenAPI spec",
+    "chain_automatically_picks_an_appropriate_prompt_from_multiple_prompt_templates": "Chain automatically picks an appropriate prompt from multiple prompt templates",
+    "advanced_chain_for_question_answering_against_a_neo4j_graph_by_generating_cypher_statements": "Advanced chain for question-answering against a Neo4j graph by generating Cypher statements",
+    "answer_questions_over_a_sql_database": "Answer questions over a SQL database",
+    "search_and_retrieve_documents_from_document_store": "Search and retrieve documents from Document Store",
+    "upsert_embedded_data_and_load_existing_index_using_couchbase_a_award_winning_distributed_nosql_database": "Upsert embedded data and load existing index using Couchbase, a award-winning distributed NoSQL database",
+    "upsert_embedded_data_and_perform_similarity_or_mmr_search_upon_query_using_datstax_astra_db_a_serverless_vector_database_that_s_perfect_for_managing_mission_critical_ai_workloads": "Upsert embedded data and perform similarity or mmr search upon query using DataStax Astra DB, a serverless vector database that's perfect for managing mission-critical AI workloads",
+    "a_document_compressor_that_uses_embeddings_to_drop_documents_unrelated_to_the_query": "A document compressor that uses embeddings to drop documents unrelated to the query",
+    "cohere_rerank_indexes_the_documents_from_most_to_least_semantically_relevant_to_the_query": "Cohere Rerank indexes the documents from most to least semantically relevant to the query.",
+    "connect_to_aws_bedrock_knowledge_base_api_and_retrieve_relevant_chunks": "Connect to AWS Bedrock Knowledge Base API and retrieve relevant chunks",
+    "extract_keywords_metadata_from_the_query_and_use_it_to_filter_documents": "Extract keywords/metadata from the query and use it to filter documents",
+    "generate_multiple_queries_from_different_perspectives_for_a_given_user_input_query": "Generate multiple queries from different perspectives for a given user input query",
+    "jina_ai_rerank_indexes_the_documents_from_most_to_least_semantically_relevant_to_the_query": "Jina AI Rerank indexes the documents from most to least semantically relevant to the query.",
+    "reciprocal_rank_fusion_to_re_rank_search_results_by_multiple_query_generation": "Reciprocal Rank Fusion to re-rank search results by multiple query generation.",
+    "return_results_based_on_predefined_format": "Return results based on predefined format",
+    "return_results_based_on_the_minimum_similarity_percentage": "Return results based on the minimum similarity percentage",
+    "store_prompt_template_with_name_description_to_be_later_queried_by_multipromptchain": "Store prompt template with name & description to be later queried by MultiPromptChain",
+    "store_vector_store_as_retriever_to_be_later_queried_by_multiretrievalqachain": "Store vector store as retriever to be later queried by MultiRetrievalQAChain",
+    "use_hyde_retriever_to_retrieve_from_a_vector_store": "Use HyDE retriever to retrieve from a vector store",
+    "voyage_ai_rerank_indexes_the_documents_from_most_to_least_semantically_relevant_to_the_query": "Voyage AI Rerank indexes the documents from most to least semantically relevant to the query.",
+    "execute_code_in_a_sandbox_environment": "Execute code in a sandbox environment",
+    "execute_http_get_requests": "Execute HTTP GET requests",
+    "execute_http_post_requests": "Execute HTTP POST requests",
+    "get_todays_day_date_and_time": "Get todays day, date and time.",
+    "gives_agent_the_ability_to_visit_a_website_and_extract_information": "Gives agent the ability to visit a website and extract information",
+    "load_openapi_specification_and_converts_each_api_endpoint_to_a_tool": "Load OpenAPI specification, and converts each API endpoint to a tool",
+    "perform_calculations_on_response": "Perform calculations on response",
+    "read_file_from_disk": "Read file from disk",
+    "real_time_api_for_accessing_google_search_data": "Real-time API for accessing Google Search data",
+    "use_a_chain_as_allowed_tool_for_agent": "Use a chain as allowed tool for agent",
+    "use_a_retriever_as_allowed_tool_for_agent": "Use a retriever as allowed tool for agent",
+    "use_as_a_tool_to_execute_another_chatflow": "Use as a tool to execute another chatflow",
+    "use_custom_tool_you_ve_created_in_flowise_within_chatflow": "Use custom tool you've created in Flowise within chatflow",
+    "use_stripe_agent_function_calling_for_financial_transactions": "Use Stripe Agent function calling for financial transactions",
+    "wrapper_around_bravesearch_api_a_real_time_api_to_access_brave_search_results": "Wrapper around BraveSearch API - a real-time API to access Brave search results",
+    "wrapper_around_exa_search_api_search_engine_fully_designed_for_use_by_llms": "Wrapper around Exa Search API - search engine fully designed for use by LLMs",
+    "wrapper_around_google_custom_search_api_a_real_time_api_to_access_google_search_results": "Wrapper around Google Custom Search API - a real-time API to access Google search results",
+    "wrapper_around_searxng_a_free_internet_metasearch_engine": "Wrapper around SearXNG - a free internet metasearch engine",
+    "wrapper_around_serpapi_a_real_time_api_to_access_google_search_results": "Wrapper around SerpAPI - a real-time API to access Google search results",
+    "wrapper_around_serper_dev_google_search_api": "Wrapper around Serper.dev Google Search API",
+    "wrapper_around_tavilyapi_a_real_time_api_to_access_google_search_results": "Wrapper around TavilyAPI - a real-time API to access Google search results",
+    "wrapper_around_wolframalpha_a_powerful_computational_knowledge_engine": "Wrapper around WolframAlpha - a powerful computational knowledge engine",
+    "write_file_to_disk": "Write file to disk",
+    "mcp_server_for_the_github_api": "MCP Server for the GitHub API",
+    "mcp_server_for_the_slack_api": "MCP Server for the Slack API",
+    "mcp_server_that_integrates_the_brave_search_api_a_real_time_api_to_access_web_search_capabilities": "MCP server that integrates the Brave Search API - a real-time API to access web search capabilities",
+    "mcp_server_that_provides_read_only_access_to_postgresql_databases": "MCP server that provides read-only access to PostgreSQL databases"
   },
   "dataTypes": {
     "agentflows": "Agentflows",
@@ -355,7 +444,13 @@
     "cardView": "Card View",
     "listView": "List View",
     "addNew": "Add New",
-    "noChatflows": "No Chatflows Yet"
+    "noChatflows": "No Chatflows Yet",
+    "options": "Options",
+    "rename": "Rename",
+    "duplicate": "Duplicate",
+    "allowedDomains": "Allowed Domains",
+    "updateCategory": "Update Category",
+    "deleteConfirm": "Delete {{title}} {{chatflowName}}?"
   },
   "agentflows": {
     "title": "Agentflows",
@@ -600,10 +695,6 @@
     "cancel": "Cancel",
     "submit": "Submit"
   },
-  "promptLangsmith": {
-    "cancel": "Cancel",
-    "load": "Load"
-  },
   "apiCodeDialog": {
     "title": "API Code",
     "showOverrideConfig": "Show Override Config",
@@ -838,12 +929,16 @@
     "saveSuccess": "Saved as template successfully!",
     "saveFailed": "Failed to save as template!",
     "usecaseHint": "Type a usecase and press enter to add it to the list. You can add as many items as you want.",
-    "saveTemplate": "Save Template"
+    "saveTemplate": "Save Template",
+    "agentflow": "Agentflow",
+    "chatflow": "Chatflow",
+    "tool": "Tool"
   },
   "file": {
     "chooseFileToUpload": "Choose a file to upload",
     "uploadFile": "Upload File"
   },
+  "plain_text_placeholder": "Enter text here...",
   "apikey": {
     "title": "API Keys",
     "searchPlaceholder": "Search API Keys",
@@ -911,7 +1006,12 @@
     "clearButton": "Clear",
     "clearSessionSuccess": "Successfully cleared session ID: {{sessionId}} from {{memoryType}}",
     "clearMessagesSuccess": "Successfully cleared messages",
-    "noMessages": "No messages yet"
+    "noMessages": "No messages yet",
+    "stats": {
+      "totalMessages": "Total Messages",
+      "totalFeedbackReceived": "Total Feedback Received",
+      "positiveFeedback": "Positive Feedback"
+    }
   },
   "viewLeads": {
     "searchPlaceholder": "Search name, email or phone",
@@ -945,5 +1045,19 @@
     "configurationSaved": "Override Configuration Saved",
     "failedToSaveConfiguration": "Failed to save Override Configuration: {{error}}",
     "tooltip": "Override configuration allows you to override the default configuration of the chatbot"
+  },
+  "sourceDocuments": {
+    "title": "Source Documents"
+  },
+  "promptGenerator": {
+    "defaultInstruction1": "Summarize a document",
+    "defaultInstruction2": "Translate the language",
+    "defaultInstruction3": "Write me an email",
+    "defaultInstruction4": "Convert the code to another language",
+    "defaultInstruction5": "Research and generate a report",
+    "defaultInstruction6": "Plan a trip",
+    "placeholder": "Describe your task here",
+    "generate": "Generate",
+    "apply": "Apply"
   }
 }
